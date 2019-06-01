@@ -12,6 +12,8 @@ date: 2017-05-15
 
 比起教他如何使用ssh，以及更改他的密码登录等，最简单的方法就是使用runuser命令。例如：
 
-`runuser -l hisusername -c 'vncserver'`
+```bash
+runuser -l hisusername -c 'vncserver'
+```
 
 runuser这条命令相当方便，可以让管理员以其他用户的身份运行进程。
