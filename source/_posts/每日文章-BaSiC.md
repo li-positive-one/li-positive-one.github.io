@@ -6,6 +6,7 @@ tags:
   - Denoising
   - Optical microscopy
 date: 2019-06-02
+mathjax: true
 ---
 
 # 问题背景
@@ -20,7 +21,7 @@ date: 2019-06-02
 
 模型：
 
-A measured image sequence, $$I^{meas}(x)=I_1^{meas}(x),...I_n^{meas}(x)$$ can be related to its uncorrupted true correspondence, $$I^{true}=I^{true}_1(x),...,I^{true}_n(x)$$ , with a multiplicative flat-field $$S(x)$$ and an additive dark-field $$D(x)$$:
+A measured image sequence, $I^{meas}(x)=I_1^{meas}(x),...I_n^{meas}(x)$ can be related to its uncorrupted true correspondence, $I^{true}=I^{true}_1(x),...,I^{true}_n(x)$ , with a multiplicative flat-field $S(x)$ and an additive dark-field $D(x)$:
 
 $$
 \begin{equation}
@@ -28,14 +29,14 @@ I_{i}^{meas}(x)=I_i^{true}(x) \times S(x)+D(x)
 \end{equation}
 $$
 
-The BaSiC correction begins by sorting the image sequence $$I^{meas}$$  into $$I^{sort}$$ by intensities at each pixel $$x$$, converting each sorted image $$I^{sort}_i(x)$$ into a column vector $$I^{sort}_i$$ (from now on, we denote the same parameter in image space with $$(x)$$
-and as vector without $$(x)$$). Hence, we construct the measurement matrix as
+The BaSiC correction begins by sorting the image sequence $I^{meas}$  into $I^{sort}$ by intensities at each pixel $x$, converting each sorted image $I^{sort}_i(x)$ into a column vector $I^{sort}_i$ (from now on, we denote the same parameter in image space with $(x)$
+and as vector without $(x)$). Hence, we construct the measurement matrix as
 
 $$
 I=[I_1^{sort},...I_n^{sort}]
 $$
 
-Each column vector of the measurement matrix $$I$$ is decomposed into
+Each column vector of the measurement matrix $I$ is decomposed into
 
 $$
 \begin{equation}
@@ -43,7 +44,7 @@ I_{i}=B_i \times S + D +R_i
 \end{equation}
 $$
 
-前两项构成了一个rank 2的稀疏矩阵，最后一项的残量矩阵$$I^R$$我们假设是稀疏的，然后就有这个优化问题：
+前两项构成了一个rank 2的稀疏矩阵，最后一项的残量矩阵$I^R$我们假设是稀疏的，然后就有这个优化问题：
 
 $$
 \begin{equation}
@@ -55,7 +56,7 @@ $$
 \end{equation}
 $$
 
-equation (\ref{model1}) 无法直接求解，因为它的解不唯一。 而且，这个问题是NP难的。所以，我们对$$S$$和$$D$$加正则化项，把L0 norm 替换成 L1 norm.
+equation (\ref{model1}) 无法直接求解，因为它的解不唯一。 而且，这个问题是NP难的。所以，我们对$S$和$D$加正则化项，把L0 norm 替换成 L1 norm.
 
 $$
 \begin{equation}
@@ -68,7 +69,7 @@ $$
 \end{equation}
 $$
 
-暗场 D 被分解成平均值 $$D^Z$$ 和残差 $$D^R$$. 当$$S(x)$$和$$D(x)$$被求出后，就可以恢复图像
+暗场 D 被分解成平均值 $D^Z$ 和残差 $D^R$. 当$S(x)$和$D(x)$被求出后，就可以恢复图像
 
 $$
 \begin{equation}
@@ -78,8 +79,8 @@ I^{corr}(x)=(I^{meas}(x)-D(x))/S(x)
 \end{equation}
 $$
 
-因为对亮度排序过，所以求得的$$B_i$$不适用于原图。所以引入两步的方法。
-第一步，通过排序后的$$I$$，利用equation(\ref{model2})求出$$S^*,D^*$$；第二步，使用$$S^*,D^*$$和未排序的$$I$$带入equation(\ref{model2})求解，此时equation(\ref{model2})简化为：
+因为对亮度排序过，所以求得的$B_i$不适用于原图。所以引入两步的方法。
+第一步，通过排序后的$I$，利用equation(\ref{model2})求出$S^*,D^*$；第二步，使用$S^*,D^*$和未排序的$I$带入equation(\ref{model2})求解，此时equation(\ref{model2})简化为：
 
 $$
 \begin{equation}
@@ -99,7 +100,7 @@ I^{corr}_i(x)=(I^{meas}_i(x)-D(x))/S(x)-B_i+B_{norm}
 \end{equation}
 $$
 
-其中$$B_{norm}$$是主观选定的背景。可以选$$B^{norm}=mean_i{B_i}$$对于亮场北京的视频。对于荧光视频，可以选$$B_{norm}=0$$.
+其中$B_{norm}$是主观选定的背景。可以选$B^{norm}=mean_i{B_i}$对于亮场北京的视频。对于荧光视频，可以选$B_{norm}=0$.
 
 # 实验
 

@@ -8,6 +8,7 @@ tags:
   - Sparsity
   - Inverse problem
 date: 2019-05-31
+mathjax: true
 ---
 
 我们知道，找到图像的稀疏表示可以在图像去噪、重建等方面有重大作用。常用的方法是字典学习，其中最广为人知的就是K-SVD方法。
@@ -25,9 +26,9 @@ s.t.& \quad W^T W=I
 \end{equation}
 $$
 
-其中g是图像，g是编码，W是由m个filter，即$$a_1,a_2,...a_m$$构成的紧框架。求解方法就是轮流最小化v和W。
+其中g是图像，g是编码，W是由m个filter，即$(a_1,a_2,...a_m)$构成的紧框架。求解方法就是轮流最小化v和W。
 
-1. 给定$$W^{(k)}$$，求解$$v^{(k)}$$.
+1. 给定$(W^{(k)})$，求解$(v^{(k)})$.
 
 $$
 \begin{equation}
@@ -36,7 +37,7 @@ v^{(k)}:=argmin_v||v-W^{(k)}g||_2^2+\lambda^2||v||_0
 \label{iterA}
 $$
 
-2. 给定$$v^{(k)}$$，求解$$W^{(k+1)}$$.
+2. 给定$(v^{(k)})$，求解$(W^{(k+1)})$.
 
 $$
 \begin{equation}
@@ -45,9 +46,9 @@ $$
 \label{iterB}
 $$
 
-对于(\ref{iterA})，存在唯一的最优解$$ {\bar v}=T_{\lambda}(Wg)$$, 对于(\ref{iterB})，可以通过SVD算法精确求解：
+对于(\ref{iterA})，存在唯一的最优解$( {\bar v}=T_{\lambda}(Wg))$, 对于(\ref{iterB})，可以通过SVD算法精确求解：
 
-假设filter大小为$$r \times r$$，则共有$$r^2$$个filter。 Here $$g_n, n=1,2,...N$$ are all $$r\times r$$ patches from the input image g.
+假设filter大小为$(r \times r)$，则共有$(r^2)$个filter。 Here $(g_n, n=1,2,...N)$ are all $(r\times r)$ patches from the input image g.
 
 Let
 
@@ -90,16 +91,16 @@ $$
 \end{equation}
 $$
 
----
-** 引理1 ** 
-Let B and C be $$m\times r$$ matrices where B has rank r. Consider the constrained maximization problem:
 
-$$ 
+**引理1**
+Let B and C be $(m\times r)$ matrices where B has rank r. Consider the constrained maximization problem:
+
+$$
 B_*=\arg\min_B Tr(B^T C) \quad s.t. \quad B^TB=I_r
 $$
-Suppose that the single value decomposition (SVD) of $$C$$ is $C = UDX^T$.Then $$ B_*=UX^T $$.
+Suppose that the single value decomposition (SVD) of $(C)$ is $C = UDX^T$.Then $( B_*=UX^T )$.
 
----
+
 根据引理，我们就能知道，通过SVD计算就可以求得(\ref{iterB})的精确解。
 
 

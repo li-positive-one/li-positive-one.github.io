@@ -18,7 +18,7 @@ $$
 {\arg\min}_\theta \sum_{i}{L(f_\theta\left(\hat{x_i}\right),y_i)}
 $$
 
-其中$$\hat x_i$$是输入的含噪声图像，$$y_i$$是清晰图片。我们学习一个从含噪声图片到清晰图片的映射。
+其中$\hat x_i$是输入的含噪声图像，$y_i$是清晰图片。我们学习一个从含噪声图片到清晰图片的映射。
 
 以标量为例子，学习
 $$
@@ -38,9 +38,9 @@ $$
 {\arg\min}_\theta\sum_{i} L\left(f_\theta\left(\hat{x_i}\right),\hat{y_i}\right)
 $$
 
-其中 $$E\left(\hat{y_i}\middle|\hat{x_i}\right)=y_i$$
+其中 $E\left(\hat{y_i}\middle|\hat{x_i}\right)=y_i$
 
-而$$\hat x_i$$与$$\hat y_i$$都是有噪声的图片，且不一定含有同一种噪声。但是如果$$\hat y_i$$中蕴含的噪声分布均值为0，那么我们就可以用$$\hat y_i$$作为label来训练网络。
+而$\hat x_i$与$\hat y_i$都是有噪声的图片，且不一定含有同一种噪声。但是如果$\hat y_i$中蕴含的噪声分布均值为0，那么我们就可以用$\hat y_i$作为label来训练网络。
 
 # Noise2Void
 
@@ -51,18 +51,18 @@ $$
 f(x_{RF(i)};\theta)=\hat s_i
 $$
 
-然后Noise2Noise可以理解为有两个noisy image $$(x^j,x^{'j})$$, 
+然后Noise2Noise可以理解为有两个noisy image $(x^j,x^{'j})$,
 
 $$
 x^j=s^j+n^j ~and ~x^{'j}=s^j+n^{'j}
 $$
 
-与传统的监督学习以$$s_i$$作为label不同，N2N以$$x^{'j}$$作为label。尽管这个网络学习从一个noisy image变换到另一个noisy image，但是最后训练仍会收敛到正确的解，这是因为我们假设noisy image的期望值就是正确解 $$\mathbb{E}[x_i]=s_i$$.
+与传统的监督学习以$s_i$作为label不同，N2N以$x^{'j}$作为label。尽管这个网络学习从一个noisy image变换到另一个noisy image，但是最后训练仍会收敛到正确的解，这是因为我们假设noisy image的期望值就是正确解 $\mathbb{E}[x_i]=s_i$.
 
 我们下边有两个假设：
 
-1. 每个像素 $$s_i$$ 和周围的像素 $$s_j$$ 不独立。
-2. 噪声 $$n_i$$ 只和 $$s_i$$ 有关，但相互之间独立。
+1. 每个像素 $s_i$ 和周围的像素 $s_j$ 不独立。
+2. 噪声 $n_i$ 只和 $s_i$ 有关，但相互之间独立。
 
 然后我们就发现，只有一张noisy image我们也可以用这种方法训练网络。我们把每个patch最中间的像素挖掉，用周围的像素预测中心的像素。可以理解为由于假设，中心处的噪声和周围的噪声独立，所以我们可以用N2N的方法来训练。
 
@@ -87,10 +87,10 @@ $$
 
 所以这篇文章的算法分成两步：
 
-1. 训练一个神经网络，$$\Omega_y \rightarrow (\mu_x,\Sigma_x)$$ 这是高斯分布prior $$p(x|\Omega_y)$$ 的参数。
-2. 测试时，把$$\Omega_y$$输入神经网络得到$$(\mu_x,\Sigma_x)$$, 然后根据闭式解析解计算$$\mathbb{E}[p(x|y,\Omega_y)]$$。
+1. 训练一个神经网络，$\Omega_y \rightarrow (\mu_x,\Sigma_x)$ 这是高斯分布prior $p(x|\Omega_y)$ 的参数。
+2. 测试时，把$\Omega_y$输入神经网络得到$(\mu_x,\Sigma_x)$, 然后根据闭式解析解计算$\mathbb{E}[p(x|y,\Omega_y)]$。
 
-与N2V对于，我们发现N2V只是学习了$$p(x|\Omega_y)$$。而没用用上这个像素点本身的值，也就是y的信息。
+与N2V对于，我们发现N2V只是学习了$p(x|\Omega_y)$。而没用用上这个像素点本身的值，也就是y的信息。
 
 
 在实际实现时，网络不用N2V中的Mask方式，而是训练了4个网络，每个网络忽略一个方向的数据，从而达到blind-spot的效果。进一步的，可以把这4个网络变成1个网络，把输入图片旋转4次作为不同的输入，然后在最后旋转回来，再通过1*1的卷积融合。
