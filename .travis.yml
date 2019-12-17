@@ -4,8 +4,10 @@ cache:
   directories:
     - node_modules
 
-pandoc_version: 2.9
-
+before_install:
+  - wget https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb
+  - sudo dpkg -i ./pandoc-2.9-1-amd64.deb
+  
 install:
   - npm install
 
