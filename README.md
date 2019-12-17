@@ -4,4 +4,4 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d854ca11-b95a-4f00-b89c-a236726b8391/deploy-status)](https://app.netlify.com/sites/lizhengyi/deploys)
 
-Also on [lizhengyi.netlify.com](lizhengyi.netlify.com)
+Also on [lizhengyi.netlify.com](https://lizhengyi.netlify.com)
