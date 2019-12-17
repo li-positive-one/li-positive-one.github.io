@@ -1,9 +1,10 @@
 ---
-layout: post
 title: "个人Blog的搭建方案"
-comments: true
-description: "个人Blog的搭建方案"
-keywords: "Blog"
+categories:
+  - 杂七杂八
+tags:
+  - Hexo
+date: 20179-12-17
 ---
 
 ### 方案选择
