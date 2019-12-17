@@ -5,7 +5,7 @@ cache:
     - node_modules
 
 install:
-  - sudo apt install -y pandoc
+  - sudo apt-get install -y pandoc
   - npm install
 
 script:
