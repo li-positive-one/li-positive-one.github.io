@@ -2,11 +2,13 @@
 title: "Noise2Noise to Noise2Void to more"
 categories:
   - 读书笔记
+tags:
   - Denoise
 date: 2019-12-13s
 mathjax: true
 ---
 
+# Noise2Noise
 
 Lehtinen, Jaakko, et al. "Noise2Noise: Learning Image Restoration without Clean Data." *International Conference on Machine Learning*. 2018.
 
