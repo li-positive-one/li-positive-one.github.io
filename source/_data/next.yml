@@ -1,30 +1,30 @@
-  scheme: Pisces
-  math:
-    # Default (true) will load mathjax / katex script on demand.
-    # That is it only render those page which has `mathjax: true` in Front-matter.
-    # If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.
-    per_page: true
+scheme: Pisces
+math:
+  # Default (true) will load mathjax / katex script on demand.
+  # That is it only render those page which has `mathjax: true` in Front-matter.
+  # If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.
+  per_page: true
 
-    # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.
-    mathjax:
-      enable: true
-      # See: https://mhchem.github.io/MathJax-mhchem/
-      mhchem: false
-
-    # hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.
-    katex:
-      enable: false
-      # See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex
-      copy_tex: false
-
-  local_search:
+  # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.
+  mathjax:
     enable: true
-    # If auto, trigger search by changing input.
-    # If manual, trigger search by pressing enter key or search button.
-    trigger: auto
-    # Show top n results per article, show all results by setting to -1
-    top_n_per_article: 1
-    # Unescape html strings to the readable one.
-    unescape: false
-    # Preload the search data when the page loads.
-    preload: false
+    # See: https://mhchem.github.io/MathJax-mhchem/
+    mhchem: false
+
+  # hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.
+  katex:
+    enable: false
+    # See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex
+    copy_tex: false
+
+local_search:
+  enable: true
+  # If auto, trigger search by changing input.
+  # If manual, trigger search by pressing enter key or search button.
+  trigger: auto
+  # Show top n results per article, show all results by setting to -1
+  top_n_per_article: 1
+  # Unescape html strings to the readable one.
+  unescape: false
+  # Preload the search data when the page loads.
+  preload: false

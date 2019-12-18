@@ -1,10 +1,11 @@
+
 # Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
 title: Blog of Li
-subtitle: 这里就是咸鱼的快乐老家
+subtitle: 
 description: 一条咸鱼
 keywords:
 author: Zhengyi Li
@@ -88,8 +89,8 @@ deploy:
   branch: master #published
   message: #leave this blank
 
-  search:
-    path: search.xml
-    field: post
-    format: html
-    limit: 10000
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
