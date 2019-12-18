@@ -28,3 +28,12 @@ local_search:
   unescape: false
   # Preload the search data when the page loads.
   preload: false
+
+avatar:
+  # Replace the default image and set the url here.
+  url: /images/avatar/shinji_2.jpg
+  # If true, the avatar will be dispalyed in circle.
+  rounded: true
+  # If true, the avatar will be rotated with the cursor.
+  rotated: false
+  
