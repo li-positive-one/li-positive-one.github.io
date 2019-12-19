@@ -38,6 +38,6 @@ jobs:
         git config user.name "lizhengyi"
         git config user.email "lizhengyi@pku.edu.cn"
         git add .
-        git commit -m "Update blog content by Azure Pipeline"
+        git commit -m "Update blog content by Github Actions"
         git push --force --quiet "https://${{ secrets.GH_TOKEN }}@${{ secrets.GH_REF }}" master:master
         
