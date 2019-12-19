@@ -19,9 +19,10 @@ after_script:
   - git init
   - git config user.name "lizhengyi"
   - git config user.email "lizhengyi@pku.edu.cn"
+  - git checkout -b travis
   - git add .
   - git commit -m "Update blog content by Travis CI"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push --force --quiet "https://${GH_TOKEN}@github.com/li-positive-one/blog.git" travis:travis
 
 branches:
   only:
