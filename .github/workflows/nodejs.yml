@@ -39,6 +39,12 @@ jobs:
         git config user.email "lizhengyi@pku.edu.cn"
         git add .
         git commit -m "Update blog content by Github Actions"
-        echo "https://ss@${{ secrets.GH_REF }}"
-        git push --force --quiet "https://${{  secrets.GH_TOKEN  }}@${{  secrets.GH_REF  }}" master:master
+        # echo "https://ss@${{ secrets.GH_REF }}"
+        # git push --force --quiet "https://${{  secrets.GH_TOKEN  }}@${{  secrets.GH_REF  }}" master:master
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        force: true
+        directory: "."
+        github_token: ${{ secrets.GH_TOKEN }}
         
