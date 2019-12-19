@@ -1,0 +1,44 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+      - docs
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: install pandoc
+      run: |
+        wget https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb
+        sudo dpkg -i ./pandoc-2.9-1-amd64.deb
+    - name: npm install, build, and test
+      run: |
+        npm install -g hexo-cli
+        npm install 
+      env:
+        CI: true
+    - name: building
+      run: |
+        hexo g
+    - name: deploying
+      run: |
+        cd ./public
+        git init
+        git config user.name "lizhengyi"
+        git config user.email "lizhengyi@pku.edu.cn"
+        git add .
+        git commit -m "Update blog content by Azure Pipeline"
+        git push --force --quiet "https://$(GH_TOKEN)@$(GH_REF)" master:master
+        
