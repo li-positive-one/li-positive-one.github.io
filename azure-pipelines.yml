@@ -1,0 +1,42 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g hexo-cli
+    npm install
+  displayName: 'npm install and build'
+
+- script: |
+    wget https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb
+    sudo dpkg -i ./pandoc-2.9-1-amd64.deb
+  displayName: 'Install pandoc'
+
+
+
+- script: |
+    hexo g
+  displayName: 'Building'
+
+- script: |
+    cd ./public
+    git init
+    git config user.name "lizhengyi"
+    git config user.email "lizhengyi@pku.edu.cn"
+    git add .
+    git commit -m "Update blog content by Azure Pipeline"
+    git push --force --quiet "https://$(GH_TOKEN)@github.com/li-positive-one/blog.git" master:master
+  displayName: 'Deploying'
