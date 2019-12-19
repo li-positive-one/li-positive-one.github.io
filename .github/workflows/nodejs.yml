@@ -31,6 +31,15 @@ jobs:
     - name: building
       run: |
         hexo g
+    - name: set ssh
+      env:
+        ACTION_DEPLOY_KEY: ${{ secrets.GH_KEY }}
+      run: |
+        # set up private key for deploy
+        mkdir -p ~/.ssh/
+        echo "$ACTION_DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
     - name: deploying
       run: |
         cd ./public
@@ -39,12 +48,4 @@ jobs:
         git config user.email "lizhengyi@pku.edu.cn"
         git add .
         git commit -m "Update blog content by Github Actions"
-        # echo "https://ss@${{ secrets.GH_REF }}"
-        # git push --force --quiet "https://${{  secrets.GH_TOKEN  }}@${{  secrets.GH_REF  }}" master:master
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        force: true
-        directory: "."
-        github_token: ${{ secrets.GH_TOKEN }}
-        
+        git push --force --quiet git@github.com:li-positive-one/li-positive-one.github.io.git master:master
