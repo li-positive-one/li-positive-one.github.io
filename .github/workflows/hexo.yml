@@ -15,7 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Checkout submodules
-      shell: bash
       run: |
         auth_header="$(git config --local --get http.https://github.com/.extraheader)"
         git submodule sync --recursive
