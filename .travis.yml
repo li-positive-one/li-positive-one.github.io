@@ -13,6 +13,7 @@ install:
   - npm install
 
 script:
+  - git submodule update --init --recursive
   - hexo g
 
 after_script:
