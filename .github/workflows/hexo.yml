@@ -31,6 +31,9 @@ jobs:
         npm install 
       env:
         CI: true
+    - name: sed images
+      run: |
+        sed  -i 's#<img src="../images/#<img src="/images/#g'  `grep '<img src=' -rl ./source/_posts`
     - name: building
       run: |
         hexo g
