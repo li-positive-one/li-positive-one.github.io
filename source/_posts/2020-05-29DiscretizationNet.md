@@ -1,5 +1,5 @@
 ---
-title: "DiscretizationNet"
+title: "DiscretizationNet: A Machine-Learning based solver for Navier-Stokes Equations using Finite Volume Discretization"
 categories:
   - 读书笔记
 tags:
