@@ -1,7 +1,7 @@
 ---
 title: "使用InftyReader识别PDF为latex"
 categories:
-  - 生活小窍门
+  - 杂七杂八
 tags:
   - Latex
 date: 2017-05-15

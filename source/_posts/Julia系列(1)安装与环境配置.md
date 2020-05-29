@@ -1,7 +1,7 @@
 ---
 title: "Julia系列(1):安装与环境配置"
 categories:
-  - 编程实战
+  - 编程实践
 tags:
   - Julia
 date: 2018-12-15

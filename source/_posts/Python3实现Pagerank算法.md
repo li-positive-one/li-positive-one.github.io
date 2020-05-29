@@ -1,7 +1,7 @@
 ---
 title: "Python3实现Pagerank算法"
 categories:
-  - 编程实战
+  - 编程实践
 tags:
   - Python
   - NLP

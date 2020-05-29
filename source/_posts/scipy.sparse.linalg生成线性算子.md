@@ -1,7 +1,7 @@
 ---
 title: "scipy.sparse.linalg 生成线性算子"
 categories:
-  - 编程实战
+  - 编程实践
 tags:
   - Scipy
   - Python

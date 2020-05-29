@@ -1,7 +1,7 @@
 ---
 title: "Julia系列(2):用Julia实现迎风格式求解PDE"
 categories:
-  - 编程实战
+  - 编程实践
 tags:
   - Julia
 date: 2018-12-16

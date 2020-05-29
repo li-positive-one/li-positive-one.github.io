@@ -1,7 +1,7 @@
 ---
 title: "Tensorflow中自定义op的两个例子"
 categories:
-  - 编程实战
+  - 编程实践
 tags:
   - Tensorflow
   - Python

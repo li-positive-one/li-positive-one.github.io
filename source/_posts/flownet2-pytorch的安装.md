@@ -1,7 +1,7 @@
 ---
 title: "nvidia/flownet2-pytorch的安装"
 categories:
-  - 编程实战
+  - 编程实践
 tags:
   - Pytorch
 date: 2018-12-23

@@ -1,7 +1,7 @@
 ---
 title: "Github Pages 的LaTeX公式支持"
 categories:
-  - 生活小窍门
+  - 杂七杂八
 tags:
   - Latex
   - Markdown

@@ -1,7 +1,7 @@
 ---
 title: "MATLAB不同卷积函数的测试"
 categories:
-  - 编程实战
+  - 编程实践
 tags:
   - Matlab
 date: 2019-01-29

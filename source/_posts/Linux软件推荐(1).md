@@ -1,7 +1,7 @@
 ---
 title: "Linux软件推荐(1)"
 categories:
-  - 生活小窍门
+  - 杂七杂八
 tags:
   - Latex
 date: 2017-10-10

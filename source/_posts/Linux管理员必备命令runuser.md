@@ -1,7 +1,7 @@
 ---
 title: "Linux管理员必备命令 runuser"
 categories:
-  - 生活小窍门
+  - 杂七杂八
 tags:
   - Linux
 date: 2017-05-15
