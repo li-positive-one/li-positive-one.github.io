@@ -7,6 +7,7 @@ tags:
   - CFD
   - Deep learning
 date: 2020-05-29
+mathjax: true
 ---
 
 [arvix](https://arxiv.org/abs/2005.08357)
