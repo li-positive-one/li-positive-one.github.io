@@ -32,7 +32,7 @@ $$
 
 ### 网络结构
 
-![image-20200529164310402](../images/2020-05-29DiscretizationNet/image-20200529164310402.png)
+<img src="../images/2020-05-29DiscretizationNet/image-20200529164310402.png" alt="image-20200529164310402" style="zoom:80%;" />
 
 有一个Encode-Decoder网络，接受物理量($u,v,w,p$)的输入（solution space大小），输出同样尺度的物理量，希望输出的物理量比输入的物理量更接近方程的真解。其中encoder给出的latent space中的物理量要和 边界条件和geometry coder输出的code一起提供给decoder。相当于一个conditional autoencoder。
 
