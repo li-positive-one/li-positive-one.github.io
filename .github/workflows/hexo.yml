@@ -33,7 +33,7 @@ jobs:
         CI: true
     - name: sed images
       run: |
-        sed -i 's#<img src="../images/.*?/>#<img src="/images/.*?/>#g' ./source/_posts/*.md
+        sed -i 's#<img src="../images/(.*?)/>#<img src="/images/\1/>#g' ./source/_posts/*.md
     - name: building
       run: |
         hexo g
