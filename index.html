@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://li-positive-one.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="一条咸鱼">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog of Li">
+<meta property="og:url" content="https://li-positive-one.github.io/index.html">
+<meta property="og:site_name" content="Blog of Li">
+<meta property="og:description" content="一条咸鱼">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Zhengyi Li">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://li-positive-one.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>Blog of Li</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog of Li</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">个人Blog 一年更新约一次</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2021/02/07/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-NS%20by%20google/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/07/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-NS%20by%20google/" class="post-title-link" itemprop="url">每日文章-Machine learning accelerated computational fluid dynamics</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-02-08 00:00:00 / 修改时间：22:49:57" itemprop="dateCreated datePublished" datetime="2021-02-08T00:00:00+08:00">2021-02-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>https://arxiv.org/pdf/2102.01010.pdf</p>
+<p>这篇论文使用端到端的训练方法，实现了对于DNS和LES，能得到和baseline的8-10倍精细的网格上相同的精度，和40-80x的加速。方法具有长时稳定性，而且可以应用到训练集之外的外力项和Reynold数。</p>
+<h2 id="method">Method</h2>
+<figure>
+<img src="../images/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-NS%20by%20google/image-20210208221509492.png" alt="" /><figcaption>image-20210208221509492</figcaption>
+</figure>
+<p>这篇论文首先使用Jax实现了一个可微分的NS求解器（基于有限体积方法，时空一阶的显隐式方法），然后在其中添加了两个可学习的部分:</p>
+<ol type="1">
+<li>是有限体积方法在重建界面时，一般传统的有constant或者linear到多项式插值，或者WENO等重建方法，这里使用了神经网络来重建边界面的值。其实就是Learning data driven discretizations 中的方法。上图就是这个部分的图解。</li>
+<li>再用神经网络在每一个时间步后，对解增加一个修正项。</li>
+</ol>
+<p>在训练部分，使用了比较寻常的Loss function。在各个时间步累计MSE-Loss。 <span class="math display">\[
+L(x,y)=\sum_{t_i}^{t_T}MSE(u(t_i),\tilde u(t_i))
+\]</span> 训练时将模型展开了32层，这样可以有效提高长时间的稳定性。</p>
+<p>训练数据是在高精度的DNS上计算，然后下采样得到的。训练时使用32条不同初值得到的轨迹（每条4800个时间步），然后在更长的轨迹（几万个时间步）上进行测试。有时为了节省显存，使用了checkpoint技术。</p>
+<p>网络结构使用了全卷积神经网络。即下图中的Basic ConvNet。</p>
+<p>对于Learned Interpolation, <span class="math inline">\(N_{out}=120\)</span>。8个量，每个量15个系数。</p>
+<p>对于Learned Correction, <span class="math inline">\(N_{out}=2\)</span>。因为是求解的2D方程，对应速度的两个分量。</p>
+<figure>
+<img src="../images/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-NS%20by%20google/image-20210208224334341.png" alt="" /><figcaption>image-20210208224334341</figcaption>
+</figure>
+<p>数值结果参见：https://mp.weixin.qq.com/s/QmlYIIcG7pjzLfLmFdDnDQ</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2020/05/28/2020-05-29-FixHexo%E4%B8%AD%E6%8F%92%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/28/2020-05-29-FixHexo%E4%B8%AD%E6%8F%92%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Fix Hexo的博客中插入图片的问题，与Typora结合</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-29T00:00:00+08:00">2020-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">杂七杂八</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="使用typora编辑markdown文件并插入图片">使用Typora编辑Markdown文件并插入图片</h2>
+<p>Typora对于图片插入的设置是十分方便的，可以使用剪贴板Ctrl+V直接把图片粘贴到Markdown文件中，Typora会根据设置自动将图片保存或复制到相应的文件夹中。（如果能支持对于不同的文件夹配置不同的路径就更好了，现在的设置是全局设置，有时候不太方便，不同项目有不同的文件组织方式，需要自己切换设置。）</p>
+<p><img src="/images/2020-05-29-FixHexo中插图片的问题/image-20200529100600340.png" alt="image-20200529100600340" style="zoom:100%;" /></p>
+<p>这样插入的文件是长成下面的模样：</p>
+<p><img src="/images/2020-05-29-FixHexo中插图片的问题/image-20200529100926703.png" alt="image-20200529100926703" style="zoom:100%;" /></p>
+<p>很可惜，这样插入的图片在Hexo博客中不能完整工作，在首页的文章中能正常显示，但是一旦点进文章中，就无法正常显示了。</p>
+<h2 id="hexo支持的图片插入格式">Hexo支持的图片插入格式</h2>
+<p>Hexo的<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">官方文档</a>中提到，</p>
+<blockquote>
+<p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>但是如果我们使用标签来插入图片，那么图片虽然能在Hexo中显示，但是无法在Typora等markdown编辑器中显示，不便于我们可视化编辑，也不方便我们使用Markdown自动保存图片的功能。</p>
+<p>另一种可以正常显示图片的方式是使用html标签，例如</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/images/2020-05-29 Fix Hexo中插图片的问题/image-20200529100926703.png"</span> <span class="attr">alt</span>=<span class="string">"image-20200529100926703"</span> <span class="attr">style</span>=<span class="string">"zoom:100%;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种方式插入的图片是可以在首页和文章页都正确显示的。</p>
+<p>如果我们在Typora中，对某个图片按右键，选择缩放图片，Typora就会自动的把图片从markdown语法转成和html标签语法，依然使用相对路径，例如</p>
+<p><img src="/images/2020-05-29-FixHexo中插图片的问题/image-20200529104216661.png" alt="image-20200529104216661" style="zoom:100%;" /></p>
+<p>可以看到，只要我们稍微更改一下路径，去掉前边的两个点，就可以在Hexo博客中正常显示；但是更改路径之后，又不能在markdown编辑器中正常可视化了。</p>
+<h2 id="在github-action中使用sed自动修正">在Github Action中使用Sed自动修正</h2>
+<p>所以，让本地的版本和部署到Blog的版本不一致即可。</p>
+<p>这个Blog已经使用了。我们在Action中的脚本中增加下边的命令，加在Build Hexo之前就行</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">sed</span> <span class="string">images</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">sed</span>  <span class="string">-i</span> <span class="string">'s#&lt;img src="../images/#&lt;img src="/images/#g'</span>  <span class="string">./source/_posts/*.md</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">building</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line">    <span class="comment">#...</span></span><br></pre></td></tr></table></figure>
+<p>这样，我们就可以既保证本地能用Typora可视化编辑，又能在Github Pages中正确渲染了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2020/05/28/2020-05-29DiscretizationNet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/28/2020-05-29DiscretizationNet/" class="post-title-link" itemprop="url">DiscretizationNet: A Machine-Learning based solver for Navier-Stokes Equations using Finite Volume Discretization</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-29T00:00:00+08:00">2020-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://arxiv.org/abs/2005.08357" target="_blank" rel="noopener">arvix</a></p>
+<h2 id="摘要">摘要</h2>
+<p>本文作者来自著名有限元分析软件开发商Ansys公司，提出了一种基于机器学习的NS方程求解器。</p>
+<h2 id="method">Method</h2>
+<p>DiscretizationNet可以用来求解 <strong>steady, incompressible Navier-Stokes equations</strong> <span class="math display">\[
+\left\{  
+             \begin{array}{**lr**}  
+             \nabla \cdot \boldsymbol v=0  \\  
+             (\boldsymbol v \cdot \nabla)\boldsymbol v+\nabla p-\frac{1}{Re}\nabla^2 v=0
+             \end{array}  
+\right.
+\]</span> 其中<span class="math inline">\(\boldsymbol v =(u,v,w)\)</span>，<span class="math inline">\(\boldsymbol p\)</span>是scaled pressure。</p>
+<h3 id="网络结构">网络结构</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529164310402.png" alt="image-20200529164310402" style="zoom:80%;" /></p>
+<p>有一个Encode-Decoder网络，接受物理量(<span class="math inline">\(u,v,w,p\)</span>)的输入（solution space大小），输出同样尺度的物理量，希望输出的物理量比输入的物理量更接近方程的真解。其中encoder给出的latent space中的物理量要和 边界条件和geometry coder输出的code一起提供给decoder。相当于一个conditional autoencoder。</p>
+<p>随后使用某种数值方法，例如有限体积法(文章中提到如果需要高阶精度，也可以用Finite Element Method (FEM), Discontinuous Galerkin (DG) ，此处用FVM是为了方便GPU并行加速)计算decoder输出的物理量在方程中的残差。</p>
+<h3 id="training-mechanics">Training Mechanics</h3>
+<p>传统的生成器网络可能会输入随机变量和condition vector,输出解，这样可能不太好训练，因为输出数据是一个随机变量的函数。</p>
+<p>所以作者使用迭代的方法，每次decoder-encoder输入的是上次的输出。</p>
+<p>训练的目的是通过极小化PDE残差生成方程的解，同时学习解的latent space。</p>
+<p>如图，每次用Loss的梯度对encoder和decoder进行梯度下降即可。</p>
+<p>我们可以注意到，每次训练网络时是data free的，也就是我们不需要PDE的真解，只需要每次计算PDE的残差即可。</p>
+<h3 id="geometry-and-boundary-encoder">Geometry and Boundary encoder</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529230349065.png" alt="image-20200529230349065" style="zoom: 50%;" /></p>
+<p>对于几何形状和边界条件的encoder也很简单，就是一个autoencoder，在训练主网络（PDE求解器）之前pre train一下。</p>
+<p>此外，Raynold数或者Prandtl数也可以视作边界条件，和边界条件的code一起供给decoder。</p>
+<h3 id="loss">Loss</h3>
+<p><span class="math display">\[
+\lambda(W,b)=||\lambda_c||_{\Omega}+||\lambda_u||_{\Omega}+||\lambda_v||_{\Omega}+||\lambda_w||_{\Omega}
+\]</span></p>
+<p><span class="math inline">\(||\lambda_c||_{\Omega},||\lambda_u||_{\Omega},||\lambda_v||_{\Omega},||\lambda_w||_{\Omega}\)</span>分别表示continuity，和x,y,z方向动量的残差的L-2 norm。</p>
+<h3 id="inference-for-other-geometry-and-boundary-conditions">Inference for other geometry and boundary conditions</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529231030986.png" alt="image-20200529231030986" style="zoom:60%;" /></p>
+<p>这部分最关键，就是训练好的网络如何拿来求解不同边值条件的NS方程。</p>
+<p>因为我们训练网络时就用了不同的边值条件来训练，所以我们的网络自然而然的具有一定泛化性，可以求解不同边值条件的方程。我们先生成随机的初值，然后喂进网络里，取得输出再次输入，反复迭代，直到输出和输入基本一致时停止。此时的输入/输出值就是方程的解。</p>
+<h2 id="实验结果和结论">实验结果和结论</h2>
+<p>在以下三个案例中测试了 ML-solver 求解 the 3-D steady,incompressible Navier-Stokes equations</p>
+<ol type="i">
+<li><p>lid-driven cavity,</p></li>
+<li><p>lamina row past a cylinder</p></li>
+<li><p>conjugate heat transfer.</p></li>
+</ol>
+<p>结果显示和 ANSYS Fluent R19.3 有很好的一致性。</p>
+<p>训练中使用不到30000步即可收敛，每步用时不到1s（在NVIDIA Tesla V100 SXM2 GPU.）。</p>
+<p>实验结果中既展示了在训练集中的边界条件的解，在网络训练完成后，收敛到了接近真解的状态；也展示了不在训练集中的边界条件，在使用训练好的网络进行推断时，也能推断出好的解。但是测试的数据基本是训练数据的一种内插，即使用<span class="math inline">\(\{0.2,0.4,0.6,0.8\}\)</span>的参数训练，测试0.5，和使用<span class="math inline">\(\{8,20\}\)</span>训练，测试13。所以网络的泛化性可能有一定限制，不是对于所有的边界条件都用一个网络都能解决。但是对于相近的边界条件训练一个网络就可能足够了。</p>
+<p>作者提出可以使用LSTM扩展ML-solver使得其能求解unsteady的问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2020/05/27/2020-05-28-PASS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/27/2020-05-28-PASS/" class="post-title-link" itemprop="url">Progressive Adversarial Semantic Segmentation</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-28 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-28T00:00:00+08:00">2020-05-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://arxiv.org/abs/2005.04311" target="_blank" rel="noopener">arvix</a></p>
+<h2 id="总体思路">总体思路</h2>
+<p>通过Transformation产生出更多的数据，是一般的数据增广方式。但是这篇文章中，对于增广出来的数据，并不采用对应的label进行监督学习，而是视为unlabel的数据，这样增加了网络的泛化性，在不同的数据集上也能预测的很好。</p>
+<h2 id="网络结构loss和算法">网络结构、Loss和算法</h2>
+<p>下边我们直接看算法，算法如图，非常简单。</p>
+<p>整体过程中有三个网络，Discriminators D, segmentation mask generator S和shape encoder E。</p>
+<p>S负责输入图像，输出预测的Mask。</p>
+<p>D输入图像和分割Mask（有GroundTruth，也有S预测的），判断MASK是GT还是网络预测的。</p>
+<p>E输入Mask（有GroundTruth，也有S预测的），输出latent code.</p>
+<h3 id="loss">Loss</h3>
+<h4 id="segmentor-loss">1. Segmentor Loss:</h4>
+<p>两部分，</p>
+<ol type="1">
+<li>分割的loss，包含两部分：分割结果的KL divergence，以及Feature Loss</li>
+<li>来自Discriminator的Loss，和其他的GAN Loss一样</li>
+</ol>
+<h4 id="discriminator-loss">2. Discriminator Loss</h4>
+<p>标准形式的GAN loss，判断Mask是GT还是网络预测的。多尺度，用了输入不同尺度数据的4个网络。</p>
+<h4 id="encoder-loss">3. Encoder Loss</h4>
+<p>Loss就是输出的feature之间的MSE Loss.</p>
+<p><img src="/images/2020-05-28-PASS/image-20200529000701901.png" style="zoom:100%;" /></p>
+<p>网络结构如下图，可以看到其中的分割器S是U-Net结构的。然后还用了多尺度的Loss等Trick.</p>
+<p><img src="/images/2020-05-28-PASS/image-20200528235726324.png" style="zoom:100%;" /></p>
+<h2 id="实验结果">实验结果</h2>
+<p>作者主要展示的是在某个数据集上训练，在其他数据集上测试，PASS方法相对而言，优势还是很明显的。</p>
+<p><img src="/images/2020-05-28-PASS/image-20200529004442052.png" style="zoom:100%;" /></p>
+<h2 id="总结">总结</h2>
+<p>用的技术不复杂，GAN + Progressive(Multiscale Loss) + Data Agumentation.</p>
+<p>有一个点没读懂，就是shape encoder E的功能是什么，文章中说它能使得模型更加shape-aware，但是从算法和网络结构中看，E的存在对其他模块没有任何影响？</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2019/12/21/2019-12-22-Derain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/21/2019-12-22-Derain/" class="post-title-link" itemprop="url">关于如何恢复有雨滴的玻璃后拍的照片的两篇Paper</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-22T00:00:00+08:00">2019-12-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="deep-learning-for-seeing-through-window-with-raindrops">Deep learning for seeing through window with Raindrops</h2>
+<p>Quan, Yuhui, Shijie Deng, Yixin Chen, and Hui Ji. "Deep Learning for Seeing Through Window With Raindrops." In <em>Proceedings of the IEEE International Conference on Computer Vision</em>, pp. 2463-2471. 2019. <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Quan_Deep_Learning_for_Seeing_Through_Window_With_Raindrops_ICCV_2019_paper.html" target="_blank" rel="noopener">[PDF]</a></p>
+<p>这篇文章考虑 Derain 问题中的一个子问题，就是透过有雨滴的窗户拍照得到的图片的恢复。就是处理如下的这种图片。文章的亮点主要在于使用了结合shape-prior和channel的Attention机制，以及非常好的数值结果。</p>
+<p><img src="/images/Derain.assets/1.png" style="zoom:60%;" /></p>
+<p>这篇文章的Motivation是通过shape-driven attention和channel re-calibration来帮助CNN更好的恢复原图。</p>
+<h3 id="shape-driven-attention">shape-driven attention</h3>
+<p>假设雨滴是椭圆形的。我们可以用图像某部分的edge map，即图像的patch的edge map和椭圆的等高线做内积，内积越大，则这个patch越接近一个椭圆（给定的长短轴参数a,b）。具体方法如下</p>
+<p><span class="math inline">\(f(x,y)=\frac{x^2}{a^2}+\frac{y^2}{b^2}\)</span>是椭圆的等高线，则<span class="math inline">\(g(x,y)=[-\frac{\partial f}{\partial y},\frac{\partial f}{\partial x}]=[\frac{y}{b^2},\frac{x}{a^2}]\)</span>是椭圆的edge方向。而图像用函数<span class="math inline">\(P(x)\)</span>表示，图像的edge方向是<span class="math inline">\(e(x,y)=[-\frac{\partial P}{\partial y},\frac{\partial P}{\partial x}]\)</span></p>
+<p>则<span class="math inline">\(\beta(x_0,y_0)=e(x_0,y_0)\cdot g(x_0,y_0)\)</span>就表示图像在<span class="math inline">\((x_0,y_0)\)</span>点的边缘和一个中心在<span class="math inline">\((0,0)\)</span>，长短焦为 <span class="math inline">\(a,b\)</span> 的椭圆走势一致。 <span class="math display">\[
+\tau(P)=\sum_{(x_0,y_0)\in D(P)} \beta(x_0,y_0)/\# D(P)
+\]</span> 就表示这个 patch 块中的图像是否接近一个以这个Patch中心为中心（且长短焦为$a,b $）的椭圆。</p>
+<p>如果我们已经知道了图像的edge，那么<span class="math inline">\(\tau(P)\)</span>的计算是可以用卷积来实现的。 <span class="math display">\[
+\tau(P_n)=\tau_1(P_n)+\tau_2(P_n)
+\]</span></p>
+<p><span class="math display">\[
+\tau_1(P)=\sum_{(x_i,y_i)\in D(P)} \frac{x_i}{a^2} \frac{\partial P_n}{\partial x}/\# D(P)
+\]</span></p>
+<p><span class="math display">\[
+\tau_2(P)=\sum_{(x_i,y_i)\in D(P)} \frac{y_i}{b^2} \frac{\partial P_n}{\partial y}/\# D(P)
+\]</span></p>
+<p><img src="/images/Derain.assets/2.png" style="zoom: 50%;" /></p>
+<h3 id="network-architecture">Network Architecture</h3>
+<p><img src="/images/Derain.assets/3.png" style="zoom:100%;" /></p>
+<p>网络结构总体上是一个encode-decoder模型，图片和edge-maps先concat在一起，然后经过卷积以及一系列ResBlock和下采样上采样过程，以及为了加速训练的skip-connection。结构和其他的网络差别点主要在于其Residual Block。</p>
+<p>Residual Block中结构大概为<span class="math inline">\(F&#39;=F+F \cdot(PA(E)\cdot CA(F))\)</span>。</p>
+<p>其中PA是根据Edge-map计算shape-driven attention的过程，也就是前一节所说，图像和一些卷积核相乘来得到shape-attention，这些卷积核每个卷积核只有两个参数<span class="math inline">\(a,b\)</span>。实际是取不同的Patch大小，分别是<span class="math inline">\(15 \times 15\)</span>,<span class="math inline">\(20\times 20\)</span>，..., <span class="math inline">\(40 \times 40\)</span>，并在每个尺度，给8组椭圆参数（即8组卷积核），这些参数是可学习的。</p>
+<p>CA(F)则是用来得到channel attention,结构是Pooling+FC。</p>
+<p>PA输出一个<span class="math inline">\(1 \times H \times W\)</span>的tensor，CA输出一个<span class="math inline">\(C\times 1\times 1\)</span>的tensor，两者做张量积得到<span class="math inline">\(C\times H\times W\)</span>的Attention并用于Residual Block中。</p>
+<p>网络的Loss则是L1-loss <span class="math display">\[
+L=\frac{1}{N}\sum_{i=1}^N||\hat X_i=X_i||_1
+\]</span></p>
+<h3 id="result">Result</h3>
+<p>数值实验是在Qian et al.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>发布的数据集上进行的。对比试验是Eigen et al<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>的方法，Qian et al.的AttentGAN<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>，以及Pix2Pix<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 进行了对比试验。</p>
+<p><img src="/images/Derain.assets/6.png" style="zoom:100%;" /></p>
+<h3 id="ablation-study">Ablation study</h3>
+<p>作者做了分别拿走PA，CA模块和全拿走的对比实验。（如果拿走某个模块， 就把这个模块的输出恒定为0.5）。对比试验显示，JPCA模块对结果有较大提升，其中CA模块的贡献比PA模块更大。</p>
+<h2 id="learning-from-synthetic-photorealistic-raindrop-for-single-image-raindrop-removal">Learning From Synthetic Photorealistic Raindrop for Single Image Raindrop Removal</h2>
+<p>Hao, Zhixiang, Shaodi You, Yu Li, Kunming Li, and Feng Lu. "Learning From Synthetic Photorealistic Raindrop for Single Image Raindrop Removal." In <em>Proceedings of the IEEE International Conference on Computer Vision Workshops</em>, pp. 0-0. 2019.</p>
+<p><a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/PBDL/Hao_Learning_From_Synthetic_Photorealistic_Raindrop_for_Single_Image_Raindrop_Removal_ICCVW_2019_paper.html" target="_blank" rel="noopener">[PDF]</a></p>
+<p>这篇文章恰好和上一篇一样，都是处理derain中的同一类问题，透过有雨滴的窗户拍照。这篇文章主要贡献在于 提出了第一个合成粘附雨滴训练的照片现实数据集。渲染是基于物理的，考虑了水的形状和光学性质。在此基础上， 提出了能很好地恢复图像结构的去除网络。</p>
+<h3 id="refaction-model">Refaction Model</h3>
+<p><img src="/images/Derain.assets/5.png" style="zoom: 80%;" /><img src="../images/Derain.assets/7.png" /></p>
+<p>这是本文的物理模型，其中绿线代表直接射进镜头的光线，而黄线表示经过两次折射后射入镜头的光线。</p>
+<h3 id="raindrop-imagery-model-and-photorealistic-dataset">Raindrop Imagery Model and Photorealistic Dataset</h3>
+<p>作者根据上一节的物理模型，使用几何渲染和光线追踪技术，先随机生成玻璃角度、水滴的几何形状（水滴和玻璃的夹角以及水滴的直径）和位置，然后计算出我们在玻璃后应该观察出的图像，最后，考虑到摄像机的焦面在图像上，而玻璃上的水滴不在焦平面上，所以对水滴再进行了一个disk blur。 就得到了模拟数据集，效果如下，第一到三行分别为真实图像，模拟的玻璃后图像，和模拟图像的水滴mask。</p>
+<p><img src="/images/Derain.assets/5.png" style="zoom: 100%;" /></p>
+<p><img src="/images/Derain.assets/7.png" style="zoom: 80%;" /><img src="../images/Derain.assets/8.png" alt="网络结构" /></p>
+<h3 id="network-structure">Network Structure</h3>
+<p><img src="/images/Derain.assets/7.png" style="zoom: 100%;" /></p>
+<p><img src="/images/Derain.assets/8.png" alt="网络结构" style="zoom:100%;" /></p>
+<p>网络结构是一个two-stage的网络，分别有一个网络探测水滴位置，输出水滴mask。这个网络的训练需要雨滴mask的groundtruth。还有一个网络直接输入图像和edge image，输出重建图像，这个网络的训练需要真实图像。最后一个网络的输入是前两个网络的输出，输出真实图像，也是以真实图像作为Label进行训练。</p>
+<p>作者发现如果对raindrop 探测网络的输出进行dilate再输入到第三个网络中效果会更好，否则可能会产生artifact.</p>
+<h3 id="result-1">Result</h3>
+<p><img src="/images/Derain.assets/9.png" style="zoom: 80%;" /><img src="../images/Derain.assets/10.png" /></p>
+<p>模拟数据集上网络表现很好，其中3RN only表示只用Raindrop region reconstruction network。</p>
+<p><img src="/images/Derain.assets/10.png" style="zoom: 100%;" /></p>
+<p>在真实数据集（和上边一篇文章一样，Qian的数据集）上，该算法的优势没有那么明显，因为该数据集没有雨滴的mask数据集，只能使用3RN only的网络，或者用雨滴图-原图得到rough mask进行训练。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Rui Qian, Robby T. Tan, Wenhan Yang, Jiajun Su, and Jiaying Liu. Attentive generative adversarial network for raindrop removal from a single image. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 2482–2491, 2018.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>David Eigen, Dilip Krishnan, and Rob Fergus. Restoring an image taken through a window covered with dirt or rain. In Proc. Int. Conf. Comput. Vision, pages 633–640, 2013<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Rui Qian, Robby T. Tan, Wenhan Yang, Jiajun Su, and Jiaying Liu. Attentive generative adversarial network for raindrop removal from a single image. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 2482–2491, 2018.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei A.Efros. Image-to-image ranslation with conditional adversarial networks. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 5967–5976. IEEE, 2017<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2019/12/18/2019-12-19-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(3)%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA-%E7%BB%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/18/2019-12-19-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(3)%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA-%E7%BB%AD/" class="post-title-link" itemprop="url">个人Blog的搭建方案(3) 自动构建-续</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-19 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-19T00:00:00+08:00">2019-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">杂七杂八</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>继续上次体验了Travis CI和Netifly的自动构建，感觉这个非常有意思，所以又尝试了两个自动构建工具，Azure Pipeline和Github Actions.</p>
+<h2 id="azure-pipeline">Azure Pipeline</h2>
+<p><a href="https://dev.azure.com/lizhengyipku/lizhengyipku/_build/latest?definitionId=2&amp;branchName=docs" target="_blank" rel="noopener"><img src="https://dev.azure.com/lizhengyipku/lizhengyipku/_apis/build/status/li-positive-one.li-positive-one.github.io?branchName=docs" alt="Build Status" /></a></p>
+<p>Azure是微软旗下的开发平台/工具，其中的自动构建就是Azure Pipeline. Github支持私有仓库的一个项目，以及1800分钟构建时间，和公开仓库的10个项目和1800分钟构建时间。对于私有仓库的构建，还是非常适合的。虽然也是yaml文件配置，但是和Travis CI的配置文件格式并不通用，需要简单的改一改才能用。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># azure-pipelines.yml</span></span><br><span class="line"><span class="attr">trigger:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">docs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">pool:</span></span><br><span class="line">  <span class="attr">vmImage:</span> <span class="string">'ubuntu-latest'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">task:</span> <span class="string">NodeTool@0</span></span><br><span class="line">  <span class="attr">inputs:</span></span><br><span class="line">    <span class="attr">versionSpec:</span> <span class="string">'10.x'</span></span><br><span class="line">  <span class="attr">displayName:</span> <span class="string">'Install Node.js'</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">npm</span> <span class="string">install</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br><span class="line">    <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">  <span class="attr">displayName:</span> <span class="string">'npm install and build'</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">wget</span> <span class="string">https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb</span></span><br><span class="line">    <span class="string">sudo</span> <span class="string">dpkg</span> <span class="string">-i</span> <span class="string">./pandoc-2.9-1-amd64.deb</span></span><br><span class="line">  <span class="attr">displayName:</span> <span class="string">'Install pandoc'</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">git</span> <span class="string">submodule</span> <span class="string">update</span> <span class="string">--init</span> <span class="string">--recursive</span></span><br><span class="line">    <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line">  <span class="attr">displayName:</span> <span class="string">'Building'</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">cd</span> <span class="string">./public</span></span><br><span class="line">    <span class="string">git</span> <span class="string">init</span></span><br><span class="line">    <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">"lizhengyi"</span></span><br><span class="line">    <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">"lizhengyi@pku.edu.cn"</span></span><br><span class="line">    <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">    <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">"Update blog content by Azure Pipeline"</span></span><br><span class="line">    <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">--quiet</span> <span class="string">"https://$(GH_TOKEN)@github.com/li-positive-one/blog.git"</span> <span class="string">master:master</span></span><br><span class="line">  <span class="attr">displayName:</span> <span class="string">'Deploying'</span></span><br></pre></td></tr></table></figure>
+<h2 id="github-action">Github Action</h2>
+<p><a href="https://github.com/li-positive-one/li-positive-one.github.io/actions" target="_blank" rel="noopener"><img src="https://github.com/li-positive-one/li-positive-one.github.io/workflows/Hexo/badge.svg" alt="Actions Status" /></a></p>
+<p>搞了这么多构建工具，才发现GIthub已经推出了自己的构建工具，之前在测试阶段，2019年11月正式开放。我何必舍近求远，用其他的工具呢，一站式完成网站岂不是更好。但是Github Action的配置也是最耗费我时间的。</p>
+<p>在配置中，遇到的问题就是使用之前的push方法，也就是Personal access tokens不起作用。调试了好久，也不知道是哪里的问题，所以干脆换了套方法。生成了一套ssh-key，把公钥写入repo的Deploy keys并启用write权限，把私钥写入Secrets，新建一个条目，然后就可以在构建的配置文件里把这个变量写入到.ssh里，从而实现对repo的写入。这种方式虽然有点复杂，但是这是更加安全的方式，因为Deploy keys只涉及到这个仓库的权限，而Personal access tokens并不能细化到各个仓库的权限，一旦泄露，所有的仓库都有危险。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Hexo</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">docs</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">[12.x]</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">submodules</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">submodule</span> <span class="string">update</span> <span class="string">--init</span> <span class="string">--recursive</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node-version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node-version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">install</span> <span class="string">pandoc</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">wget</span> <span class="string">https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb</span></span><br><span class="line">        <span class="string">sudo</span> <span class="string">dpkg</span> <span class="string">-i</span> <span class="string">./pandoc-2.9-1-amd64.deb</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">npm</span> <span class="string">install,</span> <span class="string">build,</span> <span class="string">and</span> <span class="string">test</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">npm</span> <span class="string">install</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br><span class="line">        <span class="string">npm</span> <span class="string">install</span> </span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">CI:</span> <span class="literal">true</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">building</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">set</span> <span class="string">ssh</span></span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">ACTION_DEPLOY_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GH_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="comment"># set up private key for deploy</span></span><br><span class="line">        <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">        <span class="string">echo</span> <span class="string">"$ACTION_DEPLOY_KEY"</span> <span class="string">|</span> <span class="string">tr</span> <span class="string">-d</span> <span class="string">'\r'</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">        <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">        <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">deploying</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">cd</span> <span class="string">./public</span></span><br><span class="line">        <span class="string">git</span> <span class="string">init</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">"lizhengyi"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">"lizhengyi@pku.edu.cn"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">"Update blog content by Github Actions"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">--quiet</span> <span class="string">git@github.com:li-positive-one/li-positive-one.github.io.git</span> <span class="string">master:master</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2019/12/17/2019-12-18-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(2)%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/17/2019-12-18-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(2)%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/" class="post-title-link" itemprop="url">个人Blog的搭建方案(2) 自动构建</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-18 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-18T00:00:00+08:00">2019-12-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">杂七杂八</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>个人博客用Hexo+Next已经很方便了，但是仍然存在不足，就是我有好几个常用的工作PC，所以需要在每个PC上安装一套node.js/pandoc等依赖，实在是有些麻烦。所以我希望像github pages+jekyll一样，只用上传markdown就能自动构建出网站。这样我的repo中也可以很干净，只需要写markdown文本就行了，本地不需要安装任何依赖。</p>
+<h2 id="travis-ci">Travis CI</h2>
+<p><a href="https://travis-ci.com/li-positive-one/li-positive-one.github.io" target="_blank" rel="noopener"><img src="https://travis-ci.com/li-positive-one/li-positive-one.github.io.svg?branch=docs" alt="Build Status" /></a></p>
+<p>首先在Github的设置<a href="https://github.com/settings/tokens" target="_blank" rel="noopener">https://github.com/settings/tokens</a>里配置一个token，用来让Travis CI能够push文件到Github Repos里。</p>
+<p>然后在Travis CI里和Github账户绑定，在Github Pages项目上建立一个任务。</p>
+<p>配置文件如下，其中要在Travis CI这个项目的环境变量里添加<code>GH_TOKEN</code>和<code>GH_REF</code>，其中前者是第一步获取的token，后者是你的Github仓库地址，例如<code>github.com/li-positive-one/li-positive-one.github.io</code>。</p>
+<p>把这个配置文件命名<code>.travis.yml</code>，放到github仓库的根目录下，Travis就会自动识别并根据配置文件进行构建。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .travis.yml</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">directories:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">node_modules</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想在Blog中使用mathjax，就要用hexo-renderer-pandoc渲染，其中依赖pandoc。但是使用apt-get 安装pandoc，安装的是非常古老的版本，可能会不兼容，所以不如直接下载安装pandoc的可用的较新版本使用。</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">wget</span> <span class="string">https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">sudo</span> <span class="string">dpkg</span> <span class="string">-i</span> <span class="string">./pandoc-2.9-1-amd64.deb</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">submodule</span> <span class="string">update</span> <span class="string">--init</span> <span class="string">--recursive</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">./public</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">init</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">"lizhengyi"</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">"lizhengyi@pku.edu.cn"</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">checkout</span> <span class="string">-b</span> <span class="string">docs</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">"Update blog content by Travis CI"</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">--quiet</span> <span class="string">"https://$&#123;GH_TOKEN&#125;@github.com/li-positive-one/blog.git"</span> <span class="string">docs:docs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docs</span></span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<p>【1】<a href="https://xirikm.net/2019/826-2" target="_blank" rel="noopener">使用 Travis CI 实现 Hexo 博客自动部署</a></p>
+<h2 id="netlify">Netlify</h2>
+<p><a href="https://app.netlify.com/sites/lizhengyi/deploys" target="_blank" rel="noopener"><img src="https://api.netlify.com/api/v1/badges/67c53302-27a4-4c57-843e-6d055e0f5b5c/deploy-status" alt="Netlify Status" /></a></p>
+<p>Netlify似乎专业做静态网站构建和自动Deploy，所以在这方面体验确实非常好，好到什么地步了呢？</p>
+<p>只需要github仓库授权，告诉他我的构建命令是<code>hexo g</code>，deploy的文件在<code>public</code>目录下，其余的事情它自己全部解决了！不需要写任何配置文件，网站就一次pass了，包括pandoc之类的依赖似乎他都自己解决掉了。总之，生成网页非常方便，而且构建速度也比Travis CI快不少。因为Travis CI每次构建都需要安装依赖，而Netlify的依赖可能都保存下来了，我看构建的log中每次只需要<code>hexo g</code>就结束了。</p>
+<p>但是Netlify都是构建在它自己的网站上的，所以有一个问题就是Netlify在中国大陆地区的访问似乎不是很稳定。所以我还是没有把鸡蛋都放在这一个篮子里。Github和Travis CI一起上岂不是更好，两开花~ 两开花~</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2019/12/16/2019-12-17-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(1)%20%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E7%9A%84%E9%80%89%E6%8B%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/16/2019-12-17-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(1)%20%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E7%9A%84%E9%80%89%E6%8B%A9/" class="post-title-link" itemprop="url">个人Blog的搭建方案(1) 博客方案的选择</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-17 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-17T00:00:00+08:00">2019-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">杂七杂八</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="方案选择">方案选择</h2>
+<p>我首先只在Markdown+静态网站的范围内考虑，原因有以下几点：</p>
+<ul>
+<li><p>使用现有的Blog网站服务相当于把数据都放在了别人的网站上，如果想要迁移就会非常麻烦，远不如数据在自己手上放心。</p></li>
+<li><p>如果自己建动态网站，就要找服务器，但是常常维护着一个服务器也是很麻烦的，特别是如果想用中国大陆的服务器就需要备案。</p></li>
+<li><p>Markdown写起来简单，备份、迁移比较容易，数据都在文件里，不用牵扯到数据库。</p></li>
+</ul>
+<p>然后最常见的Markdown静态网站生成器有Jekyll, Hexo, Hugo.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>语言</th>
+<th>生成速度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Jekyll</td>
+<td>Ruby</td>
+<td>慢</td>
+</tr>
+<tr class="even">
+<td>Hexo</td>
+<td>Node.js</td>
+<td>快</td>
+</tr>
+<tr class="odd">
+<td>Hugo</td>
+<td>Go</td>
+<td>更快</td>
+</tr>
+</tbody>
+</table>
+<p>我选择这几个方案并没有对速度有特别的要求，因为我Blog文章不多，更新频率也不大。主要还是看哪个框架好部署（要敲的命令短），另外对Latex的支持要好。其中我找到最简单的组合就是Hexo+Next主题。其中Next主题不只是简单的美化，而是嵌入了一些常用的扩展，例如Mathjax，搜索等，比起自己在模板页面里加script实在是方便很多。</p>
+<p>考虑过使用Hugo代替Hexo，但是看见还需要重新配置Mathjax，就觉得麻烦，不想重新搞了。反正个人Blog这种东西，又是纯静态网站，又在Github上全开源，所以也没有什么安全问题。而且我对速度也不太敏感，凑活能用就行了。有的老师用jemdoc搭建的主页也不是好好的，jemdoc上次更新都是2012年了。</p>
+<h2 id="搭建过程">搭建过程</h2>
+<ol type="1">
+<li>按照Hexo的教程搭建一个网站</li>
+<li>按照Next的教程下载主题，并在网站config中配置使用该主题</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>在网站配置中启用搜索</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>在主题配置中启用搜索</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># source/_data/next.yml</span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># If auto, trigger search by changing input.</span></span><br><span class="line">  <span class="comment"># If manual, trigger search by pressing enter key or search button.</span></span><br><span class="line">  <span class="attr">trigger:</span> <span class="string">auto</span></span><br><span class="line">  <span class="comment"># Show top n results per article, show all results by setting to -1</span></span><br><span class="line">  <span class="attr">top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment"># Unescape html strings to the readable one.</span></span><br><span class="line">  <span class="attr">unescape:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># Preload the search data when the page loads.</span></span><br><span class="line">  <span class="attr">preload:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ol start="5" type="1">
+<li>在主题配置中启用Mathjax, 并安装相应依赖，修改markdown渲染器，参见<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/MATH.md" target="_blank" rel="noopener">MATH</a></li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># source/_data/next.yml</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># See: https://mhchem.github.io/MathJax-mhchem/</span></span><br><span class="line">    <span class="attr">mhchem:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.</span></span><br><span class="line">  <span class="attr">katex:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span></span><br><span class="line">    <span class="attr">copy_tex:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>如果是windows，可以这么安装依赖。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run in powershell</span></span><br><span class="line">choco install pandoc</span><br><span class="line">npm uninstall hexo<span class="literal">-renderer</span><span class="literal">-marked</span></span><br><span class="line">npm install hexo<span class="literal">-renderer</span><span class="literal">-pandoc</span> <span class="comment"># or hexo-renderer-kramed</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2019/12/12/Noise2Noise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/12/Noise2Noise/" class="post-title-link" itemprop="url">Noise2Noise to Noise2Void to more</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-13 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="noise2noise">Noise2Noise</h1>
+<p>Lehtinen, Jaakko, et al. "Noise2Noise: Learning Image Restoration without Clean Data." <em>International Conference on Machine Learning</em>. 2018.</p>
+<p>传统的模型是优化 <span class="math display">\[
+{\arg\min}_\theta \sum_{i}{L(f_\theta\left(\hat{x_i}\right),y_i)}
+\]</span></p>
+<p>其中<span class="math inline">\(\hat x_i\)</span>是输入的含噪声图像，<span class="math inline">\(y_i\)</span>是清晰图片。我们学习一个从含噪声图片到清晰图片的映射。</p>
+<p>以标量为例子，学习 <span class="math display">\[
+\arg\min \mathbb{E}_y\{L(z,y)\}
+\]</span> 使用L-2 loss <span class="math display">\[L(z,y)=(z-y)^2\]</span>，学习到的最优解就是y的均值 <span class="math display">\[
+z=\mathbb{E}_y\{y\}
+\]</span></p>
+<p>用L2-loss直接学习一个映射从带噪声图片-&gt;高清图片有一个坏处，就是这个映射并不是一对一的。不同的高清图片可能会对应同一个低清图片。直接用L2 loss的结果就是学习到的映射把低清图片映射为高清图片的一个期望，也就是带有模糊。所以有些工作就是把L2 loss改成discriminator loss.</p>
+<p>但是这个缺点同时也会带来好处，也就是我们学习的其实是Label的一个平均值，那么如果我们的Label如果有噪声，但是噪声的均值是0，我们用这种图片作为Label训练得到的网络依然是一个去噪的神经网络。</p>
+<p>而Noise2noise是优化 <span class="math display">\[
+{\arg\min}_\theta\sum_{i} L\left(f_\theta\left(\hat{x_i}\right),\hat{y_i}\right)
+\]</span></p>
+<p>其中 <span class="math inline">\(E\left(\hat{y_i}\middle|\hat{x_i}\right)=y_i\)</span></p>
+<p>而<span class="math inline">\(\hat x_i\)</span>与<span class="math inline">\(\hat y_i\)</span>都是有噪声的图片，且不一定含有同一种噪声。但是如果<span class="math inline">\(\hat y_i\)</span>中蕴含的噪声分布均值为0，那么我们就可以用<span class="math inline">\(\hat y_i\)</span>作为label来训练网络。</p>
+<h1 id="noise2void">Noise2Void</h1>
+<p>Krull, Alexander, Tim-Oliver Buchholz, and Florian Jug. "Noise2void-learning denoising from single noisy images." <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition</em>. 2019.</p>
+<p>传统的监督学习去噪可以理解为网络输入一个Patch，输出patch中心的像素。 <span class="math display">\[
+f(x_{RF(i)};\theta)=\hat s_i
+\]</span></p>
+<p>然后Noise2Noise可以理解为有两个noisy image <span class="math inline">\((x^j,x^{&#39;j})\)</span>,</p>
+<p><span class="math display">\[
+x^j=s^j+n^j ~and ~x^{&#39;j}=s^j+n^{&#39;j}
+\]</span></p>
+<p>与传统的监督学习以<span class="math inline">\(s_i\)</span>作为label不同，N2N以<span class="math inline">\(x^{&#39;j}\)</span>作为label。尽管这个网络学习从一个noisy image变换到另一个noisy image，但是最后训练仍会收敛到正确的解，这是因为我们假设noisy image的期望值就是正确解 <span class="math inline">\(\mathbb{E}[x_i]=s_i\)</span>.</p>
+<p>我们下边有两个假设：</p>
+<ol type="1">
+<li>每个像素 <span class="math inline">\(s_i\)</span> 和周围的像素 <span class="math inline">\(s_j\)</span> 不独立。</li>
+<li>噪声 <span class="math inline">\(n_i\)</span> 只和 <span class="math inline">\(s_i\)</span> 有关，但相互之间独立。</li>
+</ol>
+<p>然后我们就发现，只有一张noisy image我们也可以用这种方法训练网络。我们把每个patch最中间的像素挖掉，用周围的像素预测中心的像素。可以理解为由于假设，中心处的噪声和周围的噪声独立，所以我们可以用N2N的方法来训练。</p>
+<p>在实现中，先打patch，然后过mask，然后训练。</p>
+<h1 id="high-quality-self-supervised-deep-image-denoising">High-quality self-supervised deep image denoising</h1>
+<p>Laine, S., Karras, T., Lehtinen, J., &amp; Aila, T. (2019). High-quality self-supervised deep image denoising. In <em>Advances in Neural Information Processing Systems</em> (pp. 6968-6978).</p>
+<p>这篇文章和Noise2Void比较类似，模型 <span class="math display">\[
+p(y|\Omega_y)=\int p(y|x)p(x|\Omega_y)dx
+\]</span> 左边的是训练数据，中间的是噪声模型，右边的是不知道的。</p>
+<p>如果我们求解结束了，我们可以根据 <span class="math display">\[
+p(x|y,\Omega_y) \propto p(y|x)p(x|\Omega_y)
+\]</span> 来生成干净图像。其中中间是Noise Model，右边是Prior。</p>
+<p>所以这篇文章的算法分成两步：</p>
+<ol type="1">
+<li>训练一个神经网络，<span class="math inline">\(\Omega_y \rightarrow (\mu_x,\Sigma_x)\)</span> 这是高斯分布prior <span class="math inline">\(p(x|\Omega_y)\)</span> 的参数。</li>
+<li>测试时，把<span class="math inline">\(\Omega_y\)</span>输入神经网络得到<span class="math inline">\((\mu_x,\Sigma_x)\)</span>, 然后根据闭式解析解计算<span class="math inline">\(\mathbb{E}[p(x|y,\Omega_y)]\)</span>。</li>
+</ol>
+<p>与N2V对于，我们发现N2V只是学习了<span class="math inline">\(p(x|\Omega_y)\)</span>。而没用用上这个像素点本身的值，也就是y的信息。</p>
+<p>在实际实现时，网络不用N2V中的Mask方式，而是训练了4个网络，每个网络忽略一个方向的数据，从而达到blind-spot的效果。进一步的，可以把这4个网络变成1个网络，把输入图片旋转4次作为不同的输入，然后在最后旋转回来，再通过1*1的卷积融合。</p>
+<p>在实现卷积时，防止receptive field向下扩展的最简单方法就是把卷积后的结果往上平移。平移卷积核高度一半的距离，这样receptive field就会依然保持在上半平面。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2019/05/31/%E8%B6%A3%E5%91%B3%E9%97%AE%E9%A2%98(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/31/%E8%B6%A3%E5%91%B3%E9%97%AE%E9%A2%98(1)/" class="post-title-link" itemprop="url">一个趣味数学问题</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-01T00:00:00+08:00">2019-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">杂七杂八</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>看见汤老师微博上的一个问题，感觉很有趣，查了一下相关资料，总结如下。</p>
+<p>问题是这样的： <img src="/images/fourier/problem.jpg" /></p>
+<p>看起来结果很不可思议，但是知道原理后又令人觉得理所应当。</p>
+<p>首先，这个积分形式就是故意遮去一半，试图让人不往傅里叶变换的方向去想，所以我们就用傅里叶变换来解。直接把积分区域翻倍到实轴上,例如</p>
+<p><span class="math display">\[
+\begin{equation}
+\int_{-\infty}^{\infty} \frac{\sin t}{t} \frac{\sin(t/101)}{t/101} \frac{\sin(t/201)}{t/201}dt=\pi
+\label{eq1}
+\end{equation}
+\]</span></p>
+<p>我们记</p>
+<p><span class="math display">\[
+sinc(t)=\frac{\sin t}{t}
+\]</span></p>
+<p>注意到<span class="math inline">\(sinc(t)\)</span>的傅里叶变换是</p>
+<p><span class="math display">\[
+\begin{equation}
+\mathcal F (sinc(t))=F(x)= \left\{
+\begin{aligned}
+1/2 \quad|x| &lt; 1 \\
+0 \quad|x| &gt; 1
+\end{aligned}
+\right.
+\end{equation}
+\]</span></p>
+<p>我们现在对()做傅里叶变换。傅里叶变换下乘积变卷积:</p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{1}{2\pi}\int_{-\infty}^{\infty} f(t)g(t)e^{-j2 \pi xt}dt=F(x)*G(x)
+\label{eq2}
+\end{equation}
+\]</span></p>
+<p>更一般的</p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{1}{2\pi}\int_{-\infty}^{\infty} f_1(t)f_2(t)...f_n(t)e^{-j2 \pi xt}dt=F_1(x)*F_2(x)*...*F_n(x)
+\label{eq3}
+\end{equation}
+\]</span></p>
+<p>取<span class="math inline">\(x=0\)</span>求得的就是我们想要的。下面一张动图展示了<span class="math inline">\(F=F_1*F_2*...*F_n\)</span>在0处的值。</p>
+<p><img src="/images/fourier/schmidborwein.gif" /></p>
+<p><span class="math inline">\(F_0=\mathcal F (sinc(t))\)</span>是一个高为<span class="math inline">\(1/2\)</span>，半宽为1的矩形波。<span class="math inline">\(F_k=\mathcal F (sinc(t/{a_k}))\)</span>是高为<span class="math inline">\(1/2\)</span>，半宽为<span class="math inline">\(a_k\)</span>的矩形波。</p>
+<p><span class="math inline">\(F_0\)</span>与<span class="math inline">\(F_{k}\)</span>做卷积后，两个函数分别在 保持等于<span class="math inline">\(1/2\)</span>的横线的半宽度就缩小了<span class="math inline">\(a_k\)</span>。再卷积<span class="math inline">\(F_{k+1}\)</span>，半宽度就缩小了<span class="math inline">\(a_{k+1}\)</span>。这段长度的值为<span class="math inline">\(\sum_{k=1}^{n} a_k\)</span>。 注意除了中间这一段横线的值依然保持等于<span class="math inline">\(1/2\)</span>，其余区域的函数值是严格小于<span class="math inline">\(1/2\)</span>的。</p>
+<p>当<span class="math inline">\(\sum_{k=1}^{n} a_k&gt;1\)</span>时，就不存在值为1的线段了，所有函数值都小于<span class="math inline">\(\pi\)</span>了。</p>
+<p>所以这道题的结论到这里就清晰了，当<span class="math inline">\(n&lt;9.8*10^42\)</span>时，<span class="math inline">\(\sum_{k=1}^{n} 1/(100k+1)&lt;1\)</span>；当<span class="math inline">\(n&gt;7.4*10^43\)</span>时，<span class="math inline">\(\sum_{k=1}^{n} 1/(100k+1)&gt;1\)</span>。这样就出现了题目所示的“神奇现象”。</p>
+<hr />
+<p>参考： <a href="https://johncarlosbaez.wordpress.com/2018/09/20/patterns-that-eventually-fail/" target="_blank" rel="noopener">Patterns That Eventually Fail</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhengyi Li"
+      src="/images/avatar/shinji_2.jpg">
+  <p class="site-author-name" itemprop="name">Zhengyi Li</p>
+  <div class="site-description" itemprop="description">一条咸鱼</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/li-positive-one" title="GitHub → https://github.com/li-positive-one" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhengyi Li</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>

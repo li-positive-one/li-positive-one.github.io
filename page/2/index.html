@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://li-positive-one.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="一条咸鱼">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog of Li">
+<meta property="og:url" content="https://li-positive-one.github.io/page/2/index.html">
+<meta property="og:site_name" content="Blog of Li">
+<meta property="og:description" content="一条咸鱼">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Zhengyi Li">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://li-positive-one.github.io/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>Blog of Li</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog of Li</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">个人Blog 一年更新约一次</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2019/05/30/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-DDTF%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/30/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-DDTF%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">每日论文: Data-driven tight frame construction and image denoising</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-31 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-31T00:00:00+08:00">2019-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我们知道，找到图像的稀疏表示可以在图像去噪、重建等方面有重大作用。常用的方法是字典学习，其中最广为人知的就是K-SVD方法。 但是，K-SVD方法的缺点主要在于其计算量大。DDTF的优点就在于计算量较小。DDTF模型来自<a href="https://doi.org/10.1016/j.acha.2013.10.001" target="_blank" rel="noopener">Data-driven tight frame construction and image denoising</a></p>
+<h1 id="ddtf-模型和算法介绍">DDTF 模型和算法介绍</h1>
+<p>DDTF考虑如下的一个优化问题：</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+ \min_{v,W}&amp; ||v-W(a_1,a_2,...a_m)g||_2^2+\lambda^2||v||_0\\
+s.t.&amp; \quad W^T W=I
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>其中g是图像，g是编码，W是由m个filter，即<span class="math inline">\((a_1,a_2,...a_m)\)</span>构成的紧框架。求解方法就是轮流最小化v和W。</p>
+<ol type="1">
+<li>给定<span class="math inline">\((W^{(k)})\)</span>，求解<span class="math inline">\((v^{(k)})\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{equation}
+v^{(k)}:=argmin_v||v-W^{(k)}g||_2^2+\lambda^2||v||_0
+\end{equation}
+\label{iterA}
+\]</span></p>
+<ol start="2" type="1">
+<li>给定<span class="math inline">\((v^{(k)})\)</span>，求解<span class="math inline">\((W^{(k+1)})\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{equation}
+\{a_i^{(k+1)}\}_{i=1}^m:=argmin_{\{a_i\}_{i=1}^m}||v^{(k)}-W(a_1,a_2,...a_m)g||_2^2
+\end{equation}
+\label{iterB}
+\]</span></p>
+<p>对于()，存在唯一的最优解<span class="math inline">\(( {\bar v}=T_{\lambda}(Wg))\)</span>, 对于()，可以通过SVD算法精确求解：</p>
+<p>假设filter大小为<span class="math inline">\((r \times r)\)</span>，则共有<span class="math inline">\((r^2)\)</span>个filter。 Here <span class="math inline">\((g_n, n=1,2,...N)\)</span> are all <span class="math inline">\((r\times r)\)</span> patches from the input image g.</p>
+<p>Let</p>
+<p><span class="math display">\[
+{\vec v}_n=(v^{(k),1}(n),v^{(k),2}(n),...,v^{(k),r^2}(n))^{T}, 1 \leqslant n \leqslant N.
+\]</span> and define</p>
+<p><span class="math display">\[
+\begin{equation}
+\left\{
+\begin{aligned}
+ V=({\vec v}_1,{\vec v}_2,...{\vec v}_N) \in \mathbb{R}^{r^2\times N}\\
+ G=({\vec g}_1,{\vec g}_2,...{\vec g}_N) \in \mathbb{R}^{r^2\times N}\\
+ A=({\vec a}_1,{\vec a}_2,...{\vec a}_N) \in \mathbb{R}^{r^2\times r^2}
+\end{aligned}
+\right.
+\end{equation}
+\]</span></p>
+<p>Then we have</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+ ||v-Wg||_2^2&amp;=\sum_{n=1}^N||{\vec v}_n-A^T{\vec g}_n||_2^2\\
+&amp;=\sum_{n=1}^N {\vec v}_n^T {\vec v}_n + {\vec g}_n^T A A^T {\vec g_n} - 2{\vec v}_n^T A^T {\vec g}_n \\
+&amp;= \sum_{n=1}^N {\vec v}_n^T {\vec v}_n + \frac{1}{r^2} {\vec g}_n^T{\vec g_n} - 2(A{\vec v}_n)^T{\vec g}_n \\
+&amp;= Tr(V^T)+\frac{1}{r^2}Tr(G^T G)-2Tr(AVG^T)
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>所以对于()，等价于：</p>
+<p><span class="math display">\[
+\begin{equation}
+\max_A Tr(AVG^T) \quad s.t. \quad A^TA=\frac{1}{r^2}I_{r^2}
+\end{equation}
+\]</span></p>
+<p><strong>引理1</strong> Let B and C be <span class="math inline">\((m\times r)\)</span> matrices where B has rank r. Consider the constrained maximization problem:</p>
+<p><span class="math display">\[
+B_*=\arg\min_B Tr(B^T C) \quad s.t. \quad B^TB=I_r
+\]</span> Suppose that the single value decomposition (SVD) of <span class="math inline">\((C)\)</span> is <span class="math inline">\(C = UDX^T\)</span>.Then <span class="math inline">\(( B_*=UX^T )\)</span>.</p>
+<p>根据引理，我们就能知道，通过SVD计算就可以求得()的精确解。</p>
+<h1 id="讨论">讨论</h1>
+<p>与K-SVD的主要区别在于通过加上了紧框架的约束， 反而构造出了一个相对容易求解的优化模型。但同时也失去了冗余字典模型的优势。</p>
+<h2 id="与-k-svd-的异同">与 K-SVD 的异同</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Method</th>
+<th style="text-align: center;">是否来自数据</th>
+<th style="text-align: center;">是否正交</th>
+<th style="text-align: center;">计算方法</th>
+<th style="text-align: center;">计算速度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">K-SVD</td>
+<td style="text-align: center;">是</td>
+<td style="text-align: center;">冗余字典</td>
+<td style="text-align: center;">每步为近似求解</td>
+<td style="text-align: center;">慢</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">DDTF</td>
+<td style="text-align: center;">是</td>
+<td style="text-align: center;">正交字典</td>
+<td style="text-align: center;">每步为较精确求解</td>
+<td style="text-align: center;">快</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Wavelets</td>
+<td style="text-align: center;">否</td>
+<td style="text-align: center;">都有</td>
+<td style="text-align: center;">直接构造</td>
+<td style="text-align: center;">快</td>
+</tr>
+</tbody>
+</table>
+<h2 id="正交字典的优劣">正交字典的优劣</h2>
+<p>来自： <a href="/files/ddtf/ksvd.pdf">Orthogonal Matching Pursuit and K-SVD for Sparse Encoding</a> ### Benefits of ONB</p>
+<ul>
+<li>Analytic formulations</li>
+<li>Well understood mathematical properties</li>
+<li>Fast algorithms for projection</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Orthonormal bases are optimal only for specific synthetic signals
+<ul>
+<li>If your signal looks exactly like your basis, you only need one coefficient</li>
+</ul></li>
+<li>Limited expressiveness, all signals behave the same</li>
+<li>Real world signals often take a lot of coefficients
+<ul>
+<li>Just truncate the series, which leads to artifacts like aliasing</li>
+</ul></li>
+</ul>
+<p>参考文献：</p>
+<p><a href="https://doi.org/10.1016/j.acha.2013.10.001" target="_blank" rel="noopener">Data-driven tight frame construction and image denoising</a></p>
+<p><a href="/files/ddtf/ksvd.pdf">Orthogonal Matching Pursuit and K-SVD for Sparse Encoding</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2019/01/28/MATLAB%E4%B8%8D%E5%90%8C%E5%8D%B7%E7%A7%AF%E5%87%BD%E6%95%B0%E7%9A%84%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/28/MATLAB%E4%B8%8D%E5%90%8C%E5%8D%B7%E7%A7%AF%E5%87%BD%E6%95%B0%E7%9A%84%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">MATLAB不同卷积函数的测试</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-29 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-29T00:00:00+08:00">2019-01-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">编程实践</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近的编程中发现MATLAB中有的卷积速度比我想象的要慢得多（特别是GPU加速后依然很慢），就测试了一下使用不同函数实现卷积的速度。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 首先是对两个大的2D数组做'valid'卷积，其实就相当于做dot。</span></span><br><span class="line">A=<span class="built_in">rand</span>(<span class="number">1000</span>,<span class="number">1000</span>);</span><br><span class="line">gA=gpuArray(A);</span><br><span class="line">B=<span class="built_in">rand</span>(<span class="number">1000</span>,<span class="number">1000</span>);</span><br><span class="line">gB=gpuArray(B);</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">"dot:\n"</span>)</span><br><span class="line">tic;    sum(<span class="built_in">dot</span>(A,B),<span class="string">'all'</span>);toc;</span><br><span class="line">tic;    sum(<span class="built_in">dot</span>(gA,gB),<span class="string">'all'</span>);toc;</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">"conv2:\n"</span>)</span><br><span class="line">tic;    conv2(A,B,<span class="string">'valid'</span>);toc;</span><br><span class="line">tic;    conv2(gA,gB,<span class="string">'valid'</span>);toc;</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">"filter2:\n"</span>)</span><br><span class="line">tic;    filter2(A,B,<span class="string">'valid'</span>);toc;</span><br><span class="line">tic;    filter2(gA,gB,<span class="string">'valid'</span>);toc;</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">"convn:\n"</span>)</span><br><span class="line">tic;    convn(A,B,<span class="string">'valid'</span>);toc;</span><br><span class="line">tic;    convn(gA,gB,<span class="string">'valid'</span>);toc;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">dot</span>:</span><br><span class="line">时间已过 <span class="number">0.005201</span> 秒。</span><br><span class="line">时间已过 <span class="number">0.000427</span> 秒。</span><br><span class="line">conv2:</span><br><span class="line">时间已过 <span class="number">0.007935</span> 秒。</span><br><span class="line">时间已过 <span class="number">0.843050</span> 秒。</span><br><span class="line">filter2:</span><br><span class="line">时间已过 <span class="number">0.393373</span> 秒。</span><br><span class="line">时间已过 <span class="number">1.209777</span> 秒。</span><br><span class="line">convn:</span><br><span class="line">时间已过 <span class="number">0.008185</span> 秒。</span><br><span class="line">时间已过 <span class="number">0.918709</span> 秒。</span><br></pre></td></tr></table></figure>
+<p>可以看到，对于这种情况，GPU不仅在卷积函数中不能加速，反而会很大的影响运算速度。最快的方式是使用gpu加速的dot。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2018/12/22/flownet2-pytorch%E7%9A%84%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/22/flownet2-pytorch%E7%9A%84%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">nvidia/flownet2-pytorch的安装</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-23 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-23T00:00:00+08:00">2018-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">编程实践</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>读完flownet的文章，准备跑一下他的代码，发现有nvidia出品的代码，肯定效率最高啦，所以就git clone下来准备跑，但是遇到了好多坑。</p>
+<figure>
+<img src="/images/flownet2/1.png" alt="" /><figcaption>README.md 里的安装介绍</figcaption>
+</figure>
+<p>README.md里的安装介绍特别不走心，因为nvidia其实是想让大家都用他的nvidia-docker来跑程序的。那样确实很方便，但是对于传统的基于slurm/pbs的服务器，我们肯定不能采用docker的形式来跑，所以就按照readme.md进行安装。</p>
+<figure>
+<img src="/images/flownet2/2.png" alt="" /><figcaption>install.sh</figcaption>
+</figure>
+<p>install.sh 其实就相当于安装几个pip包，但是是编译安装的，用到了nvcc。最坑的一点在于没有给出任何编译环境，我试了各种环境终于编译成功了，就是pytorch0.4+cuda9.2+cudnn7+gcc6.5.0。之前的各种组合都报错。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2018/12/15/Julia%E7%B3%BB%E5%88%97(2)%E7%94%A8Julia%E5%AE%9E%E7%8E%B0%E8%BF%8E%E9%A3%8E%E6%A0%BC%E5%BC%8F%E6%B1%82%E8%A7%A3PDE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/15/Julia%E7%B3%BB%E5%88%97(2)%E7%94%A8Julia%E5%AE%9E%E7%8E%B0%E8%BF%8E%E9%A3%8E%E6%A0%BC%E5%BC%8F%E6%B1%82%E8%A7%A3PDE/" class="post-title-link" itemprop="url">Julia系列(2):用Julia实现迎风格式求解PDE</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-16 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-16T00:00:00+08:00">2018-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">编程实践</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我学习一门语言时，一般会先查着文档写上个简单的程序，找一找这门语言的感觉，然后再读它的文档。Julia既然是为科学计算设计的，我们就先用它来实现一个简单的迎风格式吧。</p>
+<p>下面我们先看这个问题的MATLAB代码实现。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 考虑区域[-1,1]，求解无黏Burgers方程。</span></span><br><span class="line">h=<span class="number">0.1</span>; <span class="comment">%网格尺度</span></span><br><span class="line">N=<span class="number">1</span>/h; </span><br><span class="line">t_max=<span class="number">0.2</span>; <span class="comment">%终止时刻为0.2</span></span><br><span class="line">tau=<span class="number">1e-4</span>; <span class="comment">% 时间步长</span></span><br><span class="line"></span><br><span class="line">U=<span class="built_in">zeros</span>(<span class="number">2</span>*N+<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">U(<span class="number">1</span>:N)=<span class="number">1</span>; <span class="comment">%给定初值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 非守恒迎风格式</span></span><br><span class="line">MaxIter=<span class="number">1e10</span>;</span><br><span class="line">T=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:MaxIter</span><br><span class="line">    T=T+tau;</span><br><span class="line">    diff=U(<span class="number">2</span>:<span class="keyword">end</span>)-U(<span class="number">1</span>:<span class="keyword">end</span><span class="number">-1</span>);</span><br><span class="line">    U=U-tau/h*U.*((U&gt;=<span class="number">0</span>).*([<span class="number">0</span>;diff])+(U&lt;<span class="number">0</span>).*([diff;<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> T&gt;=t_max</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>然后，我们再看它的Julia实现</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">h=<span class="number">0.1</span>; </span><br><span class="line">N=<span class="built_in">Int</span>(<span class="number">1</span>/h); </span><br><span class="line">t_max=<span class="number">0.2</span>; </span><br><span class="line">tau=<span class="number">1e-4</span>; </span><br><span class="line"></span><br><span class="line">U=zeros(<span class="number">2</span>*N+<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">U[<span class="number">1</span>:N].=<span class="number">1</span>; </span><br><span class="line"></span><br><span class="line">MaxIter=<span class="number">1e10</span>;</span><br><span class="line">T=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:MaxIter</span><br><span class="line">    T=T+tau;</span><br><span class="line">    diff=U[<span class="number">2</span>:<span class="keyword">end</span>]-U[<span class="number">1</span>:<span class="keyword">end</span>-<span class="number">1</span>];</span><br><span class="line">    U=U-tau./h.*U.*((U.&gt;=<span class="number">0</span>).*([<span class="number">0</span>;diff])+(U.&lt;<span class="number">0</span>).*([diff;<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> T&gt;=t_max</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>是不是看起来基本没有什么区别？嗯，确实如此。</p>
+<ul>
+<li>Matlab的zeros接受float类型的参数，只要其值是一个整数，而julia的zeros需要参数是Int类型。所以第二行是N=Int(1/h);</li>
+<li>Matlab的数组索引使用圆括号，而Julia的数组索引使用方括号。</li>
+<li>Julia中，所有的broadcast（广播）都是显式的，包括赋值、加减等，而matlab中，赋值、加减的广播是自动的，而只有乘方、数组乘法才需要用 . 指出。（Julia似乎在1.0前，对数组赋值的广播也是自动的，而1.0中是需要手动写出的，即U[1:N].=1，如果没有写 . 就会报错，但是文档中没有写清楚。）所以julia比起MATLAB的代码多了不少”.”。</li>
+</ul>
+<p>嗯，似乎对于这么一个简短的程序，就这么一点区别了，特别的，julia的数组索引和matlab是相同的，即从1开始，所以如果从matlab转到julia，一定会很快习惯。Julia实在是一门十分好上手的语言，只要之前用过matlab或者python，很容易就可以将程序（数值计算部分）翻译到julia上。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2018/12/14/Julia%E7%B3%BB%E5%88%97(1)%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/14/Julia%E7%B3%BB%E5%88%97(1)%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">Julia系列(1):安装与环境配置</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-15 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-15T00:00:00+08:00">2018-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">编程实践</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很早之前就看见各种安利Julia的文章了，恰好Julia 1.0已经发布了，这门快速发展的语言应该已经具有了一定的稳定性，所以今天终于上手试了一试。</p>
+<h2 id="julia-安装与环境配置教程和文档">Julia 安装与环境配置，教程和文档</h2>
+<p>Julia可以从<a href="https://julialang.org/" target="_blank" rel="noopener">官网</a>直接下载二进制包，里边有.sh文件，指定安装路径就能安装了，安装后将/Julia/bin添加到PATH就能使用了。</p>
+<p>除了Julia（解释器？编译器？）本身，还可以选择直接下载<a href="https://juliacomputing.com/products/juliapro.html" target="_blank" rel="noopener">JuliaPro</a>，里边除了julia本体，还有Juno IDE（一个基于Atom的Julia IDE）和一些常用的包。</p>
+<p>不过由于Julia本身就具有很好的包管理器和虚拟环境支持，而且我也不太习惯atom这个编辑器，所以我并没有选择JuliaPro，而是直接使用了Julia+IJulia+Jupyter。</p>
+<p>安装好julia与anaconda后，我们先在终端中运行julia，启动julia的REPL环境（julia语言虽然运行快，但是启动时预热很慢），然后在其中运行下列命令</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Pkg</span><br><span class="line">Pkg.add(<span class="string">"IJulia"</span>)</span><br></pre></td></tr></table></figure>
+<p>然后再启动 jupyter notebook 或者 jupyter lab，就可以创建julia的notebook了。</p>
+<p>Julia非常友好的一点在于其中文文档比较全面，但是文档也有一些问题，一些1.0中新出现的特性并没有反映在文档中，无论是中文还是英文文档。</p>
+<p>我在搜索julia环境配置的时候也发现了一个Lecture，是基于julia 1.0 的计量经济学，是一个很好的学习julia的讲义。</p>
+<p><a href="https://lectures.quantecon.org/jl/" target="_blank" rel="noopener">Quantitative Economics with Julia</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2018/02/26/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%AF%94%E8%BE%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/26/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%AF%94%E8%BE%83/" class="post-title-link" itemprop="url">远程桌面软件比较</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-02-27 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-27T00:00:00+08:00">2018-02-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">杂七杂八</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="vnc">VNC</h3>
+<p>最早接触的远程桌面软件，用于连接实验室的linux服务器，比起X11转发，支持同时更多的窗口。配置起来比较麻烦，不能即装即用。原生的VNC安全性较差，可以使用SSH转发提高安全性。</p>
+<p>VNC的方式是首先在远程运行VNC的server，并指定端口；随后在客户端连接端口，即可登录远程桌面，远程桌面的桌面程序可以任意设置，不一定与系统默认桌面一样（KDE/GNOME/Xfce）。</p>
+<h3 id="rdp">RDP</h3>
+<p>Win10自带的远程桌面系统，如果同网段（或者说在学校的大局域网下）下使用及其快，基本感觉不到使用的是远程桌面，除了不能看视频玩游戏，可以胜任基本所有的办公操作。</p>
+<p>在Windows设置中开启即可。对于非WIndows Server系统，如果用户1通过远程登陆电脑，则本地的用户1将被踢出（运行的软件并不会关闭），也就是同一时间只允许一个用户连接到电脑，这一点与TeamViewer差别较大。</p>
+<h3 id="teamviewer">TeamViewer</h3>
+<p>最大的优点在于自带内网穿透，不用配置动态解析和端口转发就能直接在任意位置连上没有公有ip的机器。另外通过账户系统可以方便的管理多台电脑。</p>
+<p>TeamViewer管理的方式与上两者不同，并非是直接远程登陆，而是通过类似于Hacker的方式，可以直接远程窥屏并输入，而非建立新的登陆。本地用户1与远程用户1共享桌面，两者的操作互相都能看见。</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>VNC</th>
+<th>RDP</th>
+<th>TeamViewer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>支持较好的平台*</td>
+<td>Linux</td>
+<td>Windows</td>
+<td>Windows/Linux/MacOS</td>
+</tr>
+<tr class="even">
+<td>模式</td>
+<td>远程登陆</td>
+<td>远程登陆</td>
+<td>桌面管理</td>
+</tr>
+<tr class="odd">
+<td>连接质量</td>
+<td>一般</td>
+<td>好</td>
+<td>一般</td>
+</tr>
+<tr class="even">
+<td>自带内网穿透</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<p>*三种工具基本持支Winodws/Linux/MacOS所有平台，但是对不同平台支持性不同，VNC和RDP作为开源协议有多种实现。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2017/10/10/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E4%BD%9C%E4%B8%9A(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/10/10/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E4%BD%9C%E4%B8%9A(1)/" class="post-title-link" itemprop="url">并行计算作业(1)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-10-11 00:00:00" itemprop="dateCreated datePublished" datetime="2017-10-11T00:00:00+08:00">2017-10-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">杂七杂八</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>并行计算全部相关代码我都放在了<a href="https://github.com/li-positive-one/paracomp" target="_blank" rel="noopener">github.com/li-positive-one/paracomp</a> 上</p>
+<p>在此可以直接下载：</p>
+<p><a href="https://github.com/li-positive-one/paracomp/raw/master/homework1/report/main.pdf" target="_blank" rel="noopener">第一次报告</a></p>
+<p><a href="https://github.com/li-positive-one/paracomp/raw/master/homework1/Makefile-example/Makefile-example.zip" target="_blank" rel="noopener">报告中的Makefile示例代码</a></p>
+<p><a href="https://github.com/li-positive-one/paracomp/raw/master/homework1/Makefile-example/CMakeLists.txt" target="_blank" rel="noopener">CMakeLists.txt</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2017/10/09/Linux%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/10/09/Linux%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90(1)/" class="post-title-link" itemprop="url">Linux软件推荐(1)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-10-10 00:00:00" itemprop="dateCreated datePublished" datetime="2017-10-10T00:00:00+08:00">2017-10-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">杂七杂八</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure>
+<img src="/images/Linux软件推荐/krita-logo.png" alt="" /><figcaption>logo</figcaption>
+</figure>
+<h3 id="krita">Krita</h3>
+<p>一款painting软件。笔刷很舒适，右键可以方便的调节笔刷，界面比较简洁易用，容易上手。和数位板是绝配。</p>
+<h5 id="windows下类似软件">Windows下类似软件：</h5>
+<p>SAI，Painter</p>
+<h5 id="下载地址">下载地址：</h5>
+<p><a href="https://krita.org/en/" target="_blank" rel="noopener">官网地址</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2017/10/08/python3%E5%AE%9E%E7%8E%B0Pagerank(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/10/08/python3%E5%AE%9E%E7%8E%B0Pagerank(2)/" class="post-title-link" itemprop="url">Python3实现Pagerank算法(2)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-10-09 00:00:00" itemprop="dateCreated datePublished" datetime="2017-10-09T00:00:00+08:00">2017-10-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">编程实践</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>上一篇文章<a href="/2017/09/26/Python3%E5%AE%9E%E7%8E%B0Pagerank%E7%AE%97%E6%B3%95/" title="Python3实现Pagerank算法">Python3实现Pagerank算法</a>中虽然已经实现了pagerank，但是我觉得代码不够美观，所以由重新整理了一下放了上来，顺便复习了一下字典和元组等数据结构。</p>
+<p><a href="/files/pagerank/pagerank.html">代码</a></p>
+<p><a href="/files/pagerank/acl-metadata.txt">数据.part1</a></p>
+<p><a href="/files/pagerank/acl.txt">数据.part2</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-positive-one.github.io/2017/10/01/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-One%20Network%20to%20Solve%20Them%20All/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/10/01/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-One%20Network%20to%20Solve%20Them%20All/" class="post-title-link" itemprop="url">每日文章-One Network to Solve Them All — Solving Linear Inverse Problems using Deep Projection Models</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-10-02 00:00:00" itemprop="dateCreated datePublished" datetime="2017-10-02T00:00:00+08:00">2017-10-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-08 22:49:57" itemprop="dateModified" datetime="2021-02-08T22:49:57+08:00">2021-02-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这篇论文的标题<a href="https://arxiv.org/abs/1703.09912" target="_blank" rel="noopener">One Network to Solve Them All — Solving Linear Inverse Problems</a>简单易懂：用一个网络解决所有线性反问题。</p>
+<p>首先，带约束的线性反问题常见的形式都是这样的。</p>
+<p><span class="math display">\[
+(\min_x \frac{1}{2} \vert \vert y-Ax \vert \vert_2^2+\lambda\phi(x))
+\]</span></p>
+<p>这样的问题显然可以使用ADMM算法求解。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\min_x \frac{1}{2} || y-Az ||_2^2+\lambda\phi(x)\\
+s.t. \quad x=z
+\end{aligned}
+\]</span></p>
+<p>在ADMM当中对x和z的更新实际上都是一个prox算子，但是对于z的更新是一个线性函数的prox，所以相当于与求解一个线性反问题，可以用共轭梯度法求解。而对于x的更新由于<span class="math inline">\((\phi)\)</span>的不同则有不同的形式。</p>
+<p>这篇论文主要就是学习对<span class="math inline">\((\phi)\)</span>的更新的proximal算子。比如说这篇论文的实验主要集中在自然图像的去噪、</p>
+<p>超分辨、压缩感知上，那么他就假设所有自然图像的Indicator function 是 <span class="math inline">\((\mathcal{I}_{\mathcal{x}}(\cdot))\)</span>。然后他就要学习出来<span class="math inline">\(({prox}_{\mathcal{I}})\)</span> 。但是因为并不知道真实的 <span class="math inline">\((\mathcal{I}_{\mathcal{x}}(\cdot))\)</span>是什么，所以他是用一个神经网络D进行训练，逼近这个函数。基于学习到的神经网络 <span class="math inline">\((D_l)\)</span> ,他学习到了P也就是<span class="math inline">\(({prox}_{\mathcal{I}})\)</span>。</p>
+<p>在训练过程中，使用了类似GAN的技术，及同时训练。P训练来蒙蔽D，D也要在训练以加强约束。</p>
+<p>对于P的训练，它采用了这样的损失函数：</p>
+<p><span class="math display">\[
+(\min_{\theta_p} \sum_{x \in M,v \sim f(x)} \lambda_1\vert \vert x-P(x) \vert \vert ^2 +\lambda_2\vert \vert x-P(v)\vert \vert ^2+\lambda_3\vert \vert v-P(v)\vert \vert ^2-\lambda_4\log(\sigma(D_l \circ \mathcal{E}(v)))-\lambda_5\log(\sigma(D \circ P(x))))
+\]</span></p>
+<p>其中<span class="math inline">\((D)\)</span>和<span class="math inline">\((D_l)\)</span>是分别工作在output (image) space and the latent spaces of the projector上的分类器。</p>
+<p>参数<span class="math inline">\((\lambda)\)</span> 分别是0.01, 1.0, 0.001, 0.0001, 0.001。</p>
+<p>这个loss的前三项是prox算子中控制距离的项，后两项是函数值的项。前三项之所以不只留一项是因为希望对于优化过程中不同步的x（即刚开始优化时变量接近有nosing图片v，最后接近自然图片x）都有<span class="math inline">\((P(x)-x)\)</span>不要太大的约束。</p>
+<p>具体的网络结构呢，D和<span class="math inline">\((D_l)\)</span>都是Resnet的变种，P则是autoencoder网络的变种。</p>
+<p>等到网络训练好了，对于不同的反问题，例如去噪，超分辨等，就根据线性算子构造不同的ADMM迭代方法，带入我们习得的prox算子替代原始admm中的prox算子，就能取得One Network to Solve Them All的效果。</p>
+<p>这个算法的优势主要就在于利用对抗学习的方法，学习到了一个不明函数<span class="math inline">\((I(x)​)\)</span>的prox算子<span class="math inline">\((prox_{I}​)\)</span>，这是传统方法所不具备的。比如对于自然图像问题，我们原来常用TV约束，但是tv约束的图像与自然图像范围其实有不小的差别，一些有纹理的自然图像tv很大，一些tv很小的图像却是cartoon化的，等等。所以感觉这个方法应用还是很大的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhengyi Li"
+      src="/images/avatar/shinji_2.jpg">
+  <p class="site-author-name" itemprop="name">Zhengyi Li</p>
+  <div class="site-description" itemprop="description">一条咸鱼</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/li-positive-one" title="GitHub → https://github.com/li-positive-one" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhengyi Li</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>
