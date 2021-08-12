@@ -41,7 +41,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -49,6 +49,10 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
+  
+marked:
+  prependRoot: true
+  postAsset: true
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
