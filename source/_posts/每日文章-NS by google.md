@@ -15,7 +15,7 @@ https://arxiv.org/pdf/2102.01010.pdf
 
 ## Method
 
-<img src="../images/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-NS%20by%20google/image-20210208221509492.png" alt="image-20210208221509492" style="zoom:100%;" />
+<img src="../images/每日文章-NS by google/image-20210208221509492.png" alt="image-20210208221509492" style="zoom:100%;" />
 
 这篇论文首先使用Jax实现了一个可微分的NS求解器（基于有限体积方法，时空一阶的显隐式方法），然后在其中添加了两个可学习的部分:
 
