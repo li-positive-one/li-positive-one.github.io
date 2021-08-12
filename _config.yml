@@ -18,6 +18,9 @@ url: https://li-positive-one.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
+pretty_urls:
+  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -63,6 +66,9 @@ index_generator:
 default_category: uncategorized
 category_map:
 tag_map:
+
+
+meta_generator: true
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
