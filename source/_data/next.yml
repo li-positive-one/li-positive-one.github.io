@@ -691,16 +691,16 @@ baidu_analytics: # <app_id>
 growingio_analytics: # <project_id>
 
 # CNZZ count
-cnzz_siteid: 1280208685
+cnzz_siteid: #1280208685
 
 # Show number of visitors of each article.
 # You can visit https://leancloud.cn to get AppID and AppKey.
 # AppID and AppKey are recommended to be the same as valine's for counter compatibility.
 # Do not enable both `valine.visitor` and `leancloud_visitors`.
 leancloud_visitors:
-  enable: enable
-  app_id: moD2bjB0FQf0v94VigO3UAOl-MdYXbMMI
-  app_key: JxsQHsYd7J8QnY8E6JE0fysu
+  enable: false #enable
+  app_id: #moD2bjB0FQf0v94VigO3UAOl-MdYXbMMI
+  app_key: #JxsQHsYd7J8QnY8E6JE0fysu
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
