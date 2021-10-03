@@ -13,6 +13,8 @@ date: 2017-09-26
 
 确定`_config.yml`中是`markdown    : kramdown`
 
+<!-- more -->
+
 #### 添加 Mathjax
 
 在post.html中的header中添加如下语句

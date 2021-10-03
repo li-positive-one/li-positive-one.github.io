@@ -14,7 +14,10 @@ mathjax: true
 我们知道，找到图像的稀疏表示可以在图像去噪、重建等方面有重大作用。常用的方法是字典学习，其中最广为人知的就是K-SVD方法。
 但是，K-SVD方法的缺点主要在于其计算量大。DDTF的优点就在于计算量较小。DDTF模型来自[Data-driven tight frame construction and image denoising](https://doi.org/10.1016/j.acha.2013.10.001)
 
+<!-- more -->
+
 # DDTF 模型和算法介绍
+
 DDTF考虑如下的一个优化问题：
 
 $$

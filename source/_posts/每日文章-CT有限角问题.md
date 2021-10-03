@@ -9,7 +9,7 @@ date: 2017-09-26
 
 CT的有限角问题还是需要进行一些基础的了解的。我对有限角问题几乎没有任何了解，所以只能从谷歌上随便搜一些文章来看。
 
-
+<!-- more -->
 
 #### [Accurate image reconstruction from few-views and limited-angle data in divergent-beam CT](https://arxiv.org/abs/0904.4495)
 

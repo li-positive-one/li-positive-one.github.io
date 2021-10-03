@@ -10,6 +10,8 @@ date: 2017-05-01
 
 示例1:我们学习出一个恒同变换
 
+<!-- more -->
+
 
 ```python
 import numpy as np

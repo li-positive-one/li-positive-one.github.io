@@ -9,6 +9,8 @@ date: 2018-12-23
 
 读完flownet的文章，准备跑一下他的代码，发现有nvidia出品的代码，肯定效率最高啦，所以就git clone下来准备跑，但是遇到了好多坑。
 
+<!-- more -->
+
 ![README.md 里的安装介绍](/images/flownet2/1.png)
 
 README.md里的安装介绍特别不走心，因为nvidia其实是想让大家都用他的nvidia-docker来跑程序的。那样确实很方便，但是对于传统的基于slurm/pbs的服务器，我们肯定不能采用docker的形式来跑，所以就按照readme.md进行安装。

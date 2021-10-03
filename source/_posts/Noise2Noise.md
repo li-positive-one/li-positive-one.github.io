@@ -18,6 +18,8 @@ $$
 {\arg\min}_\theta \sum_{i}{L(f_\theta\left(\hat{x_i}\right),y_i)}
 $$
 
+<!-- more -->
+
 其中$\hat x_i$是输入的含噪声图像，$y_i$是清晰图片。我们学习一个从含噪声图片到清晰图片的映射。
 
 以标量为例子，学习

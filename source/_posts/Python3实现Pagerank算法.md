@@ -10,6 +10,8 @@ date: 2017-09-27
 
 数据来自[ACL Anthology Network (All About NLP)](http://clair.eecs.umich.edu/aan/index.php)
 
+<!-- more -->
+
 数据都是长这样的：
 
 ```

@@ -12,6 +12,8 @@ mathjax: true
 
 这篇论文的标题[One Network to Solve Them All — Solving Linear Inverse Problems](https://arxiv.org/abs/1703.09912)简单易懂：用一个网络解决所有线性反问题。
 
+<!-- more -->
+
 首先，带约束的线性反问题常见的形式都是这样的。
 
 $$

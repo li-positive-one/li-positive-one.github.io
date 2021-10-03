@@ -17,6 +17,8 @@ import scipy.sparse.linalg
 
 首先我们定义一个线性算子，不妨就定义一个恒同变换
 
+<!-- more -->
+
 
 ```python
 def identity(x):
@@ -70,5 +72,4 @@ linearwrapper(identity,(3,3))([1.,2.,3.])
 
 
     array([ 1.,  2.,  3.])
-
 

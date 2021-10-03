@@ -13,6 +13,8 @@ https://arxiv.org/pdf/2102.01010.pdf
 
 这篇论文使用端到端的训练方法，实现了对于DNS和LES，能得到和baseline的8-10倍精细的网格上相同的精度，和40-80x的加速。方法具有长时稳定性，而且可以应用到训练集之外的外力项和Reynold数。
 
+<!-- more -->
+
 ## Method
 
 <img src="../images/每日文章-NS by google/image-20210208221509492.png" alt="image-20210208221509492" style="zoom:100%;" />

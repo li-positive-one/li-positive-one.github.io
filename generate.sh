@@ -9,3 +9,4 @@ sed -i 's#<img src="\.\./images/\(.*\?\)/>#<img src="/images/\1/>#g' ./source/_p
 sed -i -r 's#^!\[\.\./images/(.*)]\((.*)\)#<img src="/images/\2" alt="\1" style="zoom:100%;" />#g' ./source/_posts/*.md
 
 hexo g
+

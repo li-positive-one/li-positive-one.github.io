@@ -31,6 +31,8 @@ $$
 $$
 其中$\boldsymbol v =(u,v,w)$，$\boldsymbol p$是scaled pressure。
 
+<!-- more -->
+
 ### 网络结构
 
 <img src="../images/2020-05-29DiscretizationNet/image-20200529164310402.png" alt="image-20200529164310402" style="zoom:80%;" />
