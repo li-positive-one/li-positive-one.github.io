@@ -3,7 +3,7 @@ title: "YiNote 一款可以在看视频时做笔记的浏览器插件"
 categories:
   - 杂七杂八
 date: 2021-10-03
-
+typora-root-url: YiNote
 ---
 
 
@@ -13,10 +13,10 @@ date: 2021-10-03
 [shuowu/yi-note: YiNote browser extension - online video note taking tool (github.com)](https://github.com/shuowu/yi-note)
 
 这款软件的界面如下。首先是做笔记时的界面。
-![Pasted image 20211003192416](./YiNote/Pasted image 20211003192416.png)
+![Pasted image 20211003192416](./Pasted image 20211003192416.png)
 
 这个是笔记的管理页面。
-![Pasted image 20211003192946](./YiNote/Pasted image 20211003192946.png)
+![Pasted image 20211003192946](./Pasted image 20211003192946.png)
 
 支持播放下面几种视频时做笔记
 -   Youtube video
@@ -27,4 +27,4 @@ date: 2021-10-03
 支持基本的markdown语法（不支持latex公式），笔记存储在浏览器的indexedb中，可以导出成pdf。
 
 对于bilibili的视频，B站有自己的视频笔记工具。
-![Pasted image 20211003193048](./YiNote/Pasted image 20211003193048.png)
+![Pasted image 20211003193048](./Pasted image 20211003193048.png)
