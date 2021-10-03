@@ -12,3 +12,7 @@ date: 2021-10-03
 ![image-20211003200714762](JupyterLite/image-20211003200714762.png)
 
 而且这样的jupyter支持numpy和matplotlib等简单的数值计算用到的包，比较适合快速验证一些想法。文件可以存储在浏览器的Indexedb中，也可以下载到本地的电脑中。
+
+这里就有一个例子：
+
+[JupyterLite](/jupyter/lab/index.html)
