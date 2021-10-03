@@ -6,11 +6,11 @@ date: 2021-10-03
 typora-root-url: YiNote
 ---
 
-
-
 想在看视频时做一些简单的笔记，最常见的方法是拿一个本子用笔手写来记录。但是我想要做到笔记能翻回视频的时间点，然后就在网上找到了这样一款符合要求的软件。
 
 [shuowu/yi-note: YiNote browser extension - online video note taking tool (github.com)](https://github.com/shuowu/yi-note)
+
+<!-- more -->
 
 这款软件的界面如下。首先是做笔记时的界面。
 ![Pasted image 20211003192416](./Pasted image 20211003192416.png)
