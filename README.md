@@ -6,4 +6,4 @@
 Also on 
 - [blog.one2.fun](https://blog.one2.fun)
 - [lizhengyi.netlify.com](https://lizhengyi.netlify.com)
-- [li-positive-one.vercel.app/](https://li-positive-one.vercel.app/)
+- [li-positive-one.vercel.app](https://li-positive-one.vercel.app/)
