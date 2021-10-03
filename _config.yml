@@ -35,6 +35,7 @@ skip_render:
   - "*/*.js"
   - "**/*.css"
   - "*/**.css"
+  - "jupyter/**"
   
 
 # Writing

@@ -1,5 +1,5 @@
 ---
-title: "YiNote 一款可以在看视频时做笔记的浏览器插件"
+title: "YiNote: 一款可以在看视频时做笔记的浏览器插件"
 categories:
   - 杂七杂八
 date: 2021-10-03
