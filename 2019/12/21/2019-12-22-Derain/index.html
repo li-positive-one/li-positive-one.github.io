@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lz1.fun","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Deep learning for seeing through window with Raindrops Quan, Yuhui, Shijie Deng, Yixin Chen, and Hui Ji. &quot;Deep Learning for Seeing Through Window With Raindrops.&quot; In Proceedings of the IEEE Internatio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于如何恢复有雨滴的玻璃后拍的照片的两篇Paper">
+<meta property="og:url" content="https://lz1.fun/2019/12/21/2019-12-22-Derain/">
+<meta property="og:site_name" content="Blog of Li">
+<meta property="og:description" content="Deep learning for seeing through window with Raindrops Quan, Yuhui, Shijie Deng, Yixin Chen, and Hui Ji. &quot;Deep Learning for Seeing Through Window With Raindrops.&quot; In Proceedings of the IEEE Internatio">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/1.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/2.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/3.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/6.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/5.png">
+<meta property="og:image" content="https://lz1.fun/2019/12/21/images/Derain.assets/7.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/5.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/7.png">
+<meta property="og:image" content="https://lz1.fun/2019/12/21/images/Derain.assets/8.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/7.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/8.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/9.png">
+<meta property="og:image" content="https://lz1.fun/2019/12/21/images/Derain.assets/10.png">
+<meta property="og:image" content="https://lz1.fun/images/Derain.assets/10.png">
+<meta property="article:published_time" content="2019-12-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-23T13:55:06.277Z">
+<meta property="article:author" content="Zhengyi Li">
+<meta property="article:tag" content="Derain">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lz1.fun/images/Derain.assets/1.png">
+
+<link rel="canonical" href="https://lz1.fun/2019/12/21/2019-12-22-Derain/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>关于如何恢复有雨滴的玻璃后拍的照片的两篇Paper | Blog of Li</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e822dd9b247602caa05492f7a168ec76";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Blog of Li</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人Blog 一年更新约一次</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lz1.fun/2019/12/21/2019-12-22-Derain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于如何恢复有雨滴的玻璃后拍的照片的两篇Paper
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-22T00:00:00+08:00">2019-12-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-23 21:55:06" itemprop="dateModified" datetime="2022-12-23T21:55:06+08:00">2022-12-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/21/2019-12-22-Derain/" class="post-meta-item leancloud_visitors" data-flag-title="关于如何恢复有雨滴的玻璃后拍的照片的两篇Paper" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="deep-learning-for-seeing-through-window-with-raindrops">Deep learning for seeing through window with Raindrops</h2>
+<p>Quan, Yuhui, Shijie Deng, Yixin Chen, and Hui Ji. "Deep Learning for Seeing Through Window With Raindrops." In <em>Proceedings of the IEEE International Conference on Computer Vision</em>, pp. 2463-2471. 2019. <a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_ICCV_2019/html/Quan_Deep_Learning_for_Seeing_Through_Window_With_Raindrops_ICCV_2019_paper.html">[PDF]</a></p>
+<p>这篇文章考虑 Derain 问题中的一个子问题，就是透过有雨滴的窗户拍照得到的图片的恢复。就是处理如下的这种图片。文章的亮点主要在于使用了结合shape-prior和channel的Attention机制，以及非常好的数值结果。</p>
+<p><img src="/images/Derain.assets/1.png" style="zoom:60%;" /></p>
+<p>这篇文章的Motivation是通过shape-driven attention和channel re-calibration来帮助CNN更好的恢复原图。</p>
+<span id="more"></span>
+<h3 id="shape-driven-attention">shape-driven attention</h3>
+<p>假设雨滴是椭圆形的。我们可以用图像某部分的edge map，即图像的patch的edge map和椭圆的等高线做内积，内积越大，则这个patch越接近一个椭圆（给定的长短轴参数a,b）。具体方法如下</p>
+<p><span class="math inline">\(f(x,y)=\frac{x^2}{a^2}+\frac{y^2}{b^2}\)</span>是椭圆的等高线，则<span class="math inline">\(g(x,y)=[-\frac{\partial f}{\partial y},\frac{\partial f}{\partial x}]=[\frac{y}{b^2},\frac{x}{a^2}]\)</span>是椭圆的edge方向。而图像用函数<span class="math inline">\(P(x)\)</span>表示，图像的edge方向是<span class="math inline">\(e(x,y)=[-\frac{\partial P}{\partial y},\frac{\partial P}{\partial x}]\)</span></p>
+<p>则<span class="math inline">\(\beta(x_0,y_0)=e(x_0,y_0)\cdot g(x_0,y_0)\)</span>就表示图像在<span class="math inline">\((x_0,y_0)\)</span>点的边缘和一个中心在<span class="math inline">\((0,0)\)</span>，长短焦为 <span class="math inline">\(a,b\)</span> 的椭圆走势一致。 <span class="math display">\[
+\tau(P)=\sum_{(x_0,y_0)\in D(P)} \beta(x_0,y_0)/\# D(P)
+\]</span> 就表示这个 patch 块中的图像是否接近一个以这个Patch中心为中心（且长短焦为$a,b $）的椭圆。</p>
+<p>如果我们已经知道了图像的edge，那么<span class="math inline">\(\tau(P)\)</span>的计算是可以用卷积来实现的。 <span class="math display">\[
+\tau(P_n)=\tau_1(P_n)+\tau_2(P_n)
+\]</span></p>
+<p><span class="math display">\[
+\tau_1(P)=\sum_{(x_i,y_i)\in D(P)} \frac{x_i}{a^2} \frac{\partial P_n}{\partial x}/\# D(P)
+\]</span></p>
+<p><span class="math display">\[
+\tau_2(P)=\sum_{(x_i,y_i)\in D(P)} \frac{y_i}{b^2} \frac{\partial P_n}{\partial y}/\# D(P)
+\]</span></p>
+<p><img src="/images/Derain.assets/2.png" style="zoom: 50%;" /></p>
+<h3 id="network-architecture">Network Architecture</h3>
+<p><img src="/images/Derain.assets/3.png" style="zoom:100%;" /></p>
+<p>网络结构总体上是一个encode-decoder模型，图片和edge-maps先concat在一起，然后经过卷积以及一系列ResBlock和下采样上采样过程，以及为了加速训练的skip-connection。结构和其他的网络差别点主要在于其Residual Block。</p>
+<p>Residual Block中结构大概为<span class="math inline">\(F&#39;=F+F \cdot(PA(E)\cdot CA(F))\)</span>。</p>
+<p>其中PA是根据Edge-map计算shape-driven attention的过程，也就是前一节所说，图像和一些卷积核相乘来得到shape-attention，这些卷积核每个卷积核只有两个参数<span class="math inline">\(a,b\)</span>。实际是取不同的Patch大小，分别是<span class="math inline">\(15 \times 15\)</span>,<span class="math inline">\(20\times 20\)</span>，..., <span class="math inline">\(40 \times 40\)</span>，并在每个尺度，给8组椭圆参数（即8组卷积核），这些参数是可学习的。</p>
+<p>CA(F)则是用来得到channel attention,结构是Pooling+FC。</p>
+<p>PA输出一个<span class="math inline">\(1 \times H \times W\)</span>的tensor，CA输出一个<span class="math inline">\(C\times 1\times 1\)</span>的tensor，两者做张量积得到<span class="math inline">\(C\times H\times W\)</span>的Attention并用于Residual Block中。</p>
+<p>网络的Loss则是L1-loss <span class="math display">\[
+L=\frac{1}{N}\sum_{i=1}^N||\hat X_i=X_i||_1
+\]</span></p>
+<h3 id="result">Result</h3>
+<p>数值实验是在Qian et al.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>发布的数据集上进行的。对比试验是Eigen et al<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>的方法，Qian et al.的AttentGAN<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>，以及Pix2Pix<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 进行了对比试验。</p>
+<p><img src="/images/Derain.assets/6.png" style="zoom:100%;" /></p>
+<h3 id="ablation-study">Ablation study</h3>
+<p>作者做了分别拿走PA，CA模块和全拿走的对比实验。（如果拿走某个模块， 就把这个模块的输出恒定为0.5）。对比试验显示，JPCA模块对结果有较大提升，其中CA模块的贡献比PA模块更大。</p>
+<h2 id="learning-from-synthetic-photorealistic-raindrop-for-single-image-raindrop-removal">Learning From Synthetic Photorealistic Raindrop for Single Image Raindrop Removal</h2>
+<p>Hao, Zhixiang, Shaodi You, Yu Li, Kunming Li, and Feng Lu. "Learning From Synthetic Photorealistic Raindrop for Single Image Raindrop Removal." In <em>Proceedings of the IEEE International Conference on Computer Vision Workshops</em>, pp. 0-0. 2019.</p>
+<p><a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_ICCVW_2019/html/PBDL/Hao_Learning_From_Synthetic_Photorealistic_Raindrop_for_Single_Image_Raindrop_Removal_ICCVW_2019_paper.html">[PDF]</a></p>
+<p>这篇文章恰好和上一篇一样，都是处理derain中的同一类问题，透过有雨滴的窗户拍照。这篇文章主要贡献在于 提出了第一个合成粘附雨滴训练的照片现实数据集。渲染是基于物理的，考虑了水的形状和光学性质。在此基础上， 提出了能很好地恢复图像结构的去除网络。</p>
+<h3 id="refaction-model">Refaction Model</h3>
+<p><img src="/images/Derain.assets/5.png" style="zoom: 80%;" /><img src="../images/Derain.assets/7.png" /></p>
+<p>这是本文的物理模型，其中绿线代表直接射进镜头的光线，而黄线表示经过两次折射后射入镜头的光线。</p>
+<h3 id="raindrop-imagery-model-and-photorealistic-dataset">Raindrop Imagery Model and Photorealistic Dataset</h3>
+<p>作者根据上一节的物理模型，使用几何渲染和光线追踪技术，先随机生成玻璃角度、水滴的几何形状（水滴和玻璃的夹角以及水滴的直径）和位置，然后计算出我们在玻璃后应该观察出的图像，最后，考虑到摄像机的焦面在图像上，而玻璃上的水滴不在焦平面上，所以对水滴再进行了一个disk blur。 就得到了模拟数据集，效果如下，第一到三行分别为真实图像，模拟的玻璃后图像，和模拟图像的水滴mask。</p>
+<p><img src="/images/Derain.assets/5.png" style="zoom: 100%;" /></p>
+<p><img src="/images/Derain.assets/7.png" style="zoom: 80%;" /><img src="../images/Derain.assets/8.png" alt="网络结构" /></p>
+<h3 id="network-structure">Network Structure</h3>
+<p><img src="/images/Derain.assets/7.png" style="zoom: 100%;" /></p>
+<p><img src="/images/Derain.assets/8.png" alt="网络结构" style="zoom:100%;" /></p>
+<p>网络结构是一个two-stage的网络，分别有一个网络探测水滴位置，输出水滴mask。这个网络的训练需要雨滴mask的groundtruth。还有一个网络直接输入图像和edge image，输出重建图像，这个网络的训练需要真实图像。最后一个网络的输入是前两个网络的输出，输出真实图像，也是以真实图像作为Label进行训练。</p>
+<p>作者发现如果对raindrop 探测网络的输出进行dilate再输入到第三个网络中效果会更好，否则可能会产生artifact.</p>
+<h3 id="result-1">Result</h3>
+<p><img src="/images/Derain.assets/9.png" style="zoom: 80%;" /><img src="../images/Derain.assets/10.png" /></p>
+<p>模拟数据集上网络表现很好，其中3RN only表示只用Raindrop region reconstruction network。</p>
+<p><img src="/images/Derain.assets/10.png" style="zoom: 100%;" /></p>
+<p>在真实数据集（和上边一篇文章一样，Qian的数据集）上，该算法的优势没有那么明显，因为该数据集没有雨滴的mask数据集，只能使用3RN only的网络，或者用雨滴图-原图得到rough mask进行训练。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Rui Qian, Robby T. Tan, Wenhan Yang, Jiajun Su, and Jiaying Liu. Attentive generative adversarial network for raindrop removal from a single image. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 2482–2491, 2018.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>David Eigen, Dilip Krishnan, and Rob Fergus. Restoring an image taken through a window covered with dirt or rain. In Proc. Int. Conf. Comput. Vision, pages 633–640, 2013<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Rui Qian, Robby T. Tan, Wenhan Yang, Jiajun Su, and Jiaying Liu. Attentive generative adversarial network for raindrop removal from a single image. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 2482–2491, 2018.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei A.Efros. Image-to-image ranslation with conditional adversarial networks. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 5967–5976. IEEE, 2017<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Derain/" rel="tag"># Derain</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/18/2019-12-19-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(3)%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA-%E7%BB%AD/" rel="prev" title="个人Blog的搭建方案(3) 自动构建-续">
+      <i class="fa fa-chevron-left"></i> 个人Blog的搭建方案(3) 自动构建-续
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/27/2020-05-28-PASS/" rel="next" title="Progressive Adversarial Semantic Segmentation">
+      Progressive Adversarial Semantic Segmentation <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#deep-learning-for-seeing-through-window-with-raindrops"><span class="nav-number">1.</span> <span class="nav-text">Deep learning for seeing through window with Raindrops</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shape-driven-attention"><span class="nav-number">1.1.</span> <span class="nav-text">shape-driven attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#network-architecture"><span class="nav-number">1.2.</span> <span class="nav-text">Network Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#result"><span class="nav-number">1.3.</span> <span class="nav-text">Result</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ablation-study"><span class="nav-number">1.4.</span> <span class="nav-text">Ablation study</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#learning-from-synthetic-photorealistic-raindrop-for-single-image-raindrop-removal"><span class="nav-number">2.</span> <span class="nav-text">Learning From Synthetic Photorealistic Raindrop for Single Image Raindrop Removal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#refaction-model"><span class="nav-number">2.1.</span> <span class="nav-text">Refaction Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raindrop-imagery-model-and-photorealistic-dataset"><span class="nav-number">2.2.</span> <span class="nav-text">Raindrop Imagery Model and Photorealistic Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#network-structure"><span class="nav-number">2.3.</span> <span class="nav-text">Network Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#result-1"><span class="nav-number">2.4.</span> <span class="nav-text">Result</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhengyi Li"
+      src="/images/avatar/shinji_2.jpg">
+  <p class="site-author-name" itemprop="name">Zhengyi Li</p>
+  <div class="site-description" itemprop="description">一条咸鱼</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/li-positive-one" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;li-positive-one" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhengyi Li</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1280208685&web_id=1280208685"></script>
+  </div>
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":"enable","app_id":"moD2bjB0FQf0v94VigO3UAOl-MdYXbMMI","app_key":"JxsQHsYd7J8QnY8E6JE0fysu","server_url":null,"security":false,"betterPerformance":false};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

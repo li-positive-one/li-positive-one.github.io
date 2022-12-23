@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lz1.fun","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="arvix 摘要 本文作者来自著名有限元分析软件开发商Ansys公司，提出了一种基于机器学习的NS方程求解器。 Method DiscretizationNet可以用来求解 steady, incompressible Navier-Stokes equations \[ \left\{                \begin{array}{**lr**}                \na">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DiscretizationNet: A Machine-Learning based solver for Navier-Stokes Equations using Finite Volume Discretization">
+<meta property="og:url" content="https://lz1.fun/2020/05/28/2020-05-29DiscretizationNet/">
+<meta property="og:site_name" content="Blog of Li">
+<meta property="og:description" content="arvix 摘要 本文作者来自著名有限元分析软件开发商Ansys公司，提出了一种基于机器学习的NS方程求解器。 Method DiscretizationNet可以用来求解 steady, incompressible Navier-Stokes equations \[ \left\{                \begin{array}{**lr**}                \na">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lz1.fun/images/2020-05-29DiscretizationNet/image-20200529164310402.png">
+<meta property="og:image" content="https://lz1.fun/images/2020-05-29DiscretizationNet/image-20200529230349065.png">
+<meta property="og:image" content="https://lz1.fun/images/2020-05-29DiscretizationNet/image-20200529231030986.png">
+<meta property="article:published_time" content="2020-05-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-23T13:55:06.277Z">
+<meta property="article:author" content="Zhengyi Li">
+<meta property="article:tag" content="PDE">
+<meta property="article:tag" content="CFD">
+<meta property="article:tag" content="Deep learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lz1.fun/images/2020-05-29DiscretizationNet/image-20200529164310402.png">
+
+<link rel="canonical" href="https://lz1.fun/2020/05/28/2020-05-29DiscretizationNet/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>DiscretizationNet: A Machine-Learning based solver for Navier-Stokes Equations using Finite Volume Discretization | Blog of Li</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e822dd9b247602caa05492f7a168ec76";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Blog of Li</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人Blog 一年更新约一次</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lz1.fun/2020/05/28/2020-05-29DiscretizationNet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar/shinji_2.jpg">
+      <meta itemprop="name" content="Zhengyi Li">
+      <meta itemprop="description" content="一条咸鱼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Li">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DiscretizationNet: A Machine-Learning based solver for Navier-Stokes Equations using Finite Volume Discretization
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-29T00:00:00+08:00">2020-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-23 21:55:06" itemprop="dateModified" datetime="2022-12-23T21:55:06+08:00">2022-12-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/28/2020-05-29DiscretizationNet/" class="post-meta-item leancloud_visitors" data-flag-title="DiscretizationNet: A Machine-Learning based solver for Navier-Stokes Equations using Finite Volume Discretization" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2005.08357">arvix</a></p>
+<h2 id="摘要">摘要</h2>
+<p>本文作者来自著名有限元分析软件开发商Ansys公司，提出了一种基于机器学习的NS方程求解器。</p>
+<h2 id="method">Method</h2>
+<p>DiscretizationNet可以用来求解 <strong>steady, incompressible Navier-Stokes equations</strong> <span class="math display">\[
+\left\{  
+             \begin{array}{**lr**}  
+             \nabla \cdot \boldsymbol v=0  \\  
+             (\boldsymbol v \cdot \nabla)\boldsymbol v+\nabla p-\frac{1}{Re}\nabla^2 v=0
+             \end{array}  
+\right.
+\]</span> 其中<span class="math inline">\(\boldsymbol v =(u,v,w)\)</span>，<span class="math inline">\(\boldsymbol p\)</span>是scaled pressure。</p>
+<span id="more"></span>
+<h3 id="网络结构">网络结构</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529164310402.png" alt="image-20200529164310402" style="zoom:80%;" /></p>
+<p>有一个Encode-Decoder网络，接受物理量(<span class="math inline">\(u,v,w,p\)</span>)的输入（solution space大小），输出同样尺度的物理量，希望输出的物理量比输入的物理量更接近方程的真解。其中encoder给出的latent space中的物理量要和 边界条件和geometry coder输出的code一起提供给decoder。相当于一个conditional autoencoder。</p>
+<p>随后使用某种数值方法，例如有限体积法(文章中提到如果需要高阶精度，也可以用Finite Element Method (FEM), Discontinuous Galerkin (DG) ，此处用FVM是为了方便GPU并行加速)计算decoder输出的物理量在方程中的残差。</p>
+<h3 id="training-mechanics">Training Mechanics</h3>
+<p>传统的生成器网络可能会输入随机变量和condition vector,输出解，这样可能不太好训练，因为输出数据是一个随机变量的函数。</p>
+<p>所以作者使用迭代的方法，每次decoder-encoder输入的是上次的输出。</p>
+<p>训练的目的是通过极小化PDE残差生成方程的解，同时学习解的latent space。</p>
+<p>如图，每次用Loss的梯度对encoder和decoder进行梯度下降即可。</p>
+<p>我们可以注意到，每次训练网络时是data free的，也就是我们不需要PDE的真解，只需要每次计算PDE的残差即可。</p>
+<h3 id="geometry-and-boundary-encoder">Geometry and Boundary encoder</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529230349065.png" alt="image-20200529230349065" style="zoom: 50%;" /></p>
+<p>对于几何形状和边界条件的encoder也很简单，就是一个autoencoder，在训练主网络（PDE求解器）之前pre train一下。</p>
+<p>此外，Raynold数或者Prandtl数也可以视作边界条件，和边界条件的code一起供给decoder。</p>
+<h3 id="loss">Loss</h3>
+<p><span class="math display">\[
+\lambda(W,b)=||\lambda_c||_{\Omega}+||\lambda_u||_{\Omega}+||\lambda_v||_{\Omega}+||\lambda_w||_{\Omega}
+\]</span></p>
+<p><span class="math inline">\(||\lambda_c||_{\Omega},||\lambda_u||_{\Omega},||\lambda_v||_{\Omega},||\lambda_w||_{\Omega}\)</span>分别表示continuity，和x,y,z方向动量的残差的L-2 norm。</p>
+<h3 id="inference-for-other-geometry-and-boundary-conditions">Inference for other geometry and boundary conditions</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529231030986.png" alt="image-20200529231030986" style="zoom:60%;" /></p>
+<p>这部分最关键，就是训练好的网络如何拿来求解不同边值条件的NS方程。</p>
+<p>因为我们训练网络时就用了不同的边值条件来训练，所以我们的网络自然而然的具有一定泛化性，可以求解不同边值条件的方程。我们先生成随机的初值，然后喂进网络里，取得输出再次输入，反复迭代，直到输出和输入基本一致时停止。此时的输入/输出值就是方程的解。</p>
+<h2 id="实验结果和结论">实验结果和结论</h2>
+<p>在以下三个案例中测试了 ML-solver 求解 the 3-D steady,incompressible Navier-Stokes equations</p>
+<ol type="i">
+<li><p>lid-driven cavity,</p></li>
+<li><p>lamina row past a cylinder</p></li>
+<li><p>conjugate heat transfer.</p></li>
+</ol>
+<p>结果显示和 ANSYS Fluent R19.3 有很好的一致性。</p>
+<p>训练中使用不到30000步即可收敛，每步用时不到1s（在NVIDIA Tesla V100 SXM2 GPU.）。</p>
+<p>实验结果中既展示了在训练集中的边界条件的解，在网络训练完成后，收敛到了接近真解的状态；也展示了不在训练集中的边界条件，在使用训练好的网络进行推断时，也能推断出好的解。但是测试的数据基本是训练数据的一种内插，即使用<span class="math inline">\(\{0.2,0.4,0.6,0.8\}\)</span>的参数训练，测试0.5，和使用<span class="math inline">\(\{8,20\}\)</span>训练，测试13。所以网络的泛化性可能有一定限制，不是对于所有的边界条件都用一个网络都能解决。但是对于相近的边界条件训练一个网络就可能足够了。</p>
+<p>作者提出可以使用LSTM扩展ML-solver使得其能求解unsteady的问题。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PDE/" rel="tag"># PDE</a>
+              <a href="/tags/CFD/" rel="tag"># CFD</a>
+              <a href="/tags/Deep-learning/" rel="tag"># Deep learning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/27/2020-05-28-PASS/" rel="prev" title="Progressive Adversarial Semantic Segmentation">
+      <i class="fa fa-chevron-left"></i> Progressive Adversarial Semantic Segmentation
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/28/2020-05-29-FixHexo%E4%B8%AD%E6%8F%92%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/" rel="next" title="Fix Hexo的博客中插入图片的问题，与Typora结合">
+      Fix Hexo的博客中插入图片的问题，与Typora结合 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#method"><span class="nav-number">2.</span> <span class="nav-text">Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#training-mechanics"><span class="nav-number">2.2.</span> <span class="nav-text">Training Mechanics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geometry-and-boundary-encoder"><span class="nav-number">2.3.</span> <span class="nav-text">Geometry and Boundary encoder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loss"><span class="nav-number">2.4.</span> <span class="nav-text">Loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inference-for-other-geometry-and-boundary-conditions"><span class="nav-number">2.5.</span> <span class="nav-text">Inference for other geometry and boundary conditions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%92%8C%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">实验结果和结论</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhengyi Li"
+      src="/images/avatar/shinji_2.jpg">
+  <p class="site-author-name" itemprop="name">Zhengyi Li</p>
+  <div class="site-description" itemprop="description">一条咸鱼</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/li-positive-one" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;li-positive-one" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhengyi Li</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1280208685&web_id=1280208685"></script>
+  </div>
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":"enable","app_id":"moD2bjB0FQf0v94VigO3UAOl-MdYXbMMI","app_key":"JxsQHsYd7J8QnY8E6JE0fysu","server_url":null,"security":false,"betterPerformance":false};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

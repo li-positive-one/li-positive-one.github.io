@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>个人Blog的搭建方案(1) 博客方案的选择</title>
+    <url>/2019/12/16/2019-12-17-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(1)%20%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%A1%88%E7%9A%84%E9%80%89%E6%8B%A9/</url>
+    <content><![CDATA[<h2 id="方案选择">方案选择</h2>
+<p>我首先只在Markdown+静态网站的范围内考虑，原因有以下几点：</p>
+<ul>
+<li><p>使用现有的Blog网站服务相当于把数据都放在了别人的网站上，如果想要迁移就会非常麻烦，远不如数据在自己手上放心。</p></li>
+<li><p>如果自己建动态网站，就要找服务器，但是常常维护着一个服务器也是很麻烦的，特别是如果想用中国大陆的服务器就需要备案。</p></li>
+<li><p>Markdown写起来简单，备份、迁移比较容易，数据都在文件里，不用牵扯到数据库。</p></li>
+</ul>
+<span id="more"></span>
+<p>然后最常见的Markdown静态网站生成器有Jekyll, Hexo, Hugo.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>语言</th>
+<th>生成速度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Jekyll</td>
+<td>Ruby</td>
+<td>慢</td>
+</tr>
+<tr class="even">
+<td>Hexo</td>
+<td>Node.js</td>
+<td>快</td>
+</tr>
+<tr class="odd">
+<td>Hugo</td>
+<td>Go</td>
+<td>更快</td>
+</tr>
+</tbody>
+</table>
+<p>我选择这几个方案并没有对速度有特别的要求，因为我Blog文章不多，更新频率也不大。主要还是看哪个框架好部署（要敲的命令短），另外对Latex的支持要好。其中我找到最简单的组合就是Hexo+Next主题。其中Next主题不只是简单的美化，而是嵌入了一些常用的扩展，例如Mathjax，搜索等，比起自己在模板页面里加script实在是方便很多。</p>
+<p>考虑过使用Hugo代替Hexo，但是看见还需要重新配置Mathjax，就觉得麻烦，不想重新搞了。反正个人Blog这种东西，又是纯静态网站，又在Github上全开源，所以也没有什么安全问题。而且我对速度也不太敏感，凑活能用就行了。有的老师用jemdoc搭建的主页也不是好好的，jemdoc上次更新都是2012年了。</p>
+<h2 id="搭建过程">搭建过程</h2>
+<ol type="1">
+<li>按照Hexo的教程搭建一个网站</li>
+<li>按照Next的教程下载主题，并在网站config中配置使用该主题</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>在网站配置中启用搜索</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>在主题配置中启用搜索</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># source/_data/next.yml</span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># If auto, trigger search by changing input.</span></span><br><span class="line">  <span class="comment"># If manual, trigger search by pressing enter key or search button.</span></span><br><span class="line">  <span class="attr">trigger:</span> <span class="string">auto</span></span><br><span class="line">  <span class="comment"># Show top n results per article, show all results by setting to -1</span></span><br><span class="line">  <span class="attr">top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment"># Unescape html strings to the readable one.</span></span><br><span class="line">  <span class="attr">unescape:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># Preload the search data when the page loads.</span></span><br><span class="line">  <span class="attr">preload:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ol start="5" type="1">
+<li>在主题配置中启用Mathjax, 并安装相应依赖，修改markdown渲染器，参见<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/MATH.md">MATH</a></li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># source/_data/next.yml</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># See: https://mhchem.github.io/MathJax-mhchem/</span></span><br><span class="line">    <span class="attr">mhchem:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.</span></span><br><span class="line">  <span class="attr">katex:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span></span><br><span class="line">    <span class="attr">copy_tex:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>如果是windows，可以这么安装依赖。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Run in powershell</span></span><br><span class="line">choco install pandoc</span><br><span class="line">npm uninstall hexo<span class="literal">-renderer-marked</span></span><br><span class="line">npm install hexo<span class="literal">-renderer-pandoc</span> <span class="comment"># or hexo-renderer-kramed</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人Blog的搭建方案(2) 自动构建</title>
+    <url>/2019/12/17/2019-12-18-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(2)%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/</url>
+    <content><![CDATA[<p>个人博客用Hexo+Next已经很方便了，但是仍然存在不足，就是我有好几个常用的工作PC，所以需要在每个PC上安装一套node.js/pandoc等依赖，实在是有些麻烦。所以我希望像github pages+jekyll一样，只用上传markdown就能自动构建出网站。这样我的repo中也可以很干净，只需要写markdown文本就行了，本地不需要安装任何依赖。</p>
+<span id="more"></span>
+<h2 id="travis-ci">Travis CI</h2>
+<p><a href="https://travis-ci.com/li-positive-one/li-positive-one.github.io"><img src="https://travis-ci.com/li-positive-one/li-positive-one.github.io.svg?branch=docs" alt="Build Status" /></a></p>
+<p>首先在Github的设置<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a>里配置一个token，用来让Travis CI能够push文件到Github Repos里。</p>
+<p>然后在Travis CI里和Github账户绑定，在Github Pages项目上建立一个任务。</p>
+<p>配置文件如下，其中要在Travis CI这个项目的环境变量里添加<code>GH_TOKEN</code>和<code>GH_REF</code>，其中前者是第一步获取的token，后者是你的Github仓库地址，例如<code>github.com/li-positive-one/li-positive-one.github.io</code>。</p>
+<p>把这个配置文件命名<code>.travis.yml</code>，放到github仓库的根目录下，Travis就会自动识别并根据配置文件进行构建。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># .travis.yml</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">directories:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">node_modules</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想在Blog中使用mathjax，就要用hexo-renderer-pandoc渲染，其中依赖pandoc。但是使用apt-get 安装pandoc，安装的是非常古老的版本，可能会不兼容，所以不如直接下载安装pandoc的可用的较新版本使用。</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">wget</span> <span class="string">https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">sudo</span> <span class="string">dpkg</span> <span class="string">-i</span> <span class="string">./pandoc-2.9-1-amd64.deb</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">submodule</span> <span class="string">update</span> <span class="string">--init</span> <span class="string">--recursive</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">./public</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">init</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">&quot;lizhengyi&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">&quot;lizhengyi@pku.edu.cn&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">checkout</span> <span class="string">-b</span> <span class="string">docs</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;Update blog content by Travis CI&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">--quiet</span> <span class="string">&quot;https://$&#123;GH_TOKEN&#125;@github.com/li-positive-one/blog.git&quot;</span> <span class="string">docs:docs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docs</span></span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<p>【1】<a href="https://xirikm.net/2019/826-2">使用 Travis CI 实现 Hexo 博客自动部署</a></p>
+<h2 id="netlify">Netlify</h2>
+<p><a href="https://app.netlify.com/sites/lizhengyi/deploys"><img src="https://api.netlify.com/api/v1/badges/67c53302-27a4-4c57-843e-6d055e0f5b5c/deploy-status" alt="Netlify Status" /></a></p>
+<p>Netlify似乎专业做静态网站构建和自动Deploy，所以在这方面体验确实非常好，好到什么地步了呢？</p>
+<p>只需要github仓库授权，告诉他我的构建命令是<code>hexo g</code>，deploy的文件在<code>public</code>目录下，其余的事情它自己全部解决了！不需要写任何配置文件，网站就一次pass了，包括pandoc之类的依赖似乎他都自己解决掉了。总之，生成网页非常方便，而且构建速度也比Travis CI快不少。因为Travis CI每次构建都需要安装依赖，而Netlify的依赖可能都保存下来了，我看构建的log中每次只需要<code>hexo g</code>就结束了。</p>
+<p>但是Netlify都是构建在它自己的网站上的，所以有一个问题就是Netlify在中国大陆地区的访问似乎不是很稳定。所以我还是没有把鸡蛋都放在这一个篮子里。Github和Travis CI一起上岂不是更好，两开花~ 两开花~</p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人Blog的搭建方案(3) 自动构建-续</title>
+    <url>/2019/12/18/2019-12-19-%E4%B8%AA%E4%BA%BABlog%E7%9A%84%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88(3)%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA-%E7%BB%AD/</url>
+    <content><![CDATA[<p>继续上次体验了Travis CI和Netifly的自动构建，感觉这个非常有意思，所以又尝试了两个自动构建工具，Azure Pipeline和Github Actions.</p>
+<span id="more"></span>
+<h2 id="azure-pipeline">Azure Pipeline</h2>
+<p><a href="https://dev.azure.com/lizhengyipku/lizhengyipku/_build/latest?definitionId=2&amp;branchName=docs"><img src="https://dev.azure.com/lizhengyipku/lizhengyipku/_apis/build/status/li-positive-one.li-positive-one.github.io?branchName=docs" alt="Build Status" /></a></p>
+<p>Azure是微软旗下的开发平台/工具，其中的自动构建就是Azure Pipeline. Github支持私有仓库的一个项目，以及1800分钟构建时间，和公开仓库的10个项目和1800分钟构建时间。对于私有仓库的构建，还是非常适合的。虽然也是yaml文件配置，但是和Travis CI的配置文件格式并不通用，需要简单的改一改才能用。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># azure-pipelines.yml</span></span><br><span class="line"><span class="attr">trigger:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">docs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">pool:</span></span><br><span class="line">  <span class="attr">vmImage:</span> <span class="string">&#x27;ubuntu-latest&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">task:</span> <span class="string">NodeTool@0</span></span><br><span class="line">  <span class="attr">inputs:</span></span><br><span class="line">    <span class="attr">versionSpec:</span> <span class="string">&#x27;10.x&#x27;</span></span><br><span class="line">  <span class="attr">displayName:</span> <span class="string">&#x27;Install Node.js&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    npm install -g hexo-cli</span></span><br><span class="line"><span class="string">    npm install</span></span><br><span class="line"><span class="string"></span>  <span class="attr">displayName:</span> <span class="string">&#x27;npm install and build&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    wget https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb</span></span><br><span class="line"><span class="string">    sudo dpkg -i ./pandoc-2.9-1-amd64.deb</span></span><br><span class="line"><span class="string"></span>  <span class="attr">displayName:</span> <span class="string">&#x27;Install pandoc&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    git submodule update --init --recursive</span></span><br><span class="line"><span class="string">    hexo g</span></span><br><span class="line"><span class="string"></span>  <span class="attr">displayName:</span> <span class="string">&#x27;Building&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    cd ./public</span></span><br><span class="line"><span class="string">    git init</span></span><br><span class="line"><span class="string">    git config user.name &quot;lizhengyi&quot;</span></span><br><span class="line"><span class="string">    git config user.email &quot;lizhengyi@pku.edu.cn&quot;</span></span><br><span class="line"><span class="string">    git add .</span></span><br><span class="line"><span class="string">    git commit -m &quot;Update blog content by Azure Pipeline&quot;</span></span><br><span class="line"><span class="string">    git push --force --quiet &quot;https://$(GH_TOKEN)@github.com/li-positive-one/blog.git&quot; master:master</span></span><br><span class="line"><span class="string"></span>  <span class="attr">displayName:</span> <span class="string">&#x27;Deploying&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="github-action">Github Action</h2>
+<p><a href="https://github.com/li-positive-one/li-positive-one.github.io/actions"><img src="https://github.com/li-positive-one/li-positive-one.github.io/workflows/Hexo/badge.svg" alt="Actions Status" /></a></p>
+<p>搞了这么多构建工具，才发现GIthub已经推出了自己的构建工具，之前在测试阶段，2019年11月正式开放。我何必舍近求远，用其他的工具呢，一站式完成网站岂不是更好。但是Github Action的配置也是最耗费我时间的。</p>
+<p>在配置中，遇到的问题就是使用之前的push方法，也就是Personal access tokens不起作用。调试了好久，也不知道是哪里的问题，所以干脆换了套方法。生成了一套ssh-key，把公钥写入repo的Deploy keys并启用write权限，把私钥写入Secrets，新建一个条目，然后就可以在构建的配置文件里把这个变量写入到.ssh里，从而实现对repo的写入。这种方式虽然有点复杂，但是这是更加安全的方式，因为Deploy keys只涉及到这个仓库的权限，而Personal access tokens并不能细化到各个仓库的权限，一旦泄露，所有的仓库都有危险。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Hexo</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">docs</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">node-version:</span> [<span class="number">12.</span><span class="string">x</span>]</span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">submodules</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        git submodule update --init --recursive</span></span><br><span class="line"><span class="string"></span>    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node-version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node-version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">install</span> <span class="string">pandoc</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        wget https://github.com/jgm/pandoc/releases/download/2.9/pandoc-2.9-1-amd64.deb</span></span><br><span class="line"><span class="string">        sudo dpkg -i ./pandoc-2.9-1-amd64.deb</span></span><br><span class="line"><span class="string"></span>    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">npm</span> <span class="string">install,</span> <span class="string">build,</span> <span class="string">and</span> <span class="string">test</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        npm install -g hexo-cli</span></span><br><span class="line"><span class="string">        npm install </span></span><br><span class="line"><span class="string"></span>      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">CI:</span> <span class="literal">true</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">building</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        hexo g</span></span><br><span class="line"><span class="string"></span>    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">set</span> <span class="string">ssh</span></span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">ACTION_DEPLOY_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GH_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        # set up private key for deploy</span></span><br><span class="line"><span class="string">        mkdir -p ~/.ssh/</span></span><br><span class="line"><span class="string">        echo &quot;$ACTION_DEPLOY_KEY&quot; | tr -d &#x27;\r&#x27; &gt; ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">        chmod 600 ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">        ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span></span><br><span class="line"><span class="string"></span>    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">deploying</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        cd ./public</span></span><br><span class="line"><span class="string">        git init</span></span><br><span class="line"><span class="string">        git config user.name &quot;lizhengyi&quot;</span></span><br><span class="line"><span class="string">        git config user.email &quot;lizhengyi@pku.edu.cn&quot;</span></span><br><span class="line"><span class="string">        git add .</span></span><br><span class="line"><span class="string">        git commit -m &quot;Update blog content by Github Actions&quot;</span></span><br><span class="line"><span class="string">        git push --force --quiet git@github.com:li-positive-one/li-positive-one.github.io.git master:master</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于如何恢复有雨滴的玻璃后拍的照片的两篇Paper</title>
+    <url>/2019/12/21/2019-12-22-Derain/</url>
+    <content><![CDATA[<h2 id="deep-learning-for-seeing-through-window-with-raindrops">Deep learning for seeing through window with Raindrops</h2>
+<p>Quan, Yuhui, Shijie Deng, Yixin Chen, and Hui Ji. "Deep Learning for Seeing Through Window With Raindrops." In <em>Proceedings of the IEEE International Conference on Computer Vision</em>, pp. 2463-2471. 2019. <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Quan_Deep_Learning_for_Seeing_Through_Window_With_Raindrops_ICCV_2019_paper.html">[PDF]</a></p>
+<p>这篇文章考虑 Derain 问题中的一个子问题，就是透过有雨滴的窗户拍照得到的图片的恢复。就是处理如下的这种图片。文章的亮点主要在于使用了结合shape-prior和channel的Attention机制，以及非常好的数值结果。</p>
+<p><img src="/images/Derain.assets/1.png" style="zoom:60%;" /></p>
+<p>这篇文章的Motivation是通过shape-driven attention和channel re-calibration来帮助CNN更好的恢复原图。</p>
+<span id="more"></span>
+<h3 id="shape-driven-attention">shape-driven attention</h3>
+<p>假设雨滴是椭圆形的。我们可以用图像某部分的edge map，即图像的patch的edge map和椭圆的等高线做内积，内积越大，则这个patch越接近一个椭圆（给定的长短轴参数a,b）。具体方法如下</p>
+<p><span class="math inline">\(f(x,y)=\frac{x^2}{a^2}+\frac{y^2}{b^2}\)</span>是椭圆的等高线，则<span class="math inline">\(g(x,y)=[-\frac{\partial f}{\partial y},\frac{\partial f}{\partial x}]=[\frac{y}{b^2},\frac{x}{a^2}]\)</span>是椭圆的edge方向。而图像用函数<span class="math inline">\(P(x)\)</span>表示，图像的edge方向是<span class="math inline">\(e(x,y)=[-\frac{\partial P}{\partial y},\frac{\partial P}{\partial x}]\)</span></p>
+<p>则<span class="math inline">\(\beta(x_0,y_0)=e(x_0,y_0)\cdot g(x_0,y_0)\)</span>就表示图像在<span class="math inline">\((x_0,y_0)\)</span>点的边缘和一个中心在<span class="math inline">\((0,0)\)</span>，长短焦为 <span class="math inline">\(a,b\)</span> 的椭圆走势一致。 <span class="math display">\[
+\tau(P)=\sum_{(x_0,y_0)\in D(P)} \beta(x_0,y_0)/\# D(P)
+\]</span> 就表示这个 patch 块中的图像是否接近一个以这个Patch中心为中心（且长短焦为$a,b $）的椭圆。</p>
+<p>如果我们已经知道了图像的edge，那么<span class="math inline">\(\tau(P)\)</span>的计算是可以用卷积来实现的。 <span class="math display">\[
+\tau(P_n)=\tau_1(P_n)+\tau_2(P_n)
+\]</span></p>
+<p><span class="math display">\[
+\tau_1(P)=\sum_{(x_i,y_i)\in D(P)} \frac{x_i}{a^2} \frac{\partial P_n}{\partial x}/\# D(P)
+\]</span></p>
+<p><span class="math display">\[
+\tau_2(P)=\sum_{(x_i,y_i)\in D(P)} \frac{y_i}{b^2} \frac{\partial P_n}{\partial y}/\# D(P)
+\]</span></p>
+<p><img src="/images/Derain.assets/2.png" style="zoom: 50%;" /></p>
+<h3 id="network-architecture">Network Architecture</h3>
+<p><img src="/images/Derain.assets/3.png" style="zoom:100%;" /></p>
+<p>网络结构总体上是一个encode-decoder模型，图片和edge-maps先concat在一起，然后经过卷积以及一系列ResBlock和下采样上采样过程，以及为了加速训练的skip-connection。结构和其他的网络差别点主要在于其Residual Block。</p>
+<p>Residual Block中结构大概为<span class="math inline">\(F&#39;=F+F \cdot(PA(E)\cdot CA(F))\)</span>。</p>
+<p>其中PA是根据Edge-map计算shape-driven attention的过程，也就是前一节所说，图像和一些卷积核相乘来得到shape-attention，这些卷积核每个卷积核只有两个参数<span class="math inline">\(a,b\)</span>。实际是取不同的Patch大小，分别是<span class="math inline">\(15 \times 15\)</span>,<span class="math inline">\(20\times 20\)</span>，..., <span class="math inline">\(40 \times 40\)</span>，并在每个尺度，给8组椭圆参数（即8组卷积核），这些参数是可学习的。</p>
+<p>CA(F)则是用来得到channel attention,结构是Pooling+FC。</p>
+<p>PA输出一个<span class="math inline">\(1 \times H \times W\)</span>的tensor，CA输出一个<span class="math inline">\(C\times 1\times 1\)</span>的tensor，两者做张量积得到<span class="math inline">\(C\times H\times W\)</span>的Attention并用于Residual Block中。</p>
+<p>网络的Loss则是L1-loss <span class="math display">\[
+L=\frac{1}{N}\sum_{i=1}^N||\hat X_i=X_i||_1
+\]</span></p>
+<h3 id="result">Result</h3>
+<p>数值实验是在Qian et al.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>发布的数据集上进行的。对比试验是Eigen et al<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>的方法，Qian et al.的AttentGAN<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>，以及Pix2Pix<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 进行了对比试验。</p>
+<p><img src="/images/Derain.assets/6.png" style="zoom:100%;" /></p>
+<h3 id="ablation-study">Ablation study</h3>
+<p>作者做了分别拿走PA，CA模块和全拿走的对比实验。（如果拿走某个模块， 就把这个模块的输出恒定为0.5）。对比试验显示，JPCA模块对结果有较大提升，其中CA模块的贡献比PA模块更大。</p>
+<h2 id="learning-from-synthetic-photorealistic-raindrop-for-single-image-raindrop-removal">Learning From Synthetic Photorealistic Raindrop for Single Image Raindrop Removal</h2>
+<p>Hao, Zhixiang, Shaodi You, Yu Li, Kunming Li, and Feng Lu. "Learning From Synthetic Photorealistic Raindrop for Single Image Raindrop Removal." In <em>Proceedings of the IEEE International Conference on Computer Vision Workshops</em>, pp. 0-0. 2019.</p>
+<p><a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/PBDL/Hao_Learning_From_Synthetic_Photorealistic_Raindrop_for_Single_Image_Raindrop_Removal_ICCVW_2019_paper.html">[PDF]</a></p>
+<p>这篇文章恰好和上一篇一样，都是处理derain中的同一类问题，透过有雨滴的窗户拍照。这篇文章主要贡献在于 提出了第一个合成粘附雨滴训练的照片现实数据集。渲染是基于物理的，考虑了水的形状和光学性质。在此基础上， 提出了能很好地恢复图像结构的去除网络。</p>
+<h3 id="refaction-model">Refaction Model</h3>
+<p><img src="/images/Derain.assets/5.png" style="zoom: 80%;" /><img src="../images/Derain.assets/7.png" /></p>
+<p>这是本文的物理模型，其中绿线代表直接射进镜头的光线，而黄线表示经过两次折射后射入镜头的光线。</p>
+<h3 id="raindrop-imagery-model-and-photorealistic-dataset">Raindrop Imagery Model and Photorealistic Dataset</h3>
+<p>作者根据上一节的物理模型，使用几何渲染和光线追踪技术，先随机生成玻璃角度、水滴的几何形状（水滴和玻璃的夹角以及水滴的直径）和位置，然后计算出我们在玻璃后应该观察出的图像，最后，考虑到摄像机的焦面在图像上，而玻璃上的水滴不在焦平面上，所以对水滴再进行了一个disk blur。 就得到了模拟数据集，效果如下，第一到三行分别为真实图像，模拟的玻璃后图像，和模拟图像的水滴mask。</p>
+<p><img src="/images/Derain.assets/5.png" style="zoom: 100%;" /></p>
+<p><img src="/images/Derain.assets/7.png" style="zoom: 80%;" /><img src="../images/Derain.assets/8.png" alt="网络结构" /></p>
+<h3 id="network-structure">Network Structure</h3>
+<p><img src="/images/Derain.assets/7.png" style="zoom: 100%;" /></p>
+<p><img src="/images/Derain.assets/8.png" alt="网络结构" style="zoom:100%;" /></p>
+<p>网络结构是一个two-stage的网络，分别有一个网络探测水滴位置，输出水滴mask。这个网络的训练需要雨滴mask的groundtruth。还有一个网络直接输入图像和edge image，输出重建图像，这个网络的训练需要真实图像。最后一个网络的输入是前两个网络的输出，输出真实图像，也是以真实图像作为Label进行训练。</p>
+<p>作者发现如果对raindrop 探测网络的输出进行dilate再输入到第三个网络中效果会更好，否则可能会产生artifact.</p>
+<h3 id="result-1">Result</h3>
+<p><img src="/images/Derain.assets/9.png" style="zoom: 80%;" /><img src="../images/Derain.assets/10.png" /></p>
+<p>模拟数据集上网络表现很好，其中3RN only表示只用Raindrop region reconstruction network。</p>
+<p><img src="/images/Derain.assets/10.png" style="zoom: 100%;" /></p>
+<p>在真实数据集（和上边一篇文章一样，Qian的数据集）上，该算法的优势没有那么明显，因为该数据集没有雨滴的mask数据集，只能使用3RN only的网络，或者用雨滴图-原图得到rough mask进行训练。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Rui Qian, Robby T. Tan, Wenhan Yang, Jiajun Su, and Jiaying Liu. Attentive generative adversarial network for raindrop removal from a single image. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 2482–2491, 2018.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>David Eigen, Dilip Krishnan, and Rob Fergus. Restoring an image taken through a window covered with dirt or rain. In Proc. Int. Conf. Comput. Vision, pages 633–640, 2013<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Rui Qian, Robby T. Tan, Wenhan Yang, Jiajun Su, and Jiaying Liu. Attentive generative adversarial network for raindrop removal from a single image. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 2482–2491, 2018.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei A.Efros. Image-to-image ranslation with conditional adversarial networks. In Proc. IEEE Conf. Comput. Vision Pattern Recognition, pages 5967–5976. IEEE, 2017<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Derain</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Progressive Adversarial Semantic Segmentation</title>
+    <url>/2020/05/27/2020-05-28-PASS/</url>
+    <content><![CDATA[<p><a href="https://arxiv.org/abs/2005.04311">arvix</a></p>
+<h2 id="总体思路">总体思路</h2>
+<p>通过Transformation产生出更多的数据，是一般的数据增广方式。但是这篇文章中，对于增广出来的数据，并不采用对应的label进行监督学习，而是视为unlabel的数据，这样增加了网络的泛化性，在不同的数据集上也能预测的很好。</p>
+<span id="more"></span>
+<h2 id="网络结构loss和算法">网络结构、Loss和算法</h2>
+<p>下边我们直接看算法，算法如图，非常简单。</p>
+<p>整体过程中有三个网络，Discriminators D, segmentation mask generator S和shape encoder E。</p>
+<p>S负责输入图像，输出预测的Mask。</p>
+<p>D输入图像和分割Mask（有GroundTruth，也有S预测的），判断MASK是GT还是网络预测的。</p>
+<p>E输入Mask（有GroundTruth，也有S预测的），输出latent code.</p>
+<h3 id="loss">Loss</h3>
+<h4 id="segmentor-loss">1. Segmentor Loss:</h4>
+<p>两部分，</p>
+<ol type="1">
+<li>分割的loss，包含两部分：分割结果的KL divergence，以及Feature Loss</li>
+<li>来自Discriminator的Loss，和其他的GAN Loss一样</li>
+</ol>
+<h4 id="discriminator-loss">2. Discriminator Loss</h4>
+<p>标准形式的GAN loss，判断Mask是GT还是网络预测的。多尺度，用了输入不同尺度数据的4个网络。</p>
+<h4 id="encoder-loss">3. Encoder Loss</h4>
+<p>Loss就是输出的feature之间的MSE Loss.</p>
+<p><img src="/images/2020-05-28-PASS/image-20200529000701901.png" style="zoom:100%;" /></p>
+<p>网络结构如下图，可以看到其中的分割器S是U-Net结构的。然后还用了多尺度的Loss等Trick.</p>
+<p><img src="/images/2020-05-28-PASS/image-20200528235726324.png" style="zoom:100%;" /></p>
+<h2 id="实验结果">实验结果</h2>
+<p>作者主要展示的是在某个数据集上训练，在其他数据集上测试，PASS方法相对而言，优势还是很明显的。</p>
+<p><img src="/images/2020-05-28-PASS/image-20200529004442052.png" style="zoom:100%;" /></p>
+<h2 id="总结">总结</h2>
+<p>用的技术不复杂，GAN + Progressive(Multiscale Loss) + Data Agumentation.</p>
+<p>有一个点没读懂，就是shape encoder E的功能是什么，文章中说它能使得模型更加shape-aware，但是从算法和网络结构中看，E的存在对其他模块没有任何影响？</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Segmentation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Fix Hexo的博客中插入图片的问题，与Typora结合</title>
+    <url>/2020/05/28/2020-05-29-FixHexo%E4%B8%AD%E6%8F%92%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="使用typora编辑markdown文件并插入图片">使用Typora编辑Markdown文件并插入图片</h2>
+<p>Typora对于图片插入的设置是十分方便的，可以使用剪贴板Ctrl+V直接把图片粘贴到Markdown文件中，Typora会根据设置自动将图片保存或复制到相应的文件夹中。（如果能支持对于不同的文件夹配置不同的路径就更好了，现在的设置是全局设置，有时候不太方便，不同项目有不同的文件组织方式，需要自己切换设置。）</p>
+<p><img src="/images/2020-05-29-FixHexo中插图片的问题/image-20200529100600340.png" alt="image-20200529100600340" style="zoom:100%;" /></p>
+<span id="more"></span>
+<p>这样插入的文件是长成下面的模样：</p>
+<p><img src="/images/2020-05-29-FixHexo中插图片的问题/image-20200529100926703.png" alt="image-20200529100926703" style="zoom:100%;" /></p>
+<p>很可惜，这样插入的图片在Hexo博客中不能完整工作，在首页的文章中能正常显示，但是一旦点进文章中，就无法正常显示了。</p>
+<h2 id="hexo支持的图片插入格式">Hexo支持的图片插入格式</h2>
+<p>Hexo的<a href="https://hexo.io/zh-cn/docs/asset-folders.html">官方文档</a>中提到，</p>
+<blockquote>
+<p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>但是如果我们使用标签来插入图片，那么图片虽然能在Hexo中显示，但是无法在Typora等markdown编辑器中显示，不便于我们可视化编辑，也不方便我们使用Markdown自动保存图片的功能。</p>
+<p>另一种可以正常显示图片的方式是使用html标签，例如</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/images/2020-05-29 Fix Hexo中插图片的问题/image-20200529100926703.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;image-20200529100926703&quot;</span> <span class="attr">style</span>=<span class="string">&quot;zoom:100%;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种方式插入的图片是可以在首页和文章页都正确显示的。</p>
+<p>如果我们在Typora中，对某个图片按右键，选择缩放图片，Typora就会自动的把图片从markdown语法转成和html标签语法，依然使用相对路径，例如</p>
+<p><img src="/images/2020-05-29-FixHexo中插图片的问题/image-20200529104216661.png" alt="image-20200529104216661" style="zoom:100%;" /></p>
+<p>可以看到，只要我们稍微更改一下路径，去掉前边的两个点，就可以在Hexo博客中正常显示；但是更改路径之后，又不能在markdown编辑器中正常可视化了。</p>
+<h2 id="在github-action中使用sed自动修正">在Github Action中使用Sed自动修正</h2>
+<p>所以，让本地的版本和部署到Blog的版本不一致即可。</p>
+<p>这个Blog已经使用了<a href="#">Post not found: 2019-12-19-个人Blog的搭建方案(3)自动化构建续 Github Action的自动部署</a>。我们在Action中的脚本中增加下边的命令，加在Build Hexo之前就行</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">sed</span> <span class="string">images</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        sed  -i &#x27;s#&lt;img src=&quot;../images/#&lt;img src=&quot;/images/#g&#x27;  ./source/_posts/*.md</span></span><br><span class="line"><span class="string"></span>    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">building</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        hexo g</span></span><br><span class="line"><span class="string"></span>    <span class="comment">#...</span></span><br></pre></td></tr></table></figure>
+<p>这样，我们就可以既保证本地能用Typora可视化编辑，又能在Github Pages中正确渲染了。</p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DiscretizationNet: A Machine-Learning based solver for Navier-Stokes Equations using Finite Volume Discretization</title>
+    <url>/2020/05/28/2020-05-29DiscretizationNet/</url>
+    <content><![CDATA[<p><a href="https://arxiv.org/abs/2005.08357">arvix</a></p>
+<h2 id="摘要">摘要</h2>
+<p>本文作者来自著名有限元分析软件开发商Ansys公司，提出了一种基于机器学习的NS方程求解器。</p>
+<h2 id="method">Method</h2>
+<p>DiscretizationNet可以用来求解 <strong>steady, incompressible Navier-Stokes equations</strong> <span class="math display">\[
+\left\{  
+             \begin{array}{**lr**}  
+             \nabla \cdot \boldsymbol v=0  \\  
+             (\boldsymbol v \cdot \nabla)\boldsymbol v+\nabla p-\frac{1}{Re}\nabla^2 v=0
+             \end{array}  
+\right.
+\]</span> 其中<span class="math inline">\(\boldsymbol v =(u,v,w)\)</span>，<span class="math inline">\(\boldsymbol p\)</span>是scaled pressure。</p>
+<span id="more"></span>
+<h3 id="网络结构">网络结构</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529164310402.png" alt="image-20200529164310402" style="zoom:80%;" /></p>
+<p>有一个Encode-Decoder网络，接受物理量(<span class="math inline">\(u,v,w,p\)</span>)的输入（solution space大小），输出同样尺度的物理量，希望输出的物理量比输入的物理量更接近方程的真解。其中encoder给出的latent space中的物理量要和 边界条件和geometry coder输出的code一起提供给decoder。相当于一个conditional autoencoder。</p>
+<p>随后使用某种数值方法，例如有限体积法(文章中提到如果需要高阶精度，也可以用Finite Element Method (FEM), Discontinuous Galerkin (DG) ，此处用FVM是为了方便GPU并行加速)计算decoder输出的物理量在方程中的残差。</p>
+<h3 id="training-mechanics">Training Mechanics</h3>
+<p>传统的生成器网络可能会输入随机变量和condition vector,输出解，这样可能不太好训练，因为输出数据是一个随机变量的函数。</p>
+<p>所以作者使用迭代的方法，每次decoder-encoder输入的是上次的输出。</p>
+<p>训练的目的是通过极小化PDE残差生成方程的解，同时学习解的latent space。</p>
+<p>如图，每次用Loss的梯度对encoder和decoder进行梯度下降即可。</p>
+<p>我们可以注意到，每次训练网络时是data free的，也就是我们不需要PDE的真解，只需要每次计算PDE的残差即可。</p>
+<h3 id="geometry-and-boundary-encoder">Geometry and Boundary encoder</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529230349065.png" alt="image-20200529230349065" style="zoom: 50%;" /></p>
+<p>对于几何形状和边界条件的encoder也很简单，就是一个autoencoder，在训练主网络（PDE求解器）之前pre train一下。</p>
+<p>此外，Raynold数或者Prandtl数也可以视作边界条件，和边界条件的code一起供给decoder。</p>
+<h3 id="loss">Loss</h3>
+<p><span class="math display">\[
+\lambda(W,b)=||\lambda_c||_{\Omega}+||\lambda_u||_{\Omega}+||\lambda_v||_{\Omega}+||\lambda_w||_{\Omega}
+\]</span></p>
+<p><span class="math inline">\(||\lambda_c||_{\Omega},||\lambda_u||_{\Omega},||\lambda_v||_{\Omega},||\lambda_w||_{\Omega}\)</span>分别表示continuity，和x,y,z方向动量的残差的L-2 norm。</p>
+<h3 id="inference-for-other-geometry-and-boundary-conditions">Inference for other geometry and boundary conditions</h3>
+<p><img src="/images/2020-05-29DiscretizationNet/image-20200529231030986.png" alt="image-20200529231030986" style="zoom:60%;" /></p>
+<p>这部分最关键，就是训练好的网络如何拿来求解不同边值条件的NS方程。</p>
+<p>因为我们训练网络时就用了不同的边值条件来训练，所以我们的网络自然而然的具有一定泛化性，可以求解不同边值条件的方程。我们先生成随机的初值，然后喂进网络里，取得输出再次输入，反复迭代，直到输出和输入基本一致时停止。此时的输入/输出值就是方程的解。</p>
+<h2 id="实验结果和结论">实验结果和结论</h2>
+<p>在以下三个案例中测试了 ML-solver 求解 the 3-D steady,incompressible Navier-Stokes equations</p>
+<ol type="i">
+<li><p>lid-driven cavity,</p></li>
+<li><p>lamina row past a cylinder</p></li>
+<li><p>conjugate heat transfer.</p></li>
+</ol>
+<p>结果显示和 ANSYS Fluent R19.3 有很好的一致性。</p>
+<p>训练中使用不到30000步即可收敛，每步用时不到1s（在NVIDIA Tesla V100 SXM2 GPU.）。</p>
+<p>实验结果中既展示了在训练集中的边界条件的解，在网络训练完成后，收敛到了接近真解的状态；也展示了不在训练集中的边界条件，在使用训练好的网络进行推断时，也能推断出好的解。但是测试的数据基本是训练数据的一种内插，即使用<span class="math inline">\(\{0.2,0.4,0.6,0.8\}\)</span>的参数训练，测试0.5，和使用<span class="math inline">\(\{8,20\}\)</span>训练，测试13。所以网络的泛化性可能有一定限制，不是对于所有的边界条件都用一个网络都能解决。但是对于相近的边界条件训练一个网络就可能足够了。</p>
+<p>作者提出可以使用LSTM扩展ML-solver使得其能求解unsteady的问题。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>PDE</tag>
+        <tag>CFD</tag>
+        <tag>Deep learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Pages 的LaTeX公式支持</title>
+    <url>/2017/09/25/GithubPages%E7%9A%84LaTeX%E5%85%AC%E5%BC%8F%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<h4 id="首先将jekyll的markdown-processor改为kramdown">首先，将Jekyll的Markdown processor改为kramdown</h4>
+<p>确定<code>_config.yml</code>中是<code>markdown    : kramdown</code></p>
+<span id="more"></span>
+<h4 id="添加-mathjax">添加 Mathjax</h4>
+<p>在post.html中的header中添加如下语句</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> async</span><br><span class="line">  src=<span class="string">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;</span>&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="现在你的github-pages应该就可以渲染latex公式了">现在你的Github Pages应该就可以渲染latex公式了！</h4>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+        <tag>Markdown</tag>
+        <tag>Jekyll</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Julia系列(1):安装与环境配置</title>
+    <url>/2018/12/14/Julia%E7%B3%BB%E5%88%97(1)%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>很早之前就看见各种安利Julia的文章了，恰好Julia 1.0已经发布了，这门快速发展的语言应该已经具有了一定的稳定性，所以今天终于上手试了一试。</p>
+<span id="more"></span>
+<h2 id="julia-安装与环境配置教程和文档">Julia 安装与环境配置，教程和文档</h2>
+<p>Julia可以从<a href="https://julialang.org/">官网</a>直接下载二进制包，里边有.sh文件，指定安装路径就能安装了，安装后将/Julia/bin添加到PATH就能使用了。</p>
+<p>除了Julia（解释器？编译器？）本身，还可以选择直接下载<a href="https://juliacomputing.com/products/juliapro.html">JuliaPro</a>，里边除了julia本体，还有Juno IDE（一个基于Atom的Julia IDE）和一些常用的包。</p>
+<p>不过由于Julia本身就具有很好的包管理器和虚拟环境支持，而且我也不太习惯atom这个编辑器，所以我并没有选择JuliaPro，而是直接使用了Julia+IJulia+Jupyter。</p>
+<p>安装好julia与anaconda后，我们先在终端中运行julia，启动julia的REPL环境（julia语言虽然运行快，但是启动时预热很慢），然后在其中运行下列命令</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Pkg</span><br><span class="line">Pkg.add(<span class="string">&quot;IJulia&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>然后再启动 jupyter notebook 或者 jupyter lab，就可以创建julia的notebook了。</p>
+<p>Julia非常友好的一点在于其中文文档比较全面，但是文档也有一些问题，一些1.0中新出现的特性并没有反映在文档中，无论是中文还是英文文档。</p>
+<p>我在搜索julia环境配置的时候也发现了一个Lecture，是基于julia 1.0 的计量经济学，是一个很好的学习julia的讲义。</p>
+<p><a href="https://lectures.quantecon.org/jl/">Quantitative Economics with Julia</a></p>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>Julia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Julia系列(2):用Julia实现迎风格式求解PDE</title>
+    <url>/2018/12/15/Julia%E7%B3%BB%E5%88%97(2)%E7%94%A8Julia%E5%AE%9E%E7%8E%B0%E8%BF%8E%E9%A3%8E%E6%A0%BC%E5%BC%8F%E6%B1%82%E8%A7%A3PDE/</url>
+    <content><![CDATA[<p>我学习一门语言时，一般会先查着文档写上个简单的程序，找一找这门语言的感觉，然后再读它的文档。Julia既然是为科学计算设计的，我们就先用它来实现一个简单的迎风格式吧。</p>
+<span id="more"></span>
+<p>下面我们先看这个问题的MATLAB代码实现。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% 考虑区域[-1,1]，求解无黏Burgers方程。</span></span><br><span class="line">h=<span class="number">0.1</span>; <span class="comment">%网格尺度</span></span><br><span class="line">N=<span class="number">1</span>/h; </span><br><span class="line">t_max=<span class="number">0.2</span>; <span class="comment">%终止时刻为0.2</span></span><br><span class="line">tau=<span class="number">1e-4</span>; <span class="comment">% 时间步长</span></span><br><span class="line"></span><br><span class="line">U=<span class="built_in">zeros</span>(<span class="number">2</span>*N+<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">U(<span class="number">1</span>:N)=<span class="number">1</span>; <span class="comment">%给定初值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 非守恒迎风格式</span></span><br><span class="line">MaxIter=<span class="number">1e10</span>;</span><br><span class="line">T=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:MaxIter</span><br><span class="line">    T=T+tau;</span><br><span class="line">    diff=U(<span class="number">2</span>:<span class="keyword">end</span>)-U(<span class="number">1</span>:<span class="keyword">end</span><span class="number">-1</span>);</span><br><span class="line">    U=U-tau/h*U.*((U&gt;=<span class="number">0</span>).*([<span class="number">0</span>;diff])+(U&lt;<span class="number">0</span>).*([diff;<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> T&gt;=t_max</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>然后，我们再看它的Julia实现</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">h=<span class="number">0.1</span>; </span><br><span class="line">N=<span class="built_in">Int</span>(<span class="number">1</span>/h); </span><br><span class="line">t_max=<span class="number">0.2</span>; </span><br><span class="line">tau=<span class="number">1e-4</span>; </span><br><span class="line"></span><br><span class="line">U=zeros(<span class="number">2</span>*N+<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">U[<span class="number">1</span>:N].=<span class="number">1</span>; </span><br><span class="line"></span><br><span class="line">MaxIter=<span class="number">1e10</span>;</span><br><span class="line">T=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:MaxIter</span><br><span class="line">    T=T+tau;</span><br><span class="line">    diff=U[<span class="number">2</span>:<span class="keyword">end</span>]-U[<span class="number">1</span>:<span class="keyword">end</span>-<span class="number">1</span>];</span><br><span class="line">    U=U-tau./h.*U.*((U.&gt;=<span class="number">0</span>).*([<span class="number">0</span>;diff])+(U.&lt;<span class="number">0</span>).*([diff;<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> T&gt;=t_max</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>是不是看起来基本没有什么区别？嗯，确实如此。</p>
+<ul>
+<li>Matlab的zeros接受float类型的参数，只要其值是一个整数，而julia的zeros需要参数是Int类型。所以第二行是N=Int(1/h);</li>
+<li>Matlab的数组索引使用圆括号，而Julia的数组索引使用方括号。</li>
+<li>Julia中，所有的broadcast（广播）都是显式的，包括赋值、加减等，而matlab中，赋值、加减的广播是自动的，而只有乘方、数组乘法才需要用 . 指出。（Julia似乎在1.0前，对数组赋值的广播也是自动的，而1.0中是需要手动写出的，即U[1:N].=1，如果没有写 . 就会报错，但是文档中没有写清楚。）所以julia比起MATLAB的代码多了不少”.”。</li>
+</ul>
+<p>嗯，似乎对于这么一个简短的程序，就这么一点区别了，特别的，julia的数组索引和matlab是相同的，即从1开始，所以如果从matlab转到julia，一定会很快习惯。Julia实在是一门十分好上手的语言，只要之前用过matlab或者python，很容易就可以将程序（数值计算部分）翻译到julia上。</p>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>Julia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JupyterLite: 一个全静态的jupyter运行环境</title>
+    <url>/2021/10/02/JupyterLite/</url>
+    <content><![CDATA[<p>在对wasm进行了解的过程中，发现了一个可以静态部署的Jupyter环境。这样的jupyter环境可以很方便的部署到github pages等静态网站。</p>
+<p><a href="https://jupyterlite.readthedocs.io/en/latest/">JupyterLite — JupyterLite 0.1.0-alpha.11 documentation</a></p>
+<img src="/2021/10/02/JupyterLite/image-20211003200714762.png" class="" title="image-20211003200714762">
+<p>而且这样的jupyter支持numpy和matplotlib等简单的数值计算用到的包，比较适合快速验证一些想法。文件可以存储在浏览器的Indexedb中，也可以下载到本地的电脑中。</p>
+<p>这里就有一个例子：</p>
+<p><a href="/jupyter/lab/index.html">JupyterLite</a></p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux管理员必备命令 runuser</title>
+    <url>/2017/05/14/Linux%E7%AE%A1%E7%90%86%E5%91%98%E5%BF%85%E5%A4%87%E5%91%BD%E4%BB%A4runuser/</url>
+    <content><![CDATA[<p>比如说有同学不会ssh，只能用VNC登录，但不幸的由于服务器重启，他的VNC进程被关闭了，于是向我求救。我该如何高效的解救他呢？</p>
+<span id="more"></span>
+<p>比起教他如何使用ssh，以及更改他的密码登录等，最简单的方法就是使用runuser命令。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">runuser -l hisusername -c <span class="string">&#x27;vncserver&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>runuser这条命令相当方便，可以让管理员以其他用户的身份运行进程。</p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux软件推荐(1)</title>
+    <url>/2017/10/09/Linux%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90(1)/</url>
+    <content><![CDATA[<figure>
+<img src="/images/Linux软件推荐/krita-logo.png" alt="" /><figcaption>logo</figcaption>
+</figure>
+<h3 id="krita">Krita</h3>
+<p>一款painting软件。笔刷很舒适，右键可以方便的调节笔刷，界面比较简洁易用，容易上手。和数位板是绝配。</p>
+<span id="more"></span>
+<h5 id="windows下类似软件">Windows下类似软件：</h5>
+<p>SAI，Painter</p>
+<h5 id="下载地址">下载地址：</h5>
+<p><a href="https://krita.org/en/">官网地址</a></p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MATLAB不同卷积函数的测试</title>
+    <url>/2019/01/28/MATLAB%E4%B8%8D%E5%90%8C%E5%8D%B7%E7%A7%AF%E5%87%BD%E6%95%B0%E7%9A%84%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<p>最近的编程中发现MATLAB中有的卷积速度比我想象的要慢得多（特别是GPU加速后依然很慢），就测试了一下使用不同函数实现卷积的速度。</p>
+<span id="more"></span>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% 首先是对两个大的2D数组做&#x27;valid&#x27;卷积，其实就相当于做dot。</span></span><br><span class="line">A=<span class="built_in">rand</span>(<span class="number">1000</span>,<span class="number">1000</span>);</span><br><span class="line">gA=gpuArray(A);</span><br><span class="line">B=<span class="built_in">rand</span>(<span class="number">1000</span>,<span class="number">1000</span>);</span><br><span class="line">gB=gpuArray(B);</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&quot;dot:\n&quot;</span>)</span><br><span class="line">tic;    sum(<span class="built_in">dot</span>(A,B),<span class="string">&#x27;all&#x27;</span>);toc;</span><br><span class="line">tic;    sum(<span class="built_in">dot</span>(gA,gB),<span class="string">&#x27;all&#x27;</span>);toc;</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&quot;conv2:\n&quot;</span>)</span><br><span class="line">tic;    conv2(A,B,<span class="string">&#x27;valid&#x27;</span>);toc;</span><br><span class="line">tic;    conv2(gA,gB,<span class="string">&#x27;valid&#x27;</span>);toc;</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&quot;filter2:\n&quot;</span>)</span><br><span class="line">tic;    filter2(A,B,<span class="string">&#x27;valid&#x27;</span>);toc;</span><br><span class="line">tic;    filter2(gA,gB,<span class="string">&#x27;valid&#x27;</span>);toc;</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&quot;convn:\n&quot;</span>)</span><br><span class="line">tic;    convn(A,B,<span class="string">&#x27;valid&#x27;</span>);toc;</span><br><span class="line">tic;    convn(gA,gB,<span class="string">&#x27;valid&#x27;</span>);toc;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">dot</span>:</span><br><span class="line">时间已过 <span class="number">0.005201</span> 秒。</span><br><span class="line">时间已过 <span class="number">0.000427</span> 秒。</span><br><span class="line">conv2:</span><br><span class="line">时间已过 <span class="number">0.007935</span> 秒。</span><br><span class="line">时间已过 <span class="number">0.843050</span> 秒。</span><br><span class="line">filter2:</span><br><span class="line">时间已过 <span class="number">0.393373</span> 秒。</span><br><span class="line">时间已过 <span class="number">1.209777</span> 秒。</span><br><span class="line">convn:</span><br><span class="line">时间已过 <span class="number">0.008185</span> 秒。</span><br><span class="line">时间已过 <span class="number">0.918709</span> 秒。</span><br></pre></td></tr></table></figure>
+<p>可以看到，对于这种情况，GPU不仅在卷积函数中不能加速，反而会很大的影响运算速度。最快的方式是使用gpu加速的dot。</p>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>Matlab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Noise2Noise to Noise2Void to more</title>
+    <url>/2019/12/12/Noise2Noise/</url>
+    <content><![CDATA[<h1 id="noise2noise">Noise2Noise</h1>
+<p>Lehtinen, Jaakko, et al. "Noise2Noise: Learning Image Restoration without Clean Data." <em>International Conference on Machine Learning</em>. 2018.</p>
+<p>传统的模型是优化 <span class="math display">\[
+{\arg\min}_\theta \sum_{i}{L(f_\theta\left(\hat{x_i}\right),y_i)}
+\]</span></p>
+<span id="more"></span>
+<p>其中<span class="math inline">\(\hat x_i\)</span>是输入的含噪声图像，<span class="math inline">\(y_i\)</span>是清晰图片。我们学习一个从含噪声图片到清晰图片的映射。</p>
+<p>以标量为例子，学习 <span class="math display">\[
+\arg\min \mathbb{E}_y\{L(z,y)\}
+\]</span> 使用L-2 loss <span class="math display">\[L(z,y)=(z-y)^2\]</span>，学习到的最优解就是y的均值 <span class="math display">\[
+z=\mathbb{E}_y\{y\}
+\]</span></p>
+<p>用L2-loss直接学习一个映射从带噪声图片-&gt;高清图片有一个坏处，就是这个映射并不是一对一的。不同的高清图片可能会对应同一个低清图片。直接用L2 loss的结果就是学习到的映射把低清图片映射为高清图片的一个期望，也就是带有模糊。所以有些工作就是把L2 loss改成discriminator loss.</p>
+<p>但是这个缺点同时也会带来好处，也就是我们学习的其实是Label的一个平均值，那么如果我们的Label如果有噪声，但是噪声的均值是0，我们用这种图片作为Label训练得到的网络依然是一个去噪的神经网络。</p>
+<p>而Noise2noise是优化 <span class="math display">\[
+{\arg\min}_\theta\sum_{i} L\left(f_\theta\left(\hat{x_i}\right),\hat{y_i}\right)
+\]</span></p>
+<p>其中 <span class="math inline">\(E\left(\hat{y_i}\middle|\hat{x_i}\right)=y_i\)</span></p>
+<p>而<span class="math inline">\(\hat x_i\)</span>与<span class="math inline">\(\hat y_i\)</span>都是有噪声的图片，且不一定含有同一种噪声。但是如果<span class="math inline">\(\hat y_i\)</span>中蕴含的噪声分布均值为0，那么我们就可以用<span class="math inline">\(\hat y_i\)</span>作为label来训练网络。</p>
+<h1 id="noise2void">Noise2Void</h1>
+<p>Krull, Alexander, Tim-Oliver Buchholz, and Florian Jug. "Noise2void-learning denoising from single noisy images." <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition</em>. 2019.</p>
+<p>传统的监督学习去噪可以理解为网络输入一个Patch，输出patch中心的像素。 <span class="math display">\[
+f(x_{RF(i)};\theta)=\hat s_i
+\]</span></p>
+<p>然后Noise2Noise可以理解为有两个noisy image <span class="math inline">\((x^j,x^{&#39;j})\)</span>,</p>
+<p><span class="math display">\[
+x^j=s^j+n^j ~and ~x^{&#39;j}=s^j+n^{&#39;j}
+\]</span></p>
+<p>与传统的监督学习以<span class="math inline">\(s_i\)</span>作为label不同，N2N以<span class="math inline">\(x^{&#39;j}\)</span>作为label。尽管这个网络学习从一个noisy image变换到另一个noisy image，但是最后训练仍会收敛到正确的解，这是因为我们假设noisy image的期望值就是正确解 <span class="math inline">\(\mathbb{E}[x_i]=s_i\)</span>.</p>
+<p>我们下边有两个假设：</p>
+<ol type="1">
+<li>每个像素 <span class="math inline">\(s_i\)</span> 和周围的像素 <span class="math inline">\(s_j\)</span> 不独立。</li>
+<li>噪声 <span class="math inline">\(n_i\)</span> 只和 <span class="math inline">\(s_i\)</span> 有关，但相互之间独立。</li>
+</ol>
+<p>然后我们就发现，只有一张noisy image我们也可以用这种方法训练网络。我们把每个patch最中间的像素挖掉，用周围的像素预测中心的像素。可以理解为由于假设，中心处的噪声和周围的噪声独立，所以我们可以用N2N的方法来训练。</p>
+<p>在实现中，先打patch，然后过mask，然后训练。</p>
+<h1 id="high-quality-self-supervised-deep-image-denoising">High-quality self-supervised deep image denoising</h1>
+<p>Laine, S., Karras, T., Lehtinen, J., &amp; Aila, T. (2019). High-quality self-supervised deep image denoising. In <em>Advances in Neural Information Processing Systems</em> (pp. 6968-6978).</p>
+<p>这篇文章和Noise2Void比较类似，模型 <span class="math display">\[
+p(y|\Omega_y)=\int p(y|x)p(x|\Omega_y)dx
+\]</span> 左边的是训练数据，中间的是噪声模型，右边的是不知道的。</p>
+<p>如果我们求解结束了，我们可以根据 <span class="math display">\[
+p(x|y,\Omega_y) \propto p(y|x)p(x|\Omega_y)
+\]</span> 来生成干净图像。其中中间是Noise Model，右边是Prior。</p>
+<p>所以这篇文章的算法分成两步：</p>
+<ol type="1">
+<li>训练一个神经网络，<span class="math inline">\(\Omega_y \rightarrow (\mu_x,\Sigma_x)\)</span> 这是高斯分布prior <span class="math inline">\(p(x|\Omega_y)\)</span> 的参数。</li>
+<li>测试时，把<span class="math inline">\(\Omega_y\)</span>输入神经网络得到<span class="math inline">\((\mu_x,\Sigma_x)\)</span>, 然后根据闭式解析解计算<span class="math inline">\(\mathbb{E}[p(x|y,\Omega_y)]\)</span>。</li>
+</ol>
+<p>与N2V对于，我们发现N2V只是学习了<span class="math inline">\(p(x|\Omega_y)\)</span>。而没用用上这个像素点本身的值，也就是y的信息。</p>
+<p>在实际实现时，网络不用N2V中的Mask方式，而是训练了4个网络，每个网络忽略一个方向的数据，从而达到blind-spot的效果。进一步的，可以把这4个网络变成1个网络，把输入图片旋转4次作为不同的输入，然后在最后旋转回来，再通过1*1的卷积融合。</p>
+<p>在实现卷积时，防止receptive field向下扩展的最简单方法就是把卷积后的结果往上平移。平移卷积核高度一半的距离，这样receptive field就会依然保持在上半平面。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Denoising</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3实现Pagerank算法</title>
+    <url>/2017/09/26/Python3%E5%AE%9E%E7%8E%B0Pagerank%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>数据来自<a href="http://clair.eecs.umich.edu/aan/index.php">ACL Anthology Network (All About NLP)</a></p>
+<span id="more"></span>
+<p>数据都是长这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C08-3004 ==&gt; A00-1002</span><br><span class="line">D09-1141 ==&gt; A00-1002</span><br><span class="line">D12-1027 ==&gt; A00-1002</span><br><span class="line">E06-1047 ==&gt; A00-1002</span><br><span class="line">H05-1110 ==&gt; A00-1002</span><br><span class="line">N01-1020 ==&gt; A00-1002</span><br><span class="line">N13-1036 ==&gt; A00-1002</span><br><span class="line">P13-2001 ==&gt; A00-1002</span><br><span class="line">P13-2073 ==&gt; A00-1002</span><br><span class="line">W11-2602 ==&gt; A00-1002</span><br><span class="line">W13-2702 ==&gt; A00-1002</span><br><span class="line">C10-1054 ==&gt; A00-1004</span><br><span class="line">W06-1008 ==&gt; A00-1004</span><br><span class="line">W03-0704 ==&gt; A00-1005</span><br><span class="line">W03-1206 ==&gt; A00-1005</span><br></pre></td></tr></table></figure>
+<p>不太熟悉对于字符串的操作，特别是parser之类的。所以我想了一个很蠢的把字符串读入的方法，就是数哪几位是我们想要的，然后直接取出。之后用一个Dictionary记录论文编号和序号，然后用一个稀疏矩阵存储图关系。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> scipy.sparse <span class="keyword">as</span> sparse</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">row = <span class="built_in">list</span>()</span><br><span class="line">col = <span class="built_in">list</span>()</span><br><span class="line">index = <span class="built_in">dict</span>()</span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;net.txt&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">        pA = line[<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line">        pB = line[<span class="number">13</span>:<span class="number">21</span>]</span><br><span class="line">        <span class="keyword">if</span> pA <span class="keyword">not</span> <span class="keyword">in</span> index:</span><br><span class="line">            index[pA] = i</span><br><span class="line">            i = i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> pB <span class="keyword">not</span> <span class="keyword">in</span> index:</span><br><span class="line">            index[pB] = i</span><br><span class="line">            i = i + <span class="number">1</span></span><br><span class="line">        row.append(index[pA])</span><br><span class="line">        col.append(index[pB])</span><br><span class="line">row = np.array(row)</span><br><span class="line">col = np.array(col)</span><br><span class="line">Mat = sparse.coo_matrix((np.ones(<span class="built_in">len</span>(row)),(row,col)),shape=(i,i)).tocsr()</span><br><span class="line">Mat=preprocessing.normalize(Mat, norm=<span class="string">&#x27;l1&#x27;</span>).T</span><br></pre></td></tr></table></figure>
+<p>对于矩阵的归一化，我比较懒，就调用了来自sklearn的数据预处理包preprocessing。之后对于Pagerank的计算，就简单的使用幂法反复迭代，我太懒了就还没写终止准则，先这么凑合吧。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x=np.ones(i)</span><br><span class="line">p=0.85</span><br><span class="line">a=1-p</span><br><span class="line">for i in range(0,100):</span><br><span class="line">    x=p*(Mat*x)+a</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tensorflow中自定义op的两个例子</title>
+    <url>/2017/04/30/Tensorflow%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89op%E7%9A%84%E4%B8%A4%E4%B8%AA%E4%BE%8B%E5%AD%90/</url>
+    <content><![CDATA[<p>示例1:我们学习出一个恒同变换</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.framework <span class="keyword">import</span> ops</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_matmul</span>(<span class="params">funcname</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a, b</span>):</span><br><span class="line">        <span class="keyword">return</span> np.matmul(a,b)</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_matmul_grad</span>(<span class="params">op, grad</span>):</span><br><span class="line">    <span class="keyword">return</span> [tf.py_func(custom_matmul(<span class="string">&#x27;matmul_grad1&#x27;</span>), [grad, tf.transpose(op.inputs[<span class="number">1</span>])], tf.float32),</span><br><span class="line">            tf.py_func(custom_matmul(<span class="string">&#x27;matmul_grad2&#x27;</span>), [tf.transpose(op.inputs[<span class="number">0</span>]), grad], tf.float32)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define custom py_func which takes also a grad op as argument:</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">py_func</span>(<span class="params">func, inp, Tout, stateful=<span class="literal">True</span>, name=<span class="literal">None</span>, grad=<span class="literal">None</span></span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Need to generate a unique name to avoid duplicates:</span></span><br><span class="line">    rnd_name = <span class="string">&#x27;PyFuncGrad&#x27;</span> + <span class="built_in">str</span>(np.random.randint(<span class="number">0</span>, <span class="number">1E+8</span>))</span><br><span class="line"></span><br><span class="line">    tf.RegisterGradient(rnd_name)(grad)  <span class="comment"># see _MySquareGrad for grad example</span></span><br><span class="line">    g = tf.get_default_graph()</span><br><span class="line">    <span class="keyword">with</span> g.gradient_override_map(&#123;<span class="string">&quot;PyFunc&quot;</span>: rnd_name&#125;):</span><br><span class="line">        <span class="keyword">return</span> tf.py_func(func, inp, Tout, stateful=stateful, name=name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pyfunc_test</span>():</span><br><span class="line">    <span class="comment"># create data</span></span><br><span class="line">    x_data = tf.placeholder(dtype=tf.float32, shape=[<span class="number">3</span>,<span class="number">1</span>])</span><br><span class="line">    y_data = tf.placeholder(dtype=tf.float32, shape=[<span class="number">3</span>,<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    w = tf.Variable(tf.ones([<span class="number">3</span>,<span class="number">3</span>]))</span><br><span class="line">    y = py_func(custom_matmul(<span class="string">&#x27;name&#x27;</span>), [w,x_data], [tf.float32], grad=custom_matmul_grad)</span><br><span class="line"></span><br><span class="line">    loss = tf.reduce_mean(tf.square(y - y_data))</span><br><span class="line">    optimizer = tf.train.AdamOptimizer(<span class="number">0.1</span>)</span><br><span class="line">    train = optimizer.minimize(loss)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Pyfunc grad&quot;</span>, ops.get_gradient_function(y[<span class="number">0</span>].op))</span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">        sess.run(tf.global_variables_initializer())        </span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">            ran = np.random.rand(<span class="number">3</span>,<span class="number">1</span>).astype(np.float32)</span><br><span class="line">            ans = ran</span><br><span class="line">            dic = &#123;x_data: ran, y_data: ans&#125;</span><br><span class="line">            tt = sess.run([train], feed_dict=dic)</span><br><span class="line">            <span class="keyword">if</span> step % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;step &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(step))</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(w.<span class="built_in">eval</span>()))</span><br><span class="line"></span><br><span class="line">        <span class="comment">#test = sess.run(y, feed_dict=&#123;x_data:np.array([[0],[1],[2])&#125;)</span></span><br><span class="line">        <span class="comment">#print(&#x27;test = &#123;&#125;&#x27;.format(test))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    pyfunc_test()</span><br></pre></td></tr></table></figure>
+<pre><code>Pyfunc grad &lt;function custom_matmul_grad at 0x7f60181d1158&gt;
+step 0
+[[ 0.9000001   0.90000117  0.90000004]
+ [ 0.90000004  0.90000075  0.90000004]
+ [ 0.9000001   0.90000176  0.9000001 ]]
+step 100
+[[  1.00945520e+00  -8.40856228e-05  -1.38531029e-02]
+ [ -9.42480564e-03   1.00150728e+00  -5.25715109e-03]
+ [ -1.19535998e-03   1.63702958e-03   1.01351130e+00]]
+step 200
+[[  9.99940336e-01   7.62419877e-05  -4.71634121e-06]
+ [ -3.78266304e-06   1.00004244e+00  -4.32819579e-05]
+ [ -8.31601501e-05  -3.92800757e-05   1.00019753e+00]]
+step 300
+[[  9.99999821e-01   4.15331755e-07   7.49084165e-07]
+ [ -5.45732973e-07   1.00000012e+00  -3.67430317e-07]
+ [  3.99243845e-07  -2.52412678e-06   1.00000083e+00]]
+step 400
+[[  9.99999940e-01   7.07783840e-08  -2.49022083e-08]
+ [  5.56420900e-08   1.00000000e+00   1.32440938e-08]
+ [  6.04069683e-10  -1.87024824e-07   1.00000012e+00]]
+step 500
+[[  1.00000000e+00   3.02750269e-09  -4.36058212e-09]
+ [ -1.26462696e-09   1.00000000e+00   1.13272758e-09]
+ [ -4.88804694e-08   1.90021368e-08   1.00000012e+00]]
+step 600
+[[  1.00000000e+00   4.74864503e-09  -1.23212629e-09]
+ [ -1.27859068e-09   1.00000000e+00   1.08854614e-09]
+ [  1.83422522e-08  -5.04616526e-09   1.00000000e+00]]
+step 700
+[[  1.00000000e+00   1.54621693e-09   4.64706537e-11]
+ [ -6.52278231e-10   1.00000000e+00   1.07698872e-09]
+ [  3.22814344e-08   3.30813066e-08   1.00000000e+00]]
+step 800
+[[  1.00000000e+00   1.14085366e-10  -2.25349095e-09]
+ [  5.05051445e-10   1.00000000e+00   1.66086556e-09]
+ [ -1.02083888e-08   2.51823873e-09   1.00000000e+00]]
+step 900
+[[  1.00000000e+00   6.23920082e-10   9.54518131e-10]
+ [  5.08392162e-10   1.00000000e+00   1.66382574e-09]
+ [ -4.58602969e-08   1.36057530e-08   1.00000000e+00]]</code></pre>
+<p>示例2-用自定义的矩阵乘法和log实现MNIST</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#%% MNIST graph building: single-layer neural network</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">py_func</span>(<span class="params">func, inp, name=<span class="literal">None</span>, grad=<span class="literal">None</span></span>): <span class="comment"># make out what this function do, and you will know all</span></span><br><span class="line">    rnd_name = <span class="string">&#x27;PyFuncGrad&#x27;</span> + <span class="built_in">str</span>(random.randint(<span class="number">0</span>, <span class="number">1E+8</span>))</span><br><span class="line">    tf.RegisterGradient(rnd_name)(grad)</span><br><span class="line">    g = tf.get_default_graph()</span><br><span class="line">    <span class="keyword">with</span> g.gradient_override_map(&#123;<span class="string">&quot;PyFunc&quot;</span>: rnd_name&#125;):</span><br><span class="line">        <span class="keyword">return</span> tf.py_func(func, inp, tf.float32, stateful=<span class="literal">True</span>, name=name)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_matmul</span>(<span class="params">funcname</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a, b</span>):</span><br><span class="line">        <span class="keyword">return</span> matmul(a,b)</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_matmul_grad</span>(<span class="params">op, grad</span>):</span><br><span class="line">    <span class="keyword">return</span> [tf.py_func(custom_matmul(<span class="string">&#x27;matmul_grad1&#x27;</span>), [grad, tf.transpose(op.inputs[<span class="number">1</span>])], tf.float32),</span><br><span class="line">            tf.py_func(custom_matmul(<span class="string">&#x27;matmul_grad2&#x27;</span>), [tf.transpose(op.inputs[<span class="number">0</span>]), grad], tf.float32)]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_log</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> log(x)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_reciprocal</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>/x</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_log_grad</span>(<span class="params">op, grad</span>):</span><br><span class="line">    <span class="keyword">return</span> grad*tf.py_func(custom_reciprocal, [op.inputs[<span class="number">0</span>]], tf.float32)</span><br><span class="line">single_layer_graph = tf.Graph()</span><br><span class="line">single_layer_sess = tf.Session(graph=single_layer_graph)</span><br><span class="line"><span class="keyword">with</span> single_layer_graph.as_default():</span><br><span class="line">    x = tf.placeholder(tf.float32)</span><br><span class="line">    W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">    b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line">    z = py_func(custom_matmul(<span class="string">&#x27;custom-matmul&#x27;</span>), [x, W], name=<span class="string">&#x27;custom-matmul&#x27;</span>, grad=custom_matmul_grad)</span><br><span class="line">    y = tf.nn.softmax(z+b)</span><br><span class="line">    y_ = tf.placeholder(tf.float32)</span><br><span class="line">    logy = py_func(custom_log, [y], name=<span class="string">&#x27;custom-log&#x27;</span>, grad=custom_log_grad)</span><br><span class="line">    loss = tf.reduce_mean(-tf.reduce_sum(y_*logy, <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">assert</span> loss.op.outputs[<span class="number">0</span>] <span class="keyword">is</span> loss</span><br><span class="line">    optimizer = tf.train.GradientDescentOptimizer(<span class="number">0.3</span>)</span><br><span class="line">    train = optimizer.minimize(loss)</span><br><span class="line">    iscorrect = tf.cast(tf.equal(tf.argmax(y, <span class="number">1</span>), tf.argmax(y_, <span class="number">1</span>)), tf.float32)</span><br><span class="line">    accuracy = tf.reduce_mean(iscorrect)</span><br><span class="line">    init = tf.global_variables_initializer()</span><br><span class="line">    trainable_vars = tf.trainable_variables()</span><br><span class="line">    grads = tf.gradients(loss, trainable_vars)</span><br><span class="line">    train_op = optimizer.apply_gradients(<span class="built_in">zip</span>(grads, trainable_vars))</span><br><span class="line"><span class="keyword">with</span> single_layer_sess.as_default():</span><br><span class="line">    init.run()</span><br><span class="line"><span class="comment">#%% MNIST-train: single-layer neural network</span></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">&quot;MNIST_data/&quot;</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line">lo = []</span><br><span class="line">acs = []</span><br><span class="line">wgs = []</span><br><span class="line">startt = time.time()</span><br><span class="line"><span class="keyword">with</span> single_layer_graph.as_default():</span><br><span class="line">    <span class="keyword">with</span> single_layer_sess.as_default() <span class="keyword">as</span> sess:</span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2000</span>):</span><br><span class="line">            x_batch, y_batch = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">            _,l,ac,wg = sess.run([train_op, loss, accuracy, grads[<span class="number">0</span>]], feed_dict=&#123;x: x_batch, y_: y_batch&#125;)</span><br><span class="line">            lo.append(l)</span><br><span class="line">            acs.append(ac)</span><br><span class="line">            wgs.append(linalg.norm(wg))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;elapsed time: &#x27;</span>+<span class="built_in">str</span>(time.time()-startt))</span><br><span class="line">h = plt.figure()</span><br><span class="line">h.suptitle(<span class="string">&#x27;check-variables on mini-batch&#x27;</span>)</span><br><span class="line">h.add_subplot(<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>).plot(lo)[<span class="number">0</span>].axes.set_title(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">h.add_subplot(<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>).plot(acs)[<span class="number">0</span>].axes.set_title(<span class="string">&#x27;training accuracy&#x27;</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;text&#x27;</span>, usetex=<span class="literal">True</span>)</span><br><span class="line">h.add_subplot(<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>).plot(wgs)[<span class="number">0</span>].axes.set_title(<span class="string">r&#x27;$|\nabla W|$&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> single_layer_sess.as_default():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;test accuracy: &#x27;</span>+<span class="built_in">str</span>(</span><br><span class="line">            accuracy.<span class="built_in">eval</span>(feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;)))</span><br></pre></td></tr></table></figure>
+<pre><code>Extracting MNIST_data/train-images-idx3-ubyte.gz
+Extracting MNIST_data/train-labels-idx1-ubyte.gz
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+elapsed time: 4.2179083824157715
+test accuracy: 0.9211</code></pre>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>YiNote: 一款可以在看视频时做笔记的浏览器插件</title>
+    <url>/2021/10/02/YiNote/</url>
+    <content><![CDATA[<p>想在看视频时做一些简单的笔记，最常见的方法是拿一个本子用笔手写来记录。但是我想要做到笔记能翻回视频的时间点，然后就在网上找到了这样一款符合要求的软件。</p>
+<p><a href="https://github.com/shuowu/yi-note">shuowu/yi-note: YiNote browser extension - online video note taking tool (github.com)</a></p>
+<span id="more"></span>
+<p>这款软件的界面如下。首先是做笔记时的界面。 <img src="./YiNote/Pasted%20image%2020211003192416.png" alt="Pasted image 20211003192416" /></p>
+<p>这个是笔记的管理页面。 <img src="./YiNote/Pasted%20image%2020211003192946.png" alt="Pasted image 20211003192946" /></p>
+<p>支持播放下面几种视频时做笔记 - Youtube video - Embedded youtube iframe video - HTML5 video - Local video via browser</p>
+<p>支持基本的markdown语法（不支持latex公式），笔记存储在浏览器的indexedb中，可以导出成pdf。</p>
+<p>对于bilibili的视频，B站有自己的视频笔记工具。 <img src="./YiNote/Pasted%20image%2020211003193048.png" alt="Pasted image 20211003193048" /></p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>nvidia/flownet2-pytorch的安装</title>
+    <url>/2018/12/22/flownet2-pytorch%E7%9A%84%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>读完flownet的文章，准备跑一下他的代码，发现有nvidia出品的代码，肯定效率最高啦，所以就git clone下来准备跑，但是遇到了好多坑。</p>
+<span id="more"></span>
+<figure>
+<img src="/images/flownet2/1.png" alt="" /><figcaption>README.md 里的安装介绍</figcaption>
+</figure>
+<p>README.md里的安装介绍特别不走心，因为nvidia其实是想让大家都用他的nvidia-docker来跑程序的。那样确实很方便，但是对于传统的基于slurm/pbs的服务器，我们肯定不能采用docker的形式来跑，所以就按照readme.md进行安装。</p>
+<figure>
+<img src="/images/flownet2/2.png" alt="" /><figcaption>install.sh</figcaption>
+</figure>
+<p>install.sh 其实就相当于安装几个pip包，但是是编译安装的，用到了nvcc。最坑的一点在于没有给出任何编译环境，我试了各种环境终于编译成功了，就是pytorch0.4+cuda9.2+cudnn7+gcc6.5.0。之前的各种组合都报错。</p>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>Pytorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python3实现Pagerank算法(2)</title>
+    <url>/2017/10/08/python3%E5%AE%9E%E7%8E%B0Pagerank(2)/</url>
+    <content><![CDATA[<p>上一篇文章<a href="/2017/09/26/Python3%E5%AE%9E%E7%8E%B0Pagerank%E7%AE%97%E6%B3%95/" title="Python3实现Pagerank算法">Python3实现Pagerank算法</a>中虽然已经实现了pagerank，但是我觉得代码不够美观，所以由重新整理了一下放了上来，顺便复习了一下字典和元组等数据结构。</p>
+<p><a href="/files/pagerank/pagerank.html">代码</a></p>
+<p><a href="/files/pagerank/acl-metadata.txt">数据.part1</a></p>
+<p><a href="/files/pagerank/acl.txt">数据.part2</a></p>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>scipy.sparse.linalg 生成线性算子</title>
+    <url>/2017/05/10/scipy.sparse.linalg%E7%94%9F%E6%88%90%E7%BA%BF%E6%80%A7%E7%AE%97%E5%AD%90/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="keyword">import</span> scipy.sparse</span><br><span class="line"><span class="keyword">import</span> scipy.sparse.linalg</span><br></pre></td></tr></table></figure>
+<p>首先我们定义一个线性算子，不妨就定义一个恒同变换</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">identity</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> np.matmul(np.eye(<span class="number">3</span>),x)</span><br><span class="line">identity([<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 1.,  2.,  3.])</code></pre>
+<p>之后我们定义一个类，具有matvec和shape两个属性，并声明一个matvec为我们刚建立的identity的linearfun对象。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">linearfun</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,func,shape</span>):</span><br><span class="line">        self.shape = shape</span><br><span class="line">        self.matvec = func</span><br><span class="line">identityobj=linearfun(identity,(<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(identityobj.shape,identityobj.matvec([<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>(3, 3) [ 1.  2.  3.]</code></pre>
+<p>现在我们就可以使用scipy.sparse.linalg.aslinearoperator来将这个对象转换为一个scipy.sparse支持的线性算子了。也就可以使用scipy.sparse.linalg中的各种方法了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">identityop=scipy.sparse.linalg.aslinearoperator(identityobj)</span><br><span class="line"><span class="built_in">print</span>(scipy.sparse.linalg.cg(identityop,[<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>(array([ 1.,  2.,  3.]), 0)</code></pre>
+<p>我们其实还可以直接构造一个函数linearwrapper，直接就能把一个线性函数封装为一个scipy中的linearoperator</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">linearfun</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,func,shape</span>):</span><br><span class="line">        self.shape = shape</span><br><span class="line">        self.matvec = func</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">linearwrapper</span>(<span class="params">func,shape</span>):</span><br><span class="line">    <span class="keyword">return</span> scipy.sparse.linalg.aslinearoperator(linearfun(func,shape))       </span><br><span class="line">linearwrapper(identity,(<span class="number">3</span>,<span class="number">3</span>))([<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 1.,  2.,  3.])</code></pre>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Scipy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用InftyReader识别PDF为latex</title>
+    <url>/2017/05/14/%E4%BD%BF%E7%94%A8InftyReader%E8%AF%86%E5%88%ABPDF%E4%B8%BAlatex/</url>
+    <content><![CDATA[<h2 id="使用inftyreader识别pdf为latex">使用InftyReader识别PDF为latex</h2>
+<p>有老师给我们布置了一项作业，其中需要大量的从PDF的slides从录入latex公式，为了节省时间，我从网上找到了一个简单易用的工具，可以高效的录入公式</p>
+<span id="more"></span>
+<h3 id="安装">安装</h3>
+<p>我是Ubuntu 16.04，使用WineHD 2.01，（https://www.winehq.org/）</p>
+<p>安装<a href="http://inftyreader.org/InftyReaderE3136_IDEAL.zip"><strong>InftyReader Version 3.1.3.6</strong></a></p>
+<p>没有遇到任何兼容性问题，可以直接使用</p>
+<h3 id="使用">使用</h3>
+<p>不知道是否是系统的问题，我无法直接从pdf转latex</p>
+<p>但是可以先使用它的pdf-&gt;png功能，再使用批量png-&gt;latex功能。</p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在FFTW库上遇到的线程安全的问题</title>
+    <url>/2022/11/07/%E5%9C%A8FFTW%E5%BA%93%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>其实是跑别人的代码，复现结果，但是一直遇到内存非法访问的问题，报错提示问题出现在调用dfftw_plan_dft_3d时。而且当开启Openmp并行时就会遇到，而当串行运行时则正常。显然这是一个由于并行化引起的问题。</p>
+<span id="more"></span>
+<p>但是，这份代码应当是没有太大问题的，因为之前有不少人也都跑过。我对原始代码没有做改动，但是在Makefile中我做了一些改动，我使用了gfortran和FFTW来代替原本的ifort和MKL中的FFTW接口(下面称为MKL/fftw)。这是因为服务器上原始的ifort会报错过期，又一直懒得装新的intel oneapi, 所以干脆换了编译工具链，想着计算结果不会有太大问题。</p>
+<p>然后上网一查，果然问题就出现在FFTW和MKL/fftw的区别中。下面简单的表示了一下这份代码中关于并行计算FFT的部分。并行化非常简单粗暴，不管是plan还是execute，都在并行区中，会调用多份。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dofft</span><span class="params">(...)</span></span>&#123;</span><br><span class="line">  <span class="built_in">dfftw_plan_dft_3d</span>(...);</span><br><span class="line">  <span class="built_in">dfftw_execute_dft</span>(...);</span><br><span class="line">  <span class="built_in">dfftw_destroy_plan</span>(...);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">parallel_dosomething</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="meta">#<span class="keyword">pragma</span> omp parallel for</span></span><br><span class="line">  <span class="keyword">for</span>(...)&#123;</span><br><span class="line">    <span class="built_in">dofft</span>(...);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是FFTW的<a href="https://www.fftw.org/fftw3_doc/Thread-safety.html">文档</a>中明确写出</p>
+<blockquote>
+<p>The upshot is that the only thread-safe routine in FFTW is fftw_execute (and the new-array variants thereof). All other routines (e.g. the planner) should only be called from one thread at a time. So, for example, you can wrap a semaphore lock around any calls to the planner; even more simply, you can just create all of your plans from one thread. We do not think this should be an important restriction (FFTW is designed for the situation where the only performance-sensitive code is the actual execution of the transform), and the benefits of shared data between plans are great.</p>
+</blockquote>
+<p>也就是说，这样一份代码毫无疑问是有问题的，理应跑不通。但是前人的经验又告诉我，能跑。所以我安装了MKL库，改为依然使用gfortran，但是链接的从FFTW改为MKL, 果然跑通了。</p>
+<p>在MKL的相关<a href="https://www.intel.com/content/www/us/en/develop/documentation/onemkl-developer-reference-c/top/appendix-d-fftw-interface-to-onemkl/fftw2-interface-to-onemkl/wrappers-reference/multi-threaded-fftw.html">文档</a>中，说了</p>
+<blockquote>
+<p>Unlike the original FFTW interface, every computational function in the FFTW2 interface to Intel® oneAPI Math Kernel Library provides multithreaded computation by default, with the maximum number of threads permitted in FFT functions (see "Techniques to Set the Number of Threads" in Intel® oneAPI Math Kernel Library Developer Guide).</p>
+</blockquote>
+<p>这应该就是FFTW和MKL/fftw的一个很大区别了。如果想简单粗暴的并行计算很多FFTW，可能使用MKL库是一个很好的捷径。如果计算的这些FFT plan大小都一样，使用原始的FFTW并把创建销毁plan放在并行区外是很好的办法。如果想用原始的FFTW处理各种各样的plan并行，可以参考我在知乎上发现的这篇文章<a href="https://zhuanlan.zhihu.com/p/33362426">用于OpenMP的线程安全FFTW接口</a>。</p>
+]]></content>
+      <categories>
+        <category>编程实践</category>
+      </categories>
+      <tags>
+        <tag>Fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>并行计算作业(1)</title>
+    <url>/2017/10/10/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E4%BD%9C%E4%B8%9A(1)/</url>
+    <content><![CDATA[<p>并行计算全部相关代码我都放在了<a href="https://github.com/li-positive-one/paracomp">github.com/li-positive-one/paracomp</a> 上</p>
+<p>在此可以直接下载：</p>
+<p><a href="https://github.com/li-positive-one/paracomp/raw/master/homework1/report/main.pdf">第一次报告</a></p>
+<p><a href="https://github.com/li-positive-one/paracomp/raw/master/homework1/Makefile-example/Makefile-example.zip">报告中的Makefile示例代码</a></p>
+<p><a href="https://github.com/li-positive-one/paracomp/raw/master/homework1/Makefile-example/CMakeLists.txt">CMakeLists.txt</a></p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日文章-CT有限角问题</title>
+    <url>/2017/09/25/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-CT%E6%9C%89%E9%99%90%E8%A7%92%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>CT的有限角问题还是需要进行一些基础的了解的。我对有限角问题几乎没有任何了解，所以只能从谷歌上随便搜一些文章来看。</p>
+<span id="more"></span>
+<h4 id="accurate-image-reconstruction-from-few-views-and-limited-angle-data-in-divergent-beam-ct"><a href="https://arxiv.org/abs/0904.4495">Accurate image reconstruction from few-views and limited-angle data in divergent-beam CT</a></h4>
+<p>(Submitted on 28 Apr 2009)</p>
+<p>先读这篇文章是因为它引用高（800+）。</p>
+<p>这篇文章中对于CT的稀疏角和有限角问题做了十分详尽的描述。例如，之前我一直不是很明白为什么180°的CT问题要算作有限角问题，因为一条X-ray正向反向射过来得到的结果是一样的，所以360的数据是冗余的，而180°恰好合适。这篇文章中解释的很好，因为CT并不只是平行束，更常见的是扇形束，但是对于扇形束而言，例如扇形角度为30°，则只有当我们得到210°时才没有丢失的数据，对于180°而言，这确实是一个有限角问题。</p>
+<p>文章中的算法并没有特别的地方，就是对于TV模型进行优化，优化的过程是交替使用POCS（Projections onto convex sets）和Gradient Descent 算法，其中POCS优化<span class="math display">\[\frac{1}{2}\vert \vert g-Pf\vert \vert_2^2\]</span> ,GD算法优化<span class="math display">\[ \kappa \vert \vert \nabla f\vert \vert_1\]</span>。但是根据数值结果，这个算法还是有不错的表现，即使是对于0～90°均匀分布60个射线的有限角问题，依然表现的很好。</p>
+<h4 id="image-prediction-for-limited-angle-tomography-via-deep-learning-with-convolutional-neural-network"><a href="https://arxiv.org/abs/1607.08707">Image Prediction for Limited-angle Tomography via Deep Learning with Convolutional Neural Network</a></h4>
+<p>(Submitted on 29 Jul 2016)</p>
+<p>将FBP算法得到的低分辨率率、有瑕疵的图像经过一次<span class="math display">\[3 \times 3\]</span>卷积、一次<span class="math display">\[1 \times 1\]</span>卷积、一次<span class="math display">\[3 \times 3\]</span>卷积得到修正的图像，方法十分简单。取得一定效果，但是对于较大的瑕疵无法修正。</p>
+<h4 id="multi-scale-wavelet-domain-residual-learning-for-limited-angle-ct-reconstruction"><a href="https://arxiv.org/abs/1703.01382">Multi-Scale Wavelet Domain Residual Learning for Limited-Angle CT Reconstruction</a></h4>
+<p>(Submitted on 4 Mar 2017)</p>
+<p>将图像进行小波变换后在小波域上使用U-Net进行学习，然后再变换回图片域。</p>
+<p>与直接在图片域上进行U-Net学习和在图片域上使用单分辨的类U-Net学习两种方法进行对比。</p>
+<p>在实验结果中，取得了不错的成绩。但是比较奇怪的是，这个论文中120°有限角在TV算法下的表现极差，也比较符合我在试验中的认知。而 Accurate image reconstruction from few-views and limited-angle data in divergent-beam CT 中的TV模型在有限角问题下表现的太好了，不清楚什么原因。是因为一个是人体图片还有一个是模拟图片吗？</p>
+<p>另外，这篇论文使用的是AAPM的low dose的投影数据，而训练用的“真实”图片是用full-angle fanbeam projection data重建得到的。而在有限角网络中，只使用120°或150°的数据使用FBP得到初始图片。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>CT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日论文: Data-driven tight frame construction and image denoising</title>
+    <url>/2019/05/30/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-DDTF%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<p>我们知道，找到图像的稀疏表示可以在图像去噪、重建等方面有重大作用。常用的方法是字典学习，其中最广为人知的就是K-SVD方法。 但是，K-SVD方法的缺点主要在于其计算量大。DDTF的优点就在于计算量较小。DDTF模型来自<a href="https://doi.org/10.1016/j.acha.2013.10.001">Data-driven tight frame construction and image denoising</a></p>
+<span id="more"></span>
+<h1 id="ddtf-模型和算法介绍">DDTF 模型和算法介绍</h1>
+<p>DDTF考虑如下的一个优化问题：</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+ \min_{v,W}&amp; ||v-W(a_1,a_2,...a_m)g||_2^2+\lambda^2||v||_0\\
+s.t.&amp; \quad W^T W=I
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>其中g是图像，g是编码，W是由m个filter，即<span class="math inline">\((a_1,a_2,...a_m)\)</span>构成的紧框架。求解方法就是轮流最小化v和W。</p>
+<ol type="1">
+<li>给定<span class="math inline">\((W^{(k)})\)</span>，求解<span class="math inline">\((v^{(k)})\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{equation}
+v^{(k)}:=argmin_v||v-W^{(k)}g||_2^2+\lambda^2||v||_0
+\end{equation}
+\label{iterA}
+\]</span></p>
+<ol start="2" type="1">
+<li>给定<span class="math inline">\((v^{(k)})\)</span>，求解<span class="math inline">\((W^{(k+1)})\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{equation}
+\{a_i^{(k+1)}\}_{i=1}^m:=argmin_{\{a_i\}_{i=1}^m}||v^{(k)}-W(a_1,a_2,...a_m)g||_2^2
+\end{equation}
+\label{iterB}
+\]</span></p>
+<p>对于()，存在唯一的最优解<span class="math inline">\(( {\bar v}=T_{\lambda}(Wg))\)</span>, 对于()，可以通过SVD算法精确求解：</p>
+<p>假设filter大小为<span class="math inline">\((r \times r)\)</span>，则共有<span class="math inline">\((r^2)\)</span>个filter。 Here <span class="math inline">\((g_n, n=1,2,...N)\)</span> are all <span class="math inline">\((r\times r)\)</span> patches from the input image g.</p>
+<p>Let</p>
+<p><span class="math display">\[
+{\vec v}_n=(v^{(k),1}(n),v^{(k),2}(n),...,v^{(k),r^2}(n))^{T}, 1 \leqslant n \leqslant N.
+\]</span> and define</p>
+<p><span class="math display">\[
+\begin{equation}
+\left\{
+\begin{aligned}
+ V=({\vec v}_1,{\vec v}_2,...{\vec v}_N) \in \mathbb{R}^{r^2\times N}\\
+ G=({\vec g}_1,{\vec g}_2,...{\vec g}_N) \in \mathbb{R}^{r^2\times N}\\
+ A=({\vec a}_1,{\vec a}_2,...{\vec a}_N) \in \mathbb{R}^{r^2\times r^2}
+\end{aligned}
+\right.
+\end{equation}
+\]</span></p>
+<p>Then we have</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+ ||v-Wg||_2^2&amp;=\sum_{n=1}^N||{\vec v}_n-A^T{\vec g}_n||_2^2\\
+&amp;=\sum_{n=1}^N {\vec v}_n^T {\vec v}_n + {\vec g}_n^T A A^T {\vec g_n} - 2{\vec v}_n^T A^T {\vec g}_n \\
+&amp;= \sum_{n=1}^N {\vec v}_n^T {\vec v}_n + \frac{1}{r^2} {\vec g}_n^T{\vec g_n} - 2(A{\vec v}_n)^T{\vec g}_n \\
+&amp;= Tr(V^T)+\frac{1}{r^2}Tr(G^T G)-2Tr(AVG^T)
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>所以对于()，等价于：</p>
+<p><span class="math display">\[
+\begin{equation}
+\max_A Tr(AVG^T) \quad s.t. \quad A^TA=\frac{1}{r^2}I_{r^2}
+\end{equation}
+\]</span></p>
+<p><strong>引理1</strong> Let B and C be <span class="math inline">\((m\times r)\)</span> matrices where B has rank r. Consider the constrained maximization problem:</p>
+<p><span class="math display">\[
+B_*=\arg\min_B Tr(B^T C) \quad s.t. \quad B^TB=I_r
+\]</span> Suppose that the single value decomposition (SVD) of <span class="math inline">\((C)\)</span> is <span class="math inline">\(C = UDX^T\)</span>.Then <span class="math inline">\(( B_*=UX^T )\)</span>.</p>
+<p>根据引理，我们就能知道，通过SVD计算就可以求得()的精确解。</p>
+<h1 id="讨论">讨论</h1>
+<p>与K-SVD的主要区别在于通过加上了紧框架的约束， 反而构造出了一个相对容易求解的优化模型。但同时也失去了冗余字典模型的优势。</p>
+<h2 id="与-k-svd-的异同">与 K-SVD 的异同</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Method</th>
+<th style="text-align: center;">是否来自数据</th>
+<th style="text-align: center;">是否正交</th>
+<th style="text-align: center;">计算方法</th>
+<th style="text-align: center;">计算速度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">K-SVD</td>
+<td style="text-align: center;">是</td>
+<td style="text-align: center;">冗余字典</td>
+<td style="text-align: center;">每步为近似求解</td>
+<td style="text-align: center;">慢</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">DDTF</td>
+<td style="text-align: center;">是</td>
+<td style="text-align: center;">正交字典</td>
+<td style="text-align: center;">每步为较精确求解</td>
+<td style="text-align: center;">快</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Wavelets</td>
+<td style="text-align: center;">否</td>
+<td style="text-align: center;">都有</td>
+<td style="text-align: center;">直接构造</td>
+<td style="text-align: center;">快</td>
+</tr>
+</tbody>
+</table>
+<h2 id="正交字典的优劣">正交字典的优劣</h2>
+<p>来自： <a href="/files/ddtf/ksvd.pdf">Orthogonal Matching Pursuit and K-SVD for Sparse Encoding</a> ### Benefits of ONB</p>
+<ul>
+<li>Analytic formulations</li>
+<li>Well understood mathematical properties</li>
+<li>Fast algorithms for projection</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Orthonormal bases are optimal only for specific synthetic signals
+<ul>
+<li>If your signal looks exactly like your basis, you only need one coefficient</li>
+</ul></li>
+<li>Limited expressiveness, all signals behave the same</li>
+<li>Real world signals often take a lot of coefficients
+<ul>
+<li>Just truncate the series, which leads to artifacts like aliasing</li>
+</ul></li>
+</ul>
+<p>参考文献：</p>
+<p><a href="https://doi.org/10.1016/j.acha.2013.10.001">Data-driven tight frame construction and image denoising</a></p>
+<p><a href="/files/ddtf/ksvd.pdf">Orthogonal Matching Pursuit and K-SVD for Sparse Encoding</a></p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Inverse problem</tag>
+        <tag>Denoising</tag>
+        <tag>Dictionary learning</tag>
+        <tag>Sparsity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日文章-Machine learning accelerated computational fluid dynamics</title>
+    <url>/2021/02/07/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-NS%20by%20google/</url>
+    <content><![CDATA[<p>https://arxiv.org/pdf/2102.01010.pdf</p>
+<p>这篇论文使用端到端的训练方法，实现了对于DNS和LES，能得到和baseline的8-10倍精细的网格上相同的精度，和40-80x的加速。方法具有长时稳定性，而且可以应用到训练集之外的外力项和Reynold数。</p>
+<span id="more"></span>
+<h2 id="method">Method</h2>
+<p><img src="/images/每日文章-NS by google/image-20210208221509492.png" alt="image-20210208221509492" style="zoom:100%;" /></p>
+<p>这篇论文首先使用Jax实现了一个可微分的NS求解器（基于有限体积方法，时空一阶的显隐式方法），然后在其中添加了两个可学习的部分:</p>
+<ol type="1">
+<li>是有限体积方法在重建界面时，一般传统的有constant或者linear到多项式插值，或者WENO等重建方法，这里使用了神经网络来重建边界面的值。其实就是Learning data driven discretizations 中的方法。上图就是这个部分的图解。</li>
+<li>再用神经网络在每一个时间步后，对解增加一个修正项。</li>
+</ol>
+<p>在训练部分，使用了比较寻常的Loss function。在各个时间步累计MSE-Loss。 <span class="math display">\[
+L(x,y)=\sum_{t_i}^{t_T}MSE(u(t_i),\tilde u(t_i))
+\]</span> 训练时将模型展开了32层，这样可以有效提高长时间的稳定性。</p>
+<p>训练数据是在高精度的DNS上计算，然后下采样得到的。训练时使用32条不同初值得到的轨迹（每条4800个时间步），然后在更长的轨迹（几万个时间步）上进行测试。有时为了节省显存，使用了checkpoint技术。</p>
+<p>网络结构使用了全卷积神经网络。即下图中的Basic ConvNet。</p>
+<p>对于Learned Interpolation, <span class="math inline">\(N_{out}=120\)</span>。8个量，每个量15个系数。</p>
+<p>对于Learned Correction, <span class="math inline">\(N_{out}=2\)</span>。因为是求解的2D方程，对应速度的两个分量。</p>
+<p><img src="/images/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-NS%20by%20google/image-20210208224334341.png" alt="image-20210208224334341" style="zoom:100%;" /></p>
+<p>数值结果参见：https://mp.weixin.qq.com/s/QmlYIIcG7pjzLfLmFdDnDQ</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+        <tag>Science Computing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日文章-One Network to Solve Them All — Solving Linear Inverse Problems using Deep Projection Models</title>
+    <url>/2017/10/01/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-One%20Network%20to%20Solve%20Them%20All/</url>
+    <content><![CDATA[<p>这篇论文的标题<a href="https://arxiv.org/abs/1703.09912">One Network to Solve Them All — Solving Linear Inverse Problems</a>简单易懂：用一个网络解决所有线性反问题。</p>
+<span id="more"></span>
+<p>首先，带约束的线性反问题常见的形式都是这样的。</p>
+<p><span class="math display">\[
+(\min_x \frac{1}{2} \vert \vert y-Ax \vert \vert_2^2+\lambda\phi(x))
+\]</span></p>
+<p>这样的问题显然可以使用ADMM算法求解。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\min_x \frac{1}{2} || y-Az ||_2^2+\lambda\phi(x)\\
+s.t. \quad x=z
+\end{aligned}
+\]</span></p>
+<p>在ADMM当中对x和z的更新实际上都是一个prox算子，但是对于z的更新是一个线性函数的prox，所以相当于与求解一个线性反问题，可以用共轭梯度法求解。而对于x的更新由于<span class="math inline">\((\phi)\)</span>的不同则有不同的形式。</p>
+<p>这篇论文主要就是学习对<span class="math inline">\((\phi)\)</span>的更新的proximal算子。比如说这篇论文的实验主要集中在自然图像的去噪、</p>
+<p>超分辨、压缩感知上，那么他就假设所有自然图像的Indicator function 是 <span class="math inline">\((\mathcal{I}_{\mathcal{x}}(\cdot))\)</span>。然后他就要学习出来<span class="math inline">\(({prox}_{\mathcal{I}})\)</span> 。但是因为并不知道真实的 <span class="math inline">\((\mathcal{I}_{\mathcal{x}}(\cdot))\)</span>是什么，所以他是用一个神经网络D进行训练，逼近这个函数。基于学习到的神经网络 <span class="math inline">\((D_l)\)</span> ,他学习到了P也就是<span class="math inline">\(({prox}_{\mathcal{I}})\)</span>。</p>
+<p>在训练过程中，使用了类似GAN的技术，及同时训练。P训练来蒙蔽D，D也要在训练以加强约束。</p>
+<p>对于P的训练，它采用了这样的损失函数：</p>
+<p><span class="math display">\[
+(\min_{\theta_p} \sum_{x \in M,v \sim f(x)} \lambda_1\vert \vert x-P(x) \vert \vert ^2 +\lambda_2\vert \vert x-P(v)\vert \vert ^2+\lambda_3\vert \vert v-P(v)\vert \vert ^2-\lambda_4\log(\sigma(D_l \circ \mathcal{E}(v)))-\lambda_5\log(\sigma(D \circ P(x))))
+\]</span></p>
+<p>其中<span class="math inline">\((D)\)</span>和<span class="math inline">\((D_l)\)</span>是分别工作在output (image) space and the latent spaces of the projector上的分类器。</p>
+<p>参数<span class="math inline">\((\lambda)\)</span> 分别是0.01, 1.0, 0.001, 0.0001, 0.001。</p>
+<p>这个loss的前三项是prox算子中控制距离的项，后两项是函数值的项。前三项之所以不只留一项是因为希望对于优化过程中不同步的x（即刚开始优化时变量接近有nosing图片v，最后接近自然图片x）都有<span class="math inline">\((P(x)-x)\)</span>不要太大的约束。</p>
+<p>具体的网络结构呢，D和<span class="math inline">\((D_l)\)</span>都是Resnet的变种，P则是autoencoder网络的变种。</p>
+<p>等到网络训练好了，对于不同的反问题，例如去噪，超分辨等，就根据线性算子构造不同的ADMM迭代方法，带入我们习得的prox算子替代原始admm中的prox算子，就能取得One Network to Solve Them All的效果。</p>
+<p>这个算法的优势主要就在于利用对抗学习的方法，学习到了一个不明函数<span class="math inline">\((I(x)​)\)</span>的prox算子<span class="math inline">\((prox_{I}​)\)</span>，这是传统方法所不具备的。比如对于自然图像问题，我们原来常用TV约束，但是tv约束的图像与自然图像范围其实有不小的差别，一些有纹理的自然图像tv很大，一些tv很小的图像却是cartoon化的，等等。所以感觉这个方法应用还是很大的。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Neutral network</tag>
+        <tag>Inverse problem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日文章-The Consciousness Prior</title>
+    <url>/2017/09/26/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-The%20Consciousness%20Prior/</url>
+    <content><![CDATA[<p>好久不上arxiv，一上就看见了一篇Bengio大佬的新文章<a href="https://arxiv.org/abs/1709.08568">The Consciousness Prior</a>，虽然和我的研究方向关系不太，但是名字太fancy，所以还是拿来读一下。读起来十分困难（简直是痛苦！），很多部分我都是猜测的其中含义，所以理解的可能和原文相去甚远。</p>
+<span id="more"></span>
+<p>标题大概可以理解为 “意识优先“？</p>
+<p>举例来说，<span class="math inline">\((h_t=F(s_t,h_{t-1}))\)</span>是一个RNN，<span class="math inline">\((h_t)\)</span>是特别高维的向量，打一个比方，如果把这个RNN理解为人类的大脑，则<span class="math inline">\((h_t)\)</span>就是整个大脑在t时刻含有的所有内容。我们定义<span class="math inline">\((c_t)\)</span>是一个特别低维的向量，<span class="math inline">\((c_t=C(h_t,c_{t-1},z_t))\)</span>，其中<span class="math inline">\((z_t)\)</span>是一个随机的噪声源。<span class="math inline">\((c_t)\)</span>就可以理解为我们大脑此时流过的念头、想法。</p>
+<p>我们引入一个verifier network可以将<span class="math inline">\((h_t)\)</span>与<span class="math inline">\((c_{t-k})\)</span>联系起来：</p>
+<p><span class="math display">\[
+(V(h_t,c_{t-k}) \in \mathbb{R})
+\]</span></p>
+<p>这个网络在已知<span class="math inline">\((c_{t-k})\)</span>给出t时间状态是<span class="math inline">\((h_t)\)</span>的概率。</p>
+<p>所以我们最终的网络结构有两部分，一部分叫the attention mechanism，从高级状态中选出一些元素组合成conscious sub-states object。另一部分是从conscious sub-states预测action或未来的状态。</p>
+<p>好像取出来的这个conscious state在一定程度上是可解释的？所以可以命名？</p>
+<p>没有数值实验。</p>
+<hr />
+<p>这篇文章真的是让我读得痛苦无比，所以后边的大部分内容都是我胡编的。。。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日文章-深度学习图像重建(1)</title>
+    <url>/2017/09/24/%E6%AF%8F%E6%97%A5%E6%96%87%E7%AB%A0-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA(1)/</url>
+    <content><![CDATA[<p>主要是看想做一下利用深度学习进行图像重建的文献调研。此处所说的主要包含CT、MRI等医疗图像重建，超分辨图像重建与冷冻电镜图像重建。</p>
+<span id="more"></span>
+<h2 id="mri">MRI</h2>
+<h4 id="deep-admm-net-for-compressive-sensing-mri---nips-proceedings"><a href="https://papers.nips.cc/paper/6406-deep-admm-net-for-compressive-sensing-mri">Deep ADMM-Net for Compressive Sensing MRI - NIPS Proceedings</a></h4>
+<p>(NIPS 2016)</p>
+<p>把MRI重建的ADMM算法展开成网络，原来的ADMM中的scalar都成为可学习参数，除此之外，用来正则化图像u的滤波器W用卷积取代，卷积核可学习；以及soft-threshold函数也用分段线性函数逼近，其中的各控制点的大小也是要学习的。因为核磁的线性变换实际上是一个傅立叶变换，所以ADMM算法中的求解线性模型可以用傅立叶逆变换实现，使得算法速度不会太慢。</p>
+<h4 id="admm-net-a-deep-learning-approach-for-compressive-sensing-mri"><a href="https://arxiv.org/abs/1705.06869">ADMM-Net: A Deep Learning Approach for Compressive Sensing MRI</a></h4>
+<p>(Submitted on 19 May 2017)</p>
+<p>上一篇文章的改进。有三点：</p>
+<ul>
+<li>generalize the ADMM-Net to a more general network structure achieving higher MR image reconstruction quality.</li>
+</ul>
+<p>这一点主要指对于CS-MRI模型用ADMM求解，因为松弛变量选择的不同，可以推导出两种不同的迭代方法，上一篇文章是第一种算法展开，这一篇文章是第二种算法展开。</p>
+<ul>
+<li>extend the network to reconstruct the complex-valued MR image which is more useful in clinical diagnosis</li>
+</ul>
+<p>所有的filter依然是实值，所以卷积层都是实数filter，复数的输入和输出。只有在非线性变化层（分段线性函数层）与实数网络会有不同实现的方法，即把虚部看做实数使用相同的分段线性函数处理再转回虚数。</p>
+<ul>
+<li>extensively evaluate the ADMM-Nets with different widths and depths, and demonstrate the superiorities of the networks by more comparative experiment</li>
+</ul>
+<h2 id="ct">CT</h2>
+<h4 id="deep-convolutional-neural-network-for-inverse-problems-in-imaging"><a href="https://arxiv.org/abs/1611.03679">Deep Convolutional Neural Network for Inverse Problems in Imaging</a></h4>
+<p>(Submitted on 11 Nov 2016)</p>
+<p>文章的思路很简单，就是把FBP得到的不好的图片用一个U-net进行修正。不是很理解作者的思路，提到了ADMM-Net等网络结构，但认为那样不好，所以选取了U-Net网络结构。作者均是CS方向的，这可能反映了计算机和数学方向的不同理念。</p>
+<p><code>While we were inspired by the general form of the proximal update, (6), to apply a CNN to inverse problems of this form, our goal here is not to imitate iterative methods (e.g. by building a network that corresponds to an unrolled version of some iterative method), but rather to explore a state-of-the-art CNN architecture.</code></p>
+<h4 id="solving-ill-posed-inverse-problems-using-iterative-deep-neural-networks"><a href="https://arxiv.org/abs/1704.04058">Solving ill-posed inverse problems using iterative deep neural networks</a></h4>
+<p>(Submitted on 13 Apr 2017 (<a href="https://arxiv.org/abs/1704.04058v1">v1</a>), last revised 22 May 2017 (this version, v2))</p>
+<p>思路是从一个一般的正则化模型<span class="math display">\[\frac{1}{2}\vert\vert f-Pu \vert\vert_2^2+\kappa\vert\vert \nabla u \vert\vert_2^2\]</span>出发，使用梯度下降法会得到一个算法。我们参数化算法计算梯度的过程，“学习”一个梯度函数，按照这个梯度函数更新确定的步数，这就是<strong>Algorithm 1</strong>。另外，从Qusi-Newton类方法得到启发，如果利用上一步的信息，可以以更快的方向下降。所以引入了memory，从而得到<strong>Algorithm 2</strong>。</p>
+<figure>
+<img src="https://content.lz1.fun/202212181011894.png" alt="" /><figcaption>a1</figcaption>
+</figure>
+<figure>
+<img src="https://content.lz1.fun/202212181011278.png" alt="" /><figcaption>a2</figcaption>
+</figure>
+<p>在数值实验中，网络结构是这样的：</p>
+<figure>
+<img src="https://content.lz1.fun/202212181011580.png" alt="" /><figcaption>a3</figcaption>
+</figure>
+<p>其中<span class="math display">\[u_i^2\]</span> ，<span class="math display">\[u_i^3\]</span> 都是32通道的，卷积核是<span class="math display">\[3 \times 3\]</span>的，<span class="math display">\[I=10\]</span>，<span class="math display">\[s_i\]</span>是五通道的。</p>
+<p>数据集有两种：</p>
+<ol type="1">
+<li>Ellipses</li>
+</ol>
+<p>图像为<span class="math display">\[128 \times 128 \]</span>大小，30views，5%噪声，对与原图的<span class="math display">\[L^2\]</span> Loss进行优化。</p>
+<ol start="2" type="1">
+<li>Heads provided by Elekta (Elekta AB, Stockholm, Sweden)</li>
+</ol>
+<p>图像为<span class="math display">\[512 \times 512\]</span> 大小，<code>fan beam geometry with source-axis distance of 500 mm, source-detector distance 1000 mm, 1000 pixel, and 1000 angles.</code></p>
+<p>采用了非线性的算子（我觉得与上一种的区别主要在于加噪声的方法不一样，所以线性算子使用<span class="math display">\[L^2\]</span>损失，而这个使用 K-L divergence）</p>
+<p><span class="math display">\[\mathcal{T}(f)(l)=\lambda(-\mu \mathcal{P}(f)(l))\]</span></p>
+<p><span class="math display">\[\mathcal{L}(\mathcal{T}(f),g):=\int_{\mathbb{M}}(\mathcal{T}(f)(l)+g(l)\log(\frac{g(l)}{\mathcal{T}(f)(l)}))dl\]</span></p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Image Reconstruction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何用Python批量修改bib参考文献</title>
+    <url>/2021/10/03/%E7%94%A8python%E6%89%B9%E9%87%8F%E6%94%B9bib/</url>
+    <content><![CDATA[<h2 id="我的目标">我的目标</h2>
+<p>因为想要统一参考文献的格式，主要是有两点需要改，一是修改期刊名，改成缩写形式，二是将作者的名改成首字母大写，且忽略中间名，也就是"Apple Ben Cat"要改成"A. Cat"这样。</p>
+<h2 id="失败的尝试">失败的尝试</h2>
+<p>首先我的想法是尽量通过自动化的处理，以及尽量保持bib文件少修改的情况下解决这个问题。关于期刊缩写的处理会在另一篇文章中介绍。对于姓名的缩写，我肯定是先希望通过在latex中定义style的方式解决，而非去手动修改bib文件。</p>
+<span id="more"></span>
+<h3 id="更改bibtex格式">更改bibtex格式</h3>
+<p>参考<a href="https://blog.csdn.net/chikily_yongfeng/article/details/86553359">https://blog.csdn.net/chikily_yongfeng/article/details/86553359</a>，试图用makebst构造一个好用的bst参考文件格式，但是在回答完几十个问题，生成了bst文件后，才发现这些问题中没有我想要的而忽略中间名的选项。</p>
+<p>这样我就不能简单的生成bst文件达到目的了。此时依然有通过bst文件达到目的的途径，就是手动修改bst文件，因为bst文件本身就是一套定义了怎么处理参考文件格式的代码文件，但是因为实在看不懂bst用的那一套语言，所以只能放弃了。</p>
+<h3 id="改用biblatex">改用biblatex</h3>
+<p>biblatex中似乎能比较好的自定义名字的处理方法，而且我确实也基本实现了我想要的姓名处理方法。但是问题是biblatex的参考文献显示风格没有和bibtex完全相同的选择。我试了很多设置，最后斜体等处理还是和bibtex不一样，无法实现无感的替换bibtex。</p>
+<h2 id="还是做个快乐的调包侠">还是做个快乐的调包侠</h2>
+<p>选择了<a href="https://bibtexparser.readthedocs.io/en/master/">bibtexparser</a>这个python包，能解析bib文件。然后用很简单的字符串替换就能解决问题了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> bibtexparser</span><br><span class="line"><span class="keyword">from</span> bibtexparser.bparser <span class="keyword">import</span> BibTexParser</span><br><span class="line"><span class="keyword">from</span> bibtexparser.customization <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">customizations</span>(<span class="params">record</span>):</span><br><span class="line">    record = author(record)</span><br><span class="line">    <span class="keyword">return</span> record</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Abbr</span>(<span class="params">author</span>):</span><br><span class="line">    <span class="keyword">if</span> author==<span class="string">&quot;others, &quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;others&quot;</span></span><br><span class="line">    fn,gn=author.replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;&quot;</span>).split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> fn+<span class="string">&quot;, &quot;</span>+gn[<span class="number">0</span>]+<span class="string">&quot;.&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./ref.bib&#x27;</span>) <span class="keyword">as</span> bibtex_file:</span><br><span class="line">    parser = BibTexParser()</span><br><span class="line">    parser.customization = customizations</span><br><span class="line">    bib_database = bibtexparser.load(bibtex_file, parser=parser)</span><br><span class="line">    <span class="keyword">for</span> entry <span class="keyword">in</span> bib_database.entries:</span><br><span class="line">        entry[<span class="string">&quot;author&quot;</span>]=<span class="string">&quot; and &quot;</span>.join([Abbr(author) <span class="keyword">for</span> author <span class="keyword">in</span> entry[<span class="string">&quot;author&quot;</span>]])</span><br><span class="line">        <span class="built_in">print</span>(entry[<span class="string">&quot;author&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;bibtex.bib&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> bibtex_file:</span><br><span class="line">    bibtexparser.dump(bib_database, bibtex_file)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个趣味数学问题</title>
+    <url>/2019/05/31/%E8%B6%A3%E5%91%B3%E9%97%AE%E9%A2%98(1)/</url>
+    <content><![CDATA[<p>看见汤老师微博上的一个问题，感觉很有趣，查了一下相关资料，总结如下。</p>
+<span id="more"></span>
+<p>问题是这样的： <img src="https://content.lz1.fun/202212181009288.jpg" alt="problem" /></p>
+<p>看起来结果很不可思议，但是知道原理后又令人觉得理所应当。</p>
+<p>首先，这个积分形式就是故意遮去一半，试图让人不往傅里叶变换的方向去想，所以我们就用傅里叶变换来解。直接把积分区域翻倍到实轴上,例如</p>
+<p><span class="math display">\[
+\begin{equation}
+\int_{-\infty}^{\infty} \frac{\sin t}{t} \frac{\sin(t/101)}{t/101} \frac{\sin(t/201)}{t/201}dt=\pi
+\label{eq1}
+\end{equation}
+\]</span></p>
+<p>我们记</p>
+<p><span class="math display">\[
+sinc(t)=\frac{\sin t}{t}
+\]</span></p>
+<p>注意到<span class="math inline">\(sinc(t)\)</span>的傅里叶变换是</p>
+<p><span class="math display">\[
+\begin{equation}
+\mathcal F (sinc(t))=F(x)= \left\{
+\begin{aligned}
+1/2 \quad|x| &lt; 1 \\
+0 \quad|x| &gt; 1
+\end{aligned}
+\right.
+\end{equation}
+\]</span></p>
+<p>我们现在对()做傅里叶变换。傅里叶变换下乘积变卷积:</p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{1}{2\pi}\int_{-\infty}^{\infty} f(t)g(t)e^{-j2 \pi xt}dt=F(x)*G(x)
+\label{eq2}
+\end{equation}
+\]</span></p>
+<p>更一般的</p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{1}{2\pi}\int_{-\infty}^{\infty} f_1(t)f_2(t)...f_n(t)e^{-j2 \pi xt}dt=F_1(x)*F_2(x)*...*F_n(x)
+\label{eq3}
+\end{equation}
+\]</span></p>
+<p>取<span class="math inline">\(x=0\)</span>求得的就是我们想要的。下面一张动图展示了<span class="math inline">\(F=F_1*F_2*...*F_n\)</span>在0处的值。</p>
+<figure>
+<img src="https://content.lz1.fun/202212181009236.gif" alt="" /><figcaption>schmidborwein</figcaption>
+</figure>
+<p><span class="math inline">\(F_0=\mathcal F (sinc(t))\)</span>是一个高为<span class="math inline">\(1/2\)</span>，半宽为1的矩形波。<span class="math inline">\(F_k=\mathcal F (sinc(t/{a_k}))\)</span>是高为<span class="math inline">\(1/2\)</span>，半宽为<span class="math inline">\(a_k\)</span>的矩形波。</p>
+<p><span class="math inline">\(F_0\)</span>与<span class="math inline">\(F_{k}\)</span>做卷积后，两个函数分别在 保持等于<span class="math inline">\(1/2\)</span>的横线的半宽度就缩小了<span class="math inline">\(a_k\)</span>。再卷积<span class="math inline">\(F_{k+1}\)</span>，半宽度就缩小了<span class="math inline">\(a_{k+1}\)</span>。这段长度的值为<span class="math inline">\(\sum_{k=1}^{n} a_k\)</span>。 注意除了中间这一段横线的值依然保持等于<span class="math inline">\(1/2\)</span>，其余区域的函数值是严格小于<span class="math inline">\(1/2\)</span>的。</p>
+<p>当<span class="math inline">\(\sum_{k=1}^{n} a_k&gt;1\)</span>时，就不存在值为1的线段了，所有函数值都小于<span class="math inline">\(\pi\)</span>了。</p>
+<p>所以这道题的结论到这里就清晰了，当<span class="math inline">\(n&lt;9.8*10^42\)</span>时，<span class="math inline">\(\sum_{k=1}^{n} 1/(100k+1)&lt;1\)</span>；当<span class="math inline">\(n&gt;7.4*10^43\)</span>时，<span class="math inline">\(\sum_{k=1}^{n} 1/(100k+1)&gt;1\)</span>。这样就出现了题目所示的“神奇现象”。</p>
+<hr />
+<p>参考： <a href="https://johncarlosbaez.wordpress.com/2018/09/20/patterns-that-eventually-fail/">Patterns That Eventually Fail</a></p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Fourier transform</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>远程桌面软件比较</title>
+    <url>/2018/02/26/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<h3 id="vnc">VNC</h3>
+<p>最早接触的远程桌面软件，用于连接实验室的linux服务器，比起X11转发，支持同时更多的窗口。配置起来比较麻烦，不能即装即用。原生的VNC安全性较差，可以使用SSH转发提高安全性。</p>
+<p>VNC的方式是首先在远程运行VNC的server，并指定端口；随后在客户端连接端口，即可登录远程桌面，远程桌面的桌面程序可以任意设置，不一定与系统默认桌面一样（KDE/GNOME/Xfce）。</p>
+<span id="more"></span>
+<h3 id="rdp">RDP</h3>
+<p>Win10自带的远程桌面系统，如果同网段（或者说在学校的大局域网下）下使用及其快，基本感觉不到使用的是远程桌面，除了不能看视频玩游戏，可以胜任基本所有的办公操作。</p>
+<p>在Windows设置中开启即可。对于非WIndows Server系统，如果用户1通过远程登陆电脑，则本地的用户1将被踢出（运行的软件并不会关闭），也就是同一时间只允许一个用户连接到电脑，这一点与TeamViewer差别较大。</p>
+<h3 id="teamviewer">TeamViewer</h3>
+<p>最大的优点在于自带内网穿透，不用配置动态解析和端口转发就能直接在任意位置连上没有公有ip的机器。另外通过账户系统可以方便的管理多台电脑。</p>
+<p>TeamViewer管理的方式与上两者不同，并非是直接远程登陆，而是通过类似于Hacker的方式，可以直接远程窥屏并输入，而非建立新的登陆。本地用户1与远程用户1共享桌面，两者的操作互相都能看见。</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>VNC</th>
+<th>RDP</th>
+<th>TeamViewer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>支持较好的平台*</td>
+<td>Linux</td>
+<td>Windows</td>
+<td>Windows/Linux/MacOS</td>
+</tr>
+<tr class="even">
+<td>模式</td>
+<td>远程登陆</td>
+<td>远程登陆</td>
+<td>桌面管理</td>
+</tr>
+<tr class="odd">
+<td>连接质量</td>
+<td>一般</td>
+<td>好</td>
+<td>一般</td>
+</tr>
+<tr class="even">
+<td>自带内网穿透</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<p>*三种工具基本持支Winodws/Linux/MacOS所有平台，但是对不同平台支持性不同，VNC和RDP作为开源协议有多种实现。</p>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Windows</tag>
+        <tag>Network</tag>
+      </tags>
+  </entry>
+</search>
